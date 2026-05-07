@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0B2545">
+<title>Roei-examen — Leerwebsite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2545;
+  --navy-2:#13315C;
+  --gold:#E0A458;
+  --gold-soft:#F4D7A8;
+  --sea:#8DA9C4;
+  --sea-soft:#D6E1ED;
+  --bg:#FBF8F3;
+  --surface:#FFFFFF;
+  --text:#1A2238;
+  --muted:#5C6B7A;
+  --success:#2D6A4F;
+  --success-soft:#D4EDDA;
+  --error:#C44536;
+  --error-soft:#F8D7DA;
+  --border:#E8E1D2;
+  --shadow:0 2px 8px rgba(11,37,69,0.06), 0 8px 24px rgba(11,37,69,0.05);
+  --shadow-lg:0 8px 32px rgba(11,37,69,0.12);
+  --radius:18px;
+  --radius-sm:12px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.55;overscroll-behavior:none}
+body{min-height:100dvh;padding-bottom:env(safe-area-inset-bottom)}
+img{max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-0.01em;margin:0;color:var(--navy)}
+h1{font-size:2rem;line-height:1.1}
+h2{font-size:1.5rem;line-height:1.2}
+h3{font-size:1.2rem}
+p{margin:0 0 0.6em}
+
+/* APP SHELL */
+.app{max-width:520px;margin:0 auto;min-height:100dvh;background:var(--bg);position:relative}
+.topbar{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(11,37,69,0.2)}
+.topbar h1{color:#fff;font-size:1.15rem;font-family:'Fraunces',serif;flex:1;font-weight:500;letter-spacing:0}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:#fff;font-size:20px;background:rgba(255,255,255,0.08);transition:background 0.15s}
+.icon-btn:hover{background:rgba(255,255,255,0.15)}
+.icon-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.progress-bar{height:4px;background:rgba(255,255,255,0.2);border-radius:99px;flex:1;overflow:hidden}
+.progress-bar > div{height:100%;background:var(--gold);border-radius:99px;transition:width 0.4s ease}
+.streak{display:flex;align-items:center;gap:4px;font-weight:700;color:var(--gold);font-size:0.95rem}
+
+main{padding:20px 18px 100px}
+
+/* HOME */
+.hero{padding:18px 4px 24px}
+.hero-eyebrow{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px}
+.hero h1{font-size:2.2rem;font-weight:900;margin-bottom:6px;font-style:italic}
+.hero-sub{color:var(--muted);font-size:1rem}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0 24px}
+.stat{background:var(--surface);border-radius:var(--radius-sm);padding:12px 8px;text-align:center;border:1px solid var(--border)}
+.stat-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-lbl{font-size:0.72rem;color:var(--muted);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+
+.section-title{display:flex;align-items:baseline;justify-content:space-between;margin:24px 4px 12px}
+.section-title h2{font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-family:'Manrope',sans-serif;color:var(--navy)}
+.section-title small{font-size:0.85rem;color:var(--muted)}
+
+.modules{display:grid;gap:12px}
+.mod-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:14px;text-align:left;width:100%;transition:transform 0.15s,box-shadow 0.15s;position:relative;overflow:hidden}
+.mod-card:active{transform:scale(0.98)}
+.mod-card.done{background:linear-gradient(135deg,#fff 0%,#F4FBF6 100%);border-color:#B8D8C4}
+.mod-icon{width:52px;height:52px;border-radius:14px;background:var(--navy);color:var(--gold);display:grid;place-items:center;flex-shrink:0;font-size:24px;font-family:'Fraunces',serif;font-weight:700}
+.mod-card.done .mod-icon{background:var(--success);color:#fff}
+.mod-body{flex:1;min-width:0}
+.mod-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.mod-desc{font-size:0.85rem;color:var(--muted);line-height:1.4}
+.mod-prog{font-size:0.78rem;color:var(--gold);font-weight:700;margin-top:4px}
+.mod-card.done .mod-prog{color:var(--success)}
+.mod-arrow{color:var(--sea);font-size:22px;flex-shrink:0}
+
+.exam-cta{margin:28px 0 12px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:24px 20px;border-radius:var(--radius);position:relative;overflow:hidden;display:block;width:100%;text-align:left}
+.exam-cta::before{content:"";position:absolute;top:-30px;right:-20px;width:140px;height:140px;background:radial-gradient(circle,var(--gold) 0%,transparent 70%);opacity:0.25}
+.exam-cta-eyebrow{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:6px;position:relative}
+.exam-cta h2{color:#fff;font-size:1.5rem;font-weight:900;font-style:italic;margin-bottom:6px;position:relative}
+.exam-cta p{color:rgba(255,255,255,0.8);font-size:0.9rem;margin:0;position:relative}
+.exam-cta-arrow{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:var(--navy);font-size:22px;font-weight:700}
+
+/* LESSON VIEW */
+.lesson-wrap{display:flex;flex-direction:column;min-height:calc(100dvh - 64px);padding:8px 0 16px}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:8px;flex-wrap:wrap}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--sea-soft);transition:all 0.2s}
+.dot.active{background:var(--gold);width:24px;border-radius:99px}
+.dot.done{background:var(--navy)}
+.lesson-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;margin:16px 0 24px;flex:1;display:flex;flex-direction:column;box-shadow:var(--shadow);min-height:60vh}
+.lesson-eyebrow{font-size:0.75rem;text-transform:uppercase;font-weight:700;letter-spacing:0.12em;color:var(--gold);margin-bottom:10px}
+.lesson-card h2{font-size:1.7rem;font-style:italic;margin-bottom:16px;line-height:1.15}
+.lesson-card .body{flex:1;font-size:1.02rem;line-height:1.6}
+.lesson-card .body p{margin:0 0 0.8em}
+.lesson-card .body ul{padding-left:0;list-style:none;margin:8px 0}
+.lesson-card .body ul li{padding:8px 0 8px 28px;position:relative;line-height:1.5}
+.lesson-card .body ul li::before{content:"";position:absolute;left:0;top:14px;width:14px;height:2px;background:var(--gold);border-radius:99px}
+.lesson-card .body ol{padding-left:0;list-style:none;counter-reset:steps;margin:8px 0}
+.lesson-card .body ol li{padding:10px 0 10px 38px;position:relative;line-height:1.5;counter-increment:steps}
+.lesson-card .body ol li::before{content:counter(steps);position:absolute;left:0;top:8px;width:26px;height:26px;background:var(--navy);color:var(--gold);border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:0.85rem;font-family:'Fraunces',serif}
+.lesson-card .body strong{color:var(--navy)}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;margin:16px 0;font-size:0.95rem}
+.callout strong{display:block;font-family:'Fraunces',serif;color:var(--navy);margin-bottom:4px}
+.callout-tip{background:#E8F1FB;border-left-color:var(--sea);}
+.callout-warn{background:var(--error-soft);border-left-color:var(--error)}
+
+.lesson-nav{display:flex;gap:10px;margin-top:auto}
+.btn{flex:1;padding:18px 20px;border-radius:14px;font-weight:700;font-size:1.05rem;font-family:'Manrope',sans-serif;text-align:center;display:grid;place-items:center;transition:transform 0.1s, background 0.15s;min-height:56px}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-2)}
+.btn-secondary{background:var(--surface);color:var(--navy);border:1.5px solid var(--border)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-success{background:var(--success);color:#fff}
+.btn-disabled{background:var(--sea-soft);color:var(--muted);pointer-events:none}
+
+/* QUIZ */
+.quiz-question{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin:14px 0 18px;line-height:1.25}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:16px 18px;text-align:left;font-size:1rem;font-weight:500;line-height:1.4;transition:all 0.15s;display:flex;align-items:center;gap:12px;min-height:60px}
+.quiz-opt:active{transform:scale(0.98)}
+.quiz-opt-letter{width:32px;height:32px;border-radius:50%;background:var(--sea-soft);color:var(--navy);display:grid;place-items:center;font-weight:700;font-family:'Fraunces',serif;flex-shrink:0;transition:all 0.15s}
+.quiz-opt:hover{border-color:var(--sea)}
+.quiz-opt.correct{border-color:var(--success);background:var(--success-soft)}
+.quiz-opt.correct .quiz-opt-letter{background:var(--success);color:#fff}
+.quiz-opt.wrong{border-color:var(--error);background:var(--error-soft)}
+.quiz-opt.wrong .quiz-opt-letter{background:var(--error);color:#fff}
+.quiz-opt:disabled{cursor:default}
+.feedback{background:var(--surface);border-radius:14px;padding:14px 16px;margin-top:14px;border-left:4px solid var(--gold);animation:slideUp 0.3s ease}
+.feedback.ok{border-left-color:var(--success);background:var(--success-soft)}
+.feedback.no{border-left-color:var(--error);background:var(--error-soft)}
+.feedback strong{font-family:'Fraunces',serif;display:block;margin-bottom:4px}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESULT */
+.result-wrap{text-align:center;padding:30px 20px}
+.result-emoji{font-size:5rem;margin:10px 0 6px;line-height:1}
+.result-score{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:900;color:var(--navy);font-style:italic;line-height:1}
+.result-score small{font-size:1.5rem;color:var(--muted);font-weight:500;font-style:normal}
+.result-msg{font-size:1.1rem;color:var(--muted);margin:8px 0 24px}
+
+/* KNOPEN GRID */
+.knot-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.knot-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 12px;text-align:center}
+.knot-card svg{width:60px;height:60px;margin:0 auto 8px;display:block}
+.knot-card .nm{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:0.95rem}
+.knot-card .ds{font-size:0.78rem;color:var(--muted);margin-top:3px;line-height:1.3}
+
+/* VLET DIAGRAM */
+.vlet-svg{width:100%;height:auto;display:block;margin:8px 0;background:#F0F4F9;border-radius:12px;padding:10px;border:1px solid var(--border)}
+.part-list{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.part{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:12px;font-size:0.95rem}
+.part-num{width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:700;font-family:'Fraunces',serif;flex-shrink:0;font-size:0.9rem}
+.part-name{font-weight:700;color:var(--navy)}
+.part-desc{color:var(--muted);font-size:0.85rem}
+
+/* MEMORY GAME */
+.mem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}
+.mem-cell{aspect-ratio:1.2;border-radius:14px;background:var(--surface);border:2px solid var(--border);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;cursor:pointer;transition:all 0.2s;color:var(--navy)}
+.mem-cell.flipped{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.mem-cell.matched{opacity:0.3;pointer-events:none}
+.mem-cell.color{font-size:0.92rem;text-transform:uppercase;letter-spacing:0.05em}
+.mem-feedback{text-align:center;font-weight:600;color:var(--muted);margin:8px 0}
+
+/* BPR voorrang diagram */
+.voorrang-card{background:#F0F4F9;border-radius:14px;padding:18px;margin:12px 0;text-align:center}
+.voorrang-svg{width:100%;max-width:280px;height:auto;margin:0 auto 10px;display:block}
+.voorrang-q{font-weight:700;color:var(--navy);font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:6px}
+
+/* BORDEN GRID */
+.borden-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.bord-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px;text-align:center}
+.bord-svg{width:58px;height:58px;margin:0 auto 6px;display:block}
+.bord-name{font-size:0.78rem;color:var(--muted);font-weight:600;line-height:1.3}
+
+/* COMPARE TWO COLUMNS */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.compare-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.compare-col h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1rem;margin-bottom:6px}
+.compare-col p{font-size:0.88rem;margin:0;color:var(--muted)}
+
+/* EZELBRUG */
+.ezel{background:linear-gradient(135deg,#FFF7E6 0%,#FFEDC2 100%);border-radius:14px;padding:14px 16px;margin:12px 0;border:1px solid var(--gold-soft)}
+.ezel-lbl{font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--navy);letter-spacing:0.1em;margin-bottom:4px}
+.ezel-text{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--navy);font-weight:600}
+.ezel-text .hl{color:var(--error);font-weight:900}
+
+/* BADGES */
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.badge{background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:6px 12px;font-size:0.78rem;font-weight:700;color:var(--muted)}
+.badge.earned{background:var(--gold-soft);color:var(--navy);border-color:var(--gold)}
+
+.tabs{display:flex;background:var(--sea-soft);border-radius:12px;padding:4px;margin:8px 0 16px}
+.tab{flex:1;padding:10px;text-align:center;border-radius:9px;font-weight:600;font-size:0.9rem;color:var(--muted)}
+.tab.active{background:var(--surface);color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+
+/* hidden helper */
+.hidden{display:none !important}
+
+/* swipe hint */
+.hint{text-align:center;font-size:0.78rem;color:var(--muted);margin-top:6px;font-style:italic}
+
+/* Reset confirm modal */
+.modal-bg{position:fixed;inset:0;background:rgba(11,37,69,0.6);display:grid;place-items:center;z-index:50;padding:20px}
+.modal{background:#fff;border-radius:18px;padding:24px;max-width:380px;width:100%;text-align:center}
+.modal h3{margin-bottom:8px}
+.modal p{color:var(--muted);margin-bottom:18px}
+.modal-buttons{display:flex;gap:10px}
+
+@media (min-width:600px){
+  body{padding:20px 0}
+  .app{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);min-height:auto;margin-bottom:40px}
+  .topbar{border-radius:24px 24px 0 0}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <button class="icon-btn" id="backBtn" style="display:none" aria-label="Terug">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <h1 id="topTitle">Roei-examen</h1>
+    <button class="icon-btn" id="resetBtn" aria-label="Voortgang resetten" title="Voortgang resetten">
+      <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3.5-7.1L3 8"/><path d="M3 3v5h5"/></svg>
+    </button>
+  </header>
+  <main id="main"></main>
+</div>
+
+<script>
+/* ============ DATA ============ */
+const MODULES = [
+  {
+    id:'knopen', icon:'⚓', title:'Knopen',
+    desc:'De 6 belangrijke knopen',
+    lessons:[
+      {title:'De 6 knopen', body:`
+        <p>Voor het roei-examen moet je <strong>6 knopen</strong> kennen. Dit is schiemanswerk.</p>
+        <div class="knot-grid">
+          <div class="knot-card">${knotSvg('acht')}<div class="nm">Achtknoop</div><div class="ds">Stopknoop op het einde van een lijn</div></div>
+          <div class="knot-card">${knotSvg('paal')}<div class="nm">Paalsteek</div><div class="ds">Vaste lus die niet dichttrekt</div></div>
+          <div class="knot-card">${knotSvg('plat')}<div class="nm">Platte knoop</div><div class="ds">2 lijnen even dik aan elkaar</div></div>
+          <div class="knot-card">${knotSvg('schoot')}<div class="nm">Schootsteek</div><div class="ds">2 lijnen verschillend dik aan elkaar</div></div>
+          <div class="knot-card">${knotSvg('mast')}<div class="nm">Mastworp</div><div class="ds">Lijn aan paal/mast vastmaken</div></div>
+          <div class="knot-card">${knotSvg('slip')}<div class="nm">Slipsteek halve steek</div><div class="ds">Snel los te trekken bevestiging</div></div>
+        </div>
+        <p class="hint">Tik op "Volgende" om elke knoop apart te leren.</p>
+      `},
+      {title:'Achtknoop', body:`
+        <div style="text-align:center;margin:20px 0">${knotSvg('acht', 100)}</div>
+        <p>Een <strong>stopknoop</strong>: zorgt dat een lijn niet door een blok of oog kan glippen.</p>
+        <ul><li>Lijkt op het cijfer 8</li><li>Wordt aan het uiteinde van een lijn gelegd</li></ul>
+      `},
+      {title:'Paalsteek', body:`
+        <div style="text-align:center;margin:20px 0">${knotSvg('paal', 100)}</div>
+        <p>Een <strong>vaste lus</strong> die niet dichttrekt — zelfs niet onder spanning.</p>
+        <ul><li>Voor vastmaken aan een paal of ring</li><li>Reddingslus om iemand op te trekken</li><li>De punt van de boot vastleggen</li></ul>
+        <div class="callout"><strong>Examenvraag!</strong> Vraag 1 vraagt naar deze knoop. Naam <strong>én</strong> wanneer je hem gebruikt.</div>
+      `},
+      {title:'Platte knoop & Schootsteek', body:`
+        <div class="compare">
+          <div class="compare-col"><h4>Platte knoop</h4>${knotSvg('plat', 60)}<p>Voor het verbinden van twee <strong>even dikke</strong> lijnen.</p></div>
+          <div class="compare-col"><h4>Schootsteek</h4>${knotSvg('schoot', 60)}<p>Voor het verbinden van twee <strong>verschillend dikke</strong> lijnen.</p></div>
+        </div>
+        <p>Onthoud: gebruik je twee even dikke touwen → platte. Verschillend dik → schootsteek.</p>
+      `},
+      {title:'Mastworp & Slipsteek halve steek', body:`
+        <div class="compare">
+          <div class="compare-col"><h4>Mastworp</h4>${knotSvg('mast', 60)}<p>Voor vastmaken aan een <strong>paal of mast</strong>.</p></div>
+          <div class="compare-col"><h4>Slipsteek halve steek</h4>${knotSvg('slip', 60)}<p>Snelle bevestiging, makkelijk los te trekken.</p></div>
+        </div>
+      `}
+    ],
+    quiz:[
+      {q:'Welke knoop wordt hieronder afgebeeld?', img:knotSvg('paal',120),
+        opts:['Achtknoop','Paalsteek','Mastworp','Schootsteek'], correct:1,
+        why:'Dit is een paalsteek: een vaste lus die niet dichttrekt. Wordt gebruikt voor vastmaken aan een paal/ring of als reddingslus.'},
+      {q:'Wanneer gebruik je een paalsteek?',
+        opts:['Als stopknoop op het einde van een lijn','Om twee even dikke lijnen te verbinden','Voor een vaste lus die niet dichttrekt','Om snel iets los te kunnen trekken'], correct:2,
+        why:'De paalsteek maakt een vaste lus die niet dichttrekt — perfect om iets/iemand vast te leggen.'},
+      {q:'Twee lijnen, één is dik en één is dun. Welke knoop gebruik je?',
+        opts:['Platte knoop','Schootsteek','Mastworp','Achtknoop'], correct:1,
+        why:'Schootsteek = verschillend dikke lijnen. Platte knoop = even dikke lijnen.'},
+      {q:'Welke knoop is een stopknoop op het einde van een lijn?',
+        opts:['Mastworp','Paalsteek','Achtknoop','Slipsteek'], correct:2,
+        why:'De achtknoop lijkt op een 8 en zorgt dat een lijn niet door een blok glipt.'}
+    ]
+  },
+  {
+    id:'zeiltermen', icon:'⛵', title:'Zeiltermen',
+    desc:'Bakboord, stuurboord, hogerwal',
+    lessons:[
+      {title:'Bakboord & Stuurboord', body:`
+        <p>De zijkanten van de boot heten niet "links" en "rechts" — ze hebben echte namen.</p>
+        ${bbsbSvg()}
+        <ul>
+          <li><strong>Bakboord</strong> = links</li>
+          <li><strong>Stuurboord</strong> = rechts</li>
+        </ul>
+        <div class="callout-warn callout"><strong>Let op!</strong> Dit klopt alleen als je <em>vanaf het achterdek naar voren</em> kijkt. Niet andersom.</div>
+        <div class="ezel"><div class="ezel-lbl">Ezelsbruggetje</div><div class="ezel-text">Ba<span class="hl">K</span>boord = Lin<span class="hl">K</span>s</div></div>
+        <p style="margin-top:14px"><strong>Tip:</strong> het wrikgat zit aan stuurboord — handig om je te oriënteren.</p>
+      `},
+      {title:'Hogerwal & Lagerwal', body:`
+        <p>Twee belangrijke begrippen voor de wind:</p>
+        ${wallSvg()}
+        <ul>
+          <li><strong>Hogerwal</strong> = de kant waar de wind <em>vandaan</em> komt</li>
+          <li><strong>Lagerwal</strong> = de kant waar de wind <em>naartoe</em> waait</li>
+        </ul>
+        <div class="callout"><strong>Onthoud:</strong> bij sterke wind raak je sneller op de <em>lagerwal</em>, want daar drukt de wind je tegenaan.</div>
+      `}
+    ],
+    quiz:[
+      {q:'Wat is bakboord?', opts:['Rechts','Links','Voor','Achter'], correct:1, why:'BaKboord = LinKs (vanaf het achterdek naar voren kijkend).'},
+      {q:'Aan welke zijde zit het wrikgat?', opts:['Bakboord','Stuurboord','In het midden','Beide kanten'], correct:1, why:'Het wrikgat zit aan stuurboord — een handig oriëntatiepunt.'},
+      {q:'Wat is de hogerwal?', opts:['Waar de wind heen waait','Waar de wind vandaan komt','De hoogste oever','De stroomopwaartse kant'], correct:1, why:'Hogerwal = de kant waar de wind vandaan komt.'}
+    ]
+  },
+  {
+    id:'vlet', icon:'🛶', title:'Vletonderdelen',
+    desc:'Onderdelen 54, 57 en 84',
+    lessons:[
+      {title:'De vlet: belangrijke onderdelen', body:`
+        <p>De vlet heeft veel onderdelen. Voor het examen zijn er drie écht belangrijk:</p>
+        ${vletSvg()}
+        <div class="part-list">
+          <div class="part"><div class="part-num">54</div><div><span class="part-name">Grendelbout</span><br><span class="part-desc">Pen die door de dol gaat zodat hij vast zit</span></div></div>
+          <div class="part"><div class="part-num">57</div><div><span class="part-name">Dolpot</span><br><span class="part-desc">Houder waar de dol in zit op de boord</span></div></div>
+          <div class="part"><div class="part-num">84</div><div><span class="part-name">Spant</span><br><span class="part-desc">Dwarsbalk binnenin die de boot stevigheid geeft</span></div></div>
+        </div>
+      `},
+      {title:'Onthouden trucje', body:`
+        <p>Een ezelsbruggetje voor de drie examen-onderdelen:</p>
+        <div class="ezel"><div class="ezel-lbl">Truc</div><div class="ezel-text">Een <span class="hl">spant</span> (84) staat onderin, een <span class="hl">dolpot</span> (57) staat <em>boven</em> op de rand, en de <span class="hl">grendelbout</span> (54) houdt de dol op zijn plek.</div></div>
+        <ul>
+          <li><strong>Onderaan</strong> in de boot → spanten (84)</li>
+          <li><strong>Op de rand</strong> → dolpotten (57)</li>
+          <li><strong>Door de dol</strong> → grendelbouten (54)</li>
+        </ul>
+      `}
+    ],
+    quiz:[
+      {q:'Wat is onderdeel 54 op een vlet?', opts:['Spant','Dolpot','Grendelbout','Riem'], correct:2, why:'Onderdeel 54 = grendelbout, de pen die door de dol gaat.'},
+      {q:'Wat is onderdeel 57?', opts:['Dolpot','Spant','Roer','Helmstok'], correct:0, why:'Onderdeel 57 = dolpot, de houder voor de dol op de boord.'},
+      {q:'Wat is onderdeel 84?', opts:['Grendelbout','Spant','Dolpot','Mast'], correct:1, why:'Onderdeel 84 = spant, een dwarsbalk binnenin die zorgt voor stevigheid.'}
+    ]
+  },
+  {
+    id:'commandos', icon:'📣', title:`Roeicommando's`,
+    desc:'Alles van klaarmaken tot omzetten',
+    lessons:[
+      {title:'Wie geeft de commando\'s?', body:`
+        <p>Op een Lelievlet roeien we met 2, 4 of 6 personen. Daarnaast is er een <strong>roerganger</strong> die stuurt en de commando\'s geeft.</p>
+        <ul><li>De roerganger zit achterin</li><li>De roeiers zitten met hun rug naar voren</li><li>De roerganger ziet alles wat eraan komt</li></ul>
+      `},
+      {title:'Klaarmaken om te roeien', body:`
+        <p>Voordat je begint, geef je deze commando\'s op volgorde:</p>
+        <ol>
+          <li><strong>"Klaarmaken om te roeien!"</strong> — roeiers pakken een dol en gaan op hun plek zitten</li>
+          <li><strong>"Dollen in"</strong> — de dollen mogen in de dolpot</li>
+          <li><strong>"Riemen toe"</strong> — riemen rustig in de dollen leggen</li>
+        </ol>
+        <div class="callout"><strong>Tip:</strong> tijdens het roeien hou je het blad van de riem <em>haaks op het water</em>.</div>
+      `},
+      {title:'Een commando opbouwen', body:`
+        <p>Elk commando heeft <strong>4 onderdelen</strong>:</p>
+        <ol>
+          <li><strong>"Op riemen!"</strong> — alle roeiers houden de riemen uit het water (vorige commando is voorbij)</li>
+          <li>Welk boord? — <strong>"Beide boorden"</strong>, <strong>"Bakboord"</strong> of <strong>"Stuurboord"</strong></li>
+          <li>De opdracht — halen, strijken, afstoppen, omzetten, riemen op...</li>
+          <li>Het tempo — <strong>"Ge-liiiijk, ge-liiiijk"</strong></li>
+        </ol>
+      `},
+      {title:'De opdrachten', body:`
+        <ul>
+          <li><strong>Halen</strong> = "gewoon" roeien — zo gaan we vooruit</li>
+          <li><strong>Strijken</strong> = andersom roeien — zo gaan we achteruit</li>
+          <li><strong>Afstoppen</strong> = afremmen door de riemen in het water te houden</li>
+          <li><strong>Omzetten</strong> = roeiers draaien om en kijken nu de andere kant op (bv. om met spiegel aan te leggen)</li>
+        </ul>
+        <div class="ezel"><div class="ezel-lbl">Onthoud</div><div class="ezel-text">Halen = vooruit. Strijken = achteruit.</div></div>
+      `},
+      {title:'Voorbeeld: snelle bocht naar stuurboord', body:`
+        <p>Je wilt een snelle bocht naar stuurboord (rechts) maken.</p>
+        <ol>
+          <li>"Op riemen!"</li>
+          <li>"Bakboord haalt, stuurboord strijkt."</li>
+          <li>"Ge-lijk!"</li>
+        </ol>
+        <p>En als de bocht klaar is:</p>
+        <ol><li>"Op riemen!"</li></ol>
+        <div class="callout-tip callout"><strong>Logisch?</strong> Bakboord (links) gaat vooruit, stuurboord (rechts) gaat achteruit → de boot draait om zijn as naar rechts.</div>
+      `},
+      {title:'Op riemen vs. Riemen op', body:`
+        <p>Twee commando\'s die héél erg op elkaar lijken — maar iets totaal anders betekenen!</p>
+        <div class="compare">
+          <div class="compare-col"><h4>Op riemen</h4><p>Stoppen met de opdracht. Riem komt een klein stukje uit het water.</p></div>
+          <div class="compare-col"><h4>Riemen op</h4><p>Riemen helemaal omhoog/uit het water houden — meestal voor aanleggen.</p></div>
+        </div>
+        <div class="callout-warn callout"><strong>Examenvraag!</strong> Het verschil tussen deze twee is een Roeien II vraag.</div>
+      `},
+      {title:'Aanleggen met de punt', body:`
+        <p>Doel: rustig met de punt (voorkant) aankomen bij de kade.</p>
+        <ol>
+          <li>"Op riemen!"</li>
+          <li>"Beide boorden stoppen af!" <em>(geen "ge-lijk" want riemen worden stilgehouden)</em></li>
+          <li>"Pikhaak voor!" — die persoon stapt af met het voorland</li>
+        </ol>
+      `},
+      {title:'Aanleggen met de spiegel (R2)', body:`
+        <p>Doel: aankomen met de <em>achterkant</em> (spiegel) van de vlet bij de kade. Lastiger!</p>
+        <ol>
+          <li>Draai eerst zo dat je recht voor de kade ligt</li>
+          <li>"Op riemen"</li>
+          <li>"Beide boorden zetten om!" <em>(roeiers draaien om, kijken nu naar voren)</em></li>
+          <li>"Beide boorden halen" + "Ge-lijk!" <em>(de vlet gaat nu achteruit)</em></li>
+          <li>"Op riemen: beide boorden stoppen af"</li>
+          <li>"Pikhaak achter!"</li>
+          <li>"Op riemen!"</li>
+        </ol>
+      `}
+    ],
+    quiz:[
+      {q:'Wat gebeurt er als stuurboord haalt en bakboord strijkt?',
+        opts:['De vlet draait naar stuurboord','De vlet draait naar bakboord','De vlet stopt af','De vlet gaat naar achteren'], correct:0,
+        why:'Stuurboord (rechts) gaat vooruit, bakboord (links) gaat achteruit → de boot draait om zijn as naar stuurboord (rechts).'},
+      {q:'Wat betekent "Op riemen"?',
+        opts:['Riemen helemaal omhoog','Stoppen met de opdracht, riem klein stukje uit water','Riemen in de dol leggen','Snel afstoppen'], correct:1,
+        why:'Op riemen = vorige opdracht voorbij, riemen iets uit het water. Riemen op = helemaal uit het water.'},
+      {q:'Wat is de eerste stap om aan te leggen met de spiegel?',
+        opts:['Pikhaak achter','Beide boorden zetten om','Beide boorden halen','Op riemen'], correct:3,
+        why:'Stap 1 is "Op riemen" om de huidige opdracht te stoppen, dan pas omzetten.'}
+    ]
+  },
+  {
+    id:'vastleggen', icon:'🪢', title:'Vlet vastleggen',
+    desc:'Voorland, achterland, spring',
+    lessons:[
+      {title:'Altijd 3 lijnen', body:`
+        <p>De vlet leggen we <strong>altijd</strong> vast met 3 lijnen — ook als je er maar even ligt.</p>
+        ${linesSvg()}
+        <ul>
+          <li><strong>Voorland</strong> — vooraan vast</li>
+          <li><strong>Achterland</strong> — achteraan vast</li>
+          <li><strong>Spring</strong> — extra om te voorkomen dat de boot heen en weer schuift</li>
+        </ul>
+      `},
+      {title:'De spring', body:`
+        <p>De spring zorgt dat de vlet niet kan schuiven en geen schade oploopt.</p>
+        <div class="callout-warn callout"><strong>Belangrijk!</strong> De spring leg je <em>altijd vanaf de boot tegen de wind in</em>.</div>
+        <p>Logica: als de wind tegen de spring duwt, blijft de boot mooi op zijn plek liggen.</p>
+      `},
+      {title:'Aanleggen op bakboordzijde — alle stappen', body:`
+        <p>Je vaart al roeiend met beide boorden op de kant af. Hoe leg je vast op bakboord?</p>
+        <ol>
+          <li><strong>Op riemen</strong>: beide boorden stoppen af. Ge-lijk.</li>
+          <li><strong>Op riemen</strong>: bakboord haalt en/of stuurboord strijkt. Ge-lijk. <em>(om naar bakboord te draaien)</em></li>
+          <li><strong>Op riemen</strong>: riemen geroeid en dollen uit.</li>
+          <li><strong>Stootwillen uit; pikhaak voor.</strong></li>
+          <li><strong>Landen vast, spring vast. Zwaard op.</strong></li>
+        </ol>
+        <div class="callout-tip callout"><strong>Examenvraag 10 (R2):</strong> beschrijf alle benodigde stappen om vast te leggen op de bakboordzijde.</div>
+      `}
+    ],
+    quiz:[
+      {q:'Met hoeveel lijnen leggen we de vlet vast?', opts:['1','2','3','4'], correct:2, why:'Altijd 3: voorland, achterland en spring.'},
+      {q:'Hoe leg je de spring?', opts:['Vanaf de boot mét de wind mee','Vanaf de boot tegen de wind in','Loodrecht op de boot','Maakt niet uit'], correct:1, why:'De spring leg je altijd vanaf de boot tegen de wind in, zodat de boot niet kan schuiven.'},
+      {q:'Wat is de laatste stap bij aanleggen?', opts:['Pikhaak voor','Op riemen','Landen vast, spring vast, zwaard op','Stootwillen uit'], correct:2, why:'Als alles voor en achter vastligt, hijs je het zwaard op.'}
+    ]
+  },
+  {
+    id:'veiligheid', icon:'🛟', title:'Veiligheid',
+    desc:'Reddingsvest, onweer, dode hoek',
+    lessons:[
+      {title:'Geschikte kleding aan boord', body:`
+        <p>Voor je veiligheid moet je de juiste kleding dragen:</p>
+        <ul>
+          <li>Dichte stevige <strong>schoenen</strong> — geen slippers of sandalen</li>
+          <li>Crocs zijn wél goedgekeurd</li>
+          <li>Laarzen mogen, maar dán wel een reddingsvest!</li>
+          <li>Warme kleding (zeker als het koud wordt)</li>
+          <li>Waterdichte kleding</li>
+        </ul>
+      `},
+      {title:'Reddingsvest — wanneer dragen?', body:`
+        <p>Je moet een reddingsvest dragen in deze situaties:</p>
+        <ul>
+          <li>Bij <strong>onweer</strong></li>
+          <li>Tijdens een <strong>sleep</strong></li>
+          <li>Bij <strong>harde wind</strong> / als je gereefd hebt</li>
+          <li>De <strong>"2 van de 3"-regel</strong></li>
+        </ul>
+        <div class="callout-warn callout"><strong>Examenvraag 12:</strong> noem 3 situaties waarin je een reddingsvest moet dragen.</div>
+        <div class="callout"><strong>Tip van Flip Hylke:</strong> "omdat de staf het zegt" is fout op het examen 😄</div>
+      `},
+      {title:'Reddingsvest — hoe dragen?', body:`
+        <p>Een reddingsvest moet goed zitten om te werken:</p>
+        <ul>
+          <li><strong>Boven</strong> alle kleding</li>
+          <li>Bij een <strong>normaal vest</strong>: strak</li>
+          <li>Bij een <strong>plofvest</strong>: zo strak dat er nog precies een vuist tussen vest en je ribbenkast past</li>
+          <li>Gebruik de <strong>reetveter</strong> als die er is</li>
+        </ul>
+        <div class="callout-warn callout"><strong>Let op:</strong> een plofvest mag alleen worden gedragen als hij gekeurd is.</div>
+      `},
+      {title:'Onweer — wat nu?', body:`
+        <p>Er komt onweer aan terwijl je op het water zit. Wat doe je?</p>
+        <ol>
+          <li>Ga zo snel mogelijk naar de kant</li>
+          <li>Trek je reddingsvest aan</li>
+          <li>Blijf op het hout (niet op het staal!)</li>
+          <li>Laat de mast strijken</li>
+        </ol>
+        <div class="callout-tip callout"><strong>Slim:</strong> kom je sneller bij de kant door te zeilen? Zeil dan naar de kant en strijk daar pas je mast.</div>
+      `},
+      {title:'Dode hoek', body:`
+        <p>De <strong>dode hoek</strong> is alle plekken rondom een groot schip waar de schipper jou niet kan zien.</p>
+        ${dodeHoekSvg()}
+        <div class="callout-warn callout"><strong>Vuistregel:</strong> Als jij de stuurhut/de schipper niet meer kunt zien → dan kan hij jou ook niet zien.</div>
+      `}
+    ],
+    quiz:[
+      {q:'Hoe weet je of je in de dode hoek van een groot schip zit?',
+        opts:['Als hij naar je toetert','Als de boot voor je dichterbij komt','Als je de stuurhut/de schipper niet meer kunt zien','Als je in zijn schaduw staat'], correct:2,
+        why:'Als jij de schipper/stuurhut niet kunt zien → hij ziet jou ook niet.'},
+      {q:'Welke situatie hoort NIET bij wanneer je een reddingsvest moet dragen?',
+        opts:['Bij onweer','Tijdens een sleep','Bij harde wind','Als de zon schijnt'], correct:3,
+        why:'Reddingsvest verplicht: onweer, sleep, harde wind/gereefd, of de "2 van de 3"-regel.'},
+      {q:'Wat doe je als eerste bij onweer op komst?',
+        opts:['Mast strijken','Zo snel mogelijk naar de kant','Reddingsvest aan','Op het hout blijven'], correct:1,
+        why:'Eerst zo snel mogelijk naar de kant. Dán reddingsvest, mast strijken etc.'},
+      {q:'Mag je met laarzen aan boord?',
+        opts:['Nee, nooit','Ja, altijd','Ja, maar dan wel een reddingsvest','Alleen op zaterdag'], correct:2,
+        why:'Laarzen mogen — maar je moet dan wel een reddingsvest dragen, omdat ze vol water lopen.'}
+    ]
+  },
+  {
+    id:'voorrang', icon:'⚖️', title:'BPR Voorrangsregels',
+    desc:'Wie wijkt voor wie?',
+    lessons:[
+      {title:'De volgorde van regels', body:`
+        <p>Op het water gelden vaste regels. Bij twijfel: <strong>goed zeemanschap</strong> komt altijd eerst.</p>
+        <ol>
+          <li>Goed zeemanschap</li>
+          <li>Stuurboordwal heeft voorrang</li>
+          <li>Klein wijkt voor Groot</li>
+          <li>Hoofdvaarwater gaat voor Nevenvaarwater</li>
+          <li>Motor wijkt voor Spier wijkt voor Zeil</li>
+          <li>Twee gelijke schepen, kruisende koers → rechts heeft voorrang</li>
+          <li>Twee gelijke schepen, recht op elkaar af → beiden naar stuurboord</li>
+          <li>Zeil over bakboord heeft voorrang</li>
+          <li>Loef wijkt voor lij</li>
+          <li><em>Stroom mee bij engtes heeft voorrang</em></li>
+        </ol>
+      `},
+      {title:'Klein vs. Groot', body:`
+        <p>Wat is een <strong>Groot</strong> schip?</p>
+        <ul>
+          <li>Schip langer dan 20 meter</li>
+          <li>Of: alle <em>beroepsvaart</em> (passagiersschip, vissersschip, veerpont, sleepboot...) — ook als ze kleiner dan 20 m zijn</li>
+        </ul>
+        <p>Wat is een <strong>Klein</strong> schip?</p>
+        <ul>
+          <li>Schip kleiner dan 20 meter</li>
+          <li>Géén beroepsvaart</li>
+          <li>Een windsurfplank is óók een klein schip</li>
+        </ul>
+        <div class="ezel"><div class="ezel-lbl">Regel</div><div class="ezel-text">Klein wijkt <span class="hl">altijd</span> voor Groot</div></div>
+      `},
+      {title:'Motor — Spier — Zeil', body:`
+        <p>Welke aandrijving heeft voorrang? Onthoud deze volgorde van zwakste naar sterkste:</p>
+        <div style="text-align:center;font-family:'Fraunces',serif;font-size:1.2rem;color:var(--navy);background:var(--gold-soft);padding:14px;border-radius:12px;margin:12px 0">
+          <strong>Motor</strong> wijkt voor <strong>Spier</strong> wijkt voor <strong>Zeil</strong>
+        </div>
+        <ul>
+          <li><strong>Motor</strong> wijkt voor alles behalve andere motors (en tegen Groot uiteraard)</li>
+          <li><strong>Spier</strong> = roeien, peddelen — wijkt voor zeil</li>
+          <li><strong>Zeil</strong> heeft voorrang op spier en motor</li>
+        </ul>
+      `},
+      {title:'Tussen twee zeilboten', body:`
+        <p>Als beide schepen onder zeil zijn, geldt:</p>
+        <ul>
+          <li><strong>Zeil over bakboord heeft voorrang</strong> — een schip met de wind van bakboord (links) moet wijken</li>
+          <li><strong>Loef wijkt voor lij</strong> — als beide aan dezelfde kant van de wind zitten, wijkt het schip aan de loefzijde (windkant)</li>
+        </ul>
+        <div class="callout"><strong>Loef</strong> = de zijde waar de wind vandaan komt. <strong>Lij</strong> = de zijde waar de wind heen waait.</div>
+      `},
+      {title:'Stuurboordwal', body:`
+        <p><strong>Stuurboordwal heeft voorrang.</strong> Dat betekent: het schip dat met zijn stuurboordzijde naar de kant ligt/vaart heeft voorrang.</p>
+        <p>Op smal water hou je daarom altijd <em>rechts</em> aan — dan heb je vanzelf de stuurboordwal en dus voorrang.</p>
+      `},
+      {title:'Recht op elkaar af', body:`
+        <p>Twee schepen komen recht op elkaar af, beide gelijke aandrijving:</p>
+        <p>→ <strong>Beiden wijken naar stuurboord</strong> (rechts).</p>
+        <p>Net als auto's op een tweebaansweg: rechts houden!</p>
+      `}
+    ],
+    quiz:[
+      {q:'Wat heeft voorrang: motor of zeil?', opts:['Motor','Zeil','Geen van beide','Het grootste schip'], correct:1, why:'Motor wijkt voor Spier wijkt voor Zeil. Zeil staat bovenaan.'},
+      {q:'Twee gelijke schepen komen recht op elkaar af. Wat doen ze?',
+        opts:['Beiden naar bakboord','Beiden naar stuurboord','Linkerschip wijkt','Rechterschip wijkt'], correct:1,
+        why:'Bij tegengestelde koers wijken beiden naar stuurboord — net als auto\'s.'},
+      {q:'Een vrachtschip van 50m en een klein zeilbootje varen kruisend. Wie wijkt?',
+        opts:['Het zeilbootje','Het vrachtschip','Geen van beide','De vlet'], correct:0,
+        why:'Klein wijkt voor Groot — die regel is sterker dan motor/zeil.'},
+      {q:'Twee zeilboten kruisen. Een heeft zeil over bakboord, de ander over stuurboord. Wie heeft voorrang?',
+        opts:['Bakboord','Stuurboord','Beiden gelijk','De grootste'], correct:1,
+        why:'Zeil over bakboord (wind van links) wijkt — dus stuurboord heeft voorrang.'}
+    ]
+  },
+  {
+    id:'betonning', icon:'🚥', title:'Betonning',
+    desc:'Rode en groene tonnen',
+    lessons:[
+      {title:'Wat is betonning?', body:`
+        <p>Betonning zijn <strong>boeien, tonnen en vaste bakens</strong> die vaarwegen en obstakels op het water aangeven.</p>
+        ${betonningSvg()}
+        <div class="compare">
+          <div class="compare-col"><h4>Stuurboord</h4><p style="color:var(--error);font-weight:700">Rood</p><p>Vorm: stomp / cilinder / kegel met punt omlaag</p></div>
+          <div class="compare-col"><h4>Bakboord</h4><p style="color:var(--success);font-weight:700">Groen</p><p>Vorm: spits / kegel met punt omhoog</p></div>
+        </div>
+      `},
+      {title:'Het ezelsbruggetje', body:`
+        <div class="ezel"><div class="ezel-lbl">Onthoud!</div><div class="ezel-text">Met st<span class="hl">R</span>oom mee zit <span class="hl">R</span>ood altijd stuu<span class="hl">R</span>boord!</div></div>
+        <p>Drie keer een R: st<strong>R</strong>oom — <strong>R</strong>ood — stuu<strong>R</strong>boord. Makkelijk te onthouden.</p>
+        <p>Andersom: als je tegen de stroom in vaart, zit Rood juist aan bakboord.</p>
+      `},
+      {title:'Splitsingen', body:`
+        <p>Bij een splitsing van het hoofdvaarwater met een nevenvaarwater zie je een speciale ton: half rood, half groen.</p>
+        ${splitsingSvg()}
+        <p>Welke kleur boven hangt vertelt je welke kant je op moet voor het hoofdvaarwater.</p>
+      `}
+    ],
+    quiz:[
+      {q:'Welke kleur ton zit aan stuurboord als je met de stroom mee vaart?',
+        opts:['Groen','Rood','Geel','Wit'], correct:1, why:'Met stRoom mee zit Rood altijd stuuRboord — drie keer een R.'},
+      {q:'Welke vorm heeft een bakboordton?',
+        opts:['Stomp/cilinder','Spits/kegel omhoog','Bol','Vlag'], correct:1, why:'Bakboord = groen + spits/kegel met punt omhoog.'}
+    ]
+  },
+  {
+    id:'borden', icon:'🚫', title:'Borden',
+    desc:'Verbods- en gebodsborden',
+    lessons:[
+      {title:'Verbodsborden — categorieën', body:`
+        <p>Verbodsborden zijn meestal <strong>rood</strong> met een rode rand en een streep er doorheen.</p>
+        <div class="borden-grid">
+          ${bordCard('verbod-doorvaart','Verboden doorvaart')}
+          ${bordCard('verbod-golf','Geen golfslag')}
+          ${bordCard('verbod-anker','Verboden ligplaats')}
+          ${bordCard('verbod-meren','Verboden te meren')}
+          ${bordCard('verbod-motor','Verboden motorschepen')}
+          ${bordCard('verbod-zeil','Verboden zeilschepen')}
+          ${bordCard('verbod-spier','Verboden spierkracht')}
+          ${bordCard('verbod-klein','Verboden kleine schepen')}
+        </div>
+      `},
+      {title:'Gebodsborden', body:`
+        <p>Gebodsborden vertellen wat je <strong>moet</strong> doen.</p>
+        <div class="borden-grid">
+          ${bordCard('gebod-pijl','Varen in richting pijl')}
+          ${bordCard('gebod-bb','Bakboordwal houden')}
+          ${bordCard('gebod-sb','Stuurboordwal houden')}
+          ${bordCard('gebod-stop','Stilhouden onder omstandigheden')}
+          ${bordCard('gebod-let','Bijzonder opletten (pont)')}
+        </div>
+      `},
+      {title:'Welk bord mag je WEL onder?', body:`
+        <p>Eén examenvraag toont 3 borden. Welke mag een roeiboot wel passeren?</p>
+        <div class="borden-grid">
+          ${bordCard('verbod-zeil','Verboden zeilschepen ❌')}
+          ${bordCard('verbod-spier','Verboden spierkracht ❌')}
+          ${bordCard('verbod-motor','Verboden motorschepen ✓')}
+        </div>
+        <div class="callout"><strong>Antwoord:</strong> "Verboden voor motorschepen" — een roeiboot is geen motor- of zeilschip dus die mag wél.</div>
+      `}
+    ],
+    quiz:[
+      {q:'Wat betekent een rond bord met een rode rand en daarbinnen een doorgestreept zeilboot-symbool?',
+        opts:['Verboden voor motorschepen','Verboden voor zeilschepen','Verboden voor spierkracht','Verboden door te varen'], correct:1,
+        why:'Rood doorgestreept zeilbootje = verboden voor zeilschepen.'},
+      {q:'Een roeiboot vaart op het water. Welk verbodsbord mag hij negeren?',
+        opts:['Verboden voor spierkracht','Verboden voor motorschepen','Verboden te meren','Verboden doorvaart'], correct:1,
+        why:'Een roeiboot is "spierkracht", geen motor — dus "verboden voor motorschepen" geldt niet.'}
+    ]
+  },
+  {
+    id:'bruggen', icon:'🌉', title:'Bruggen & Sluizen',
+    desc:'Lichten en tegenliggers',
+    lessons:[
+      {title:'Tegenliggers ja of nee?', body:`
+        <p>Als je een brug of sluis nadert zie je tekens. Belangrijk om te weten: <strong>kun je tegenliggers verwachten?</strong></p>
+        <div class="compare">
+          <div class="compare-col"><h4>1 ruit / 1 E</h4><p>Doorvaart toegestaan in <strong>beide</strong> richtingen → je kunt tegenliggers verwachten.</p></div>
+          <div class="compare-col"><h4>2 ruiten / 2 E\'s</h4><p>Doorvaart in <strong>één</strong> richting → géén tegenliggers.</p></div>
+        </div>
+        <div class="callout-warn callout"><strong>Examen:</strong> de tekens met 2 gele ruiten boven een brug betekenen: doorvaart toegestaan, je hoeft géén tegenliggers te verwachten.</div>
+      `},
+      {title:'Brug in bedrijf — lichten', body:`
+        <p>Bij een brug of sluis die in bedrijf is:</p>
+        <ul>
+          <li><strong>Rood licht</strong> = doorvaart verboden</li>
+          <li><strong>Rood + groen samen</strong> = klaarmaken om door te varen, gaat zo open</li>
+          <li><strong>Groen licht</strong> = doorvaart toegestaan</li>
+          <li><strong>Geel licht naast groen</strong> = werkt als de gele ruiten (wel/geen tegenliggers)</li>
+          <li><strong>Rood-rood (twee rode lichten)</strong> = doorvaart verboden, tenzij stoppen niet meer mogelijk is</li>
+        </ul>
+      `},
+      {title:'Brug buiten bedrijf', body:`
+        <p>Als de brug niet bediend wordt:</p>
+        <ul>
+          <li>Tekens onder de brug geven aan of doorvaart toegestaan is</li>
+          <li>1 ruit of E → tegenliggers mogelijk</li>
+          <li>2 ruiten of E's → géén tegenliggers</li>
+        </ul>
+      `}
+    ],
+    quiz:[
+      {q:'Een brug heeft TWEE gele ruiten erboven. Wat betekent dat?',
+        opts:['Doorvaart verboden','Doorvaart toegestaan, tegenliggers mogelijk','Doorvaart toegestaan, géén tegenliggers (mits je eronder past)','Brug gaat zo open'], correct:2,
+        why:'2 ruiten = doorvaart in één richting toegestaan, géén tegenliggers verwachten.'},
+      {q:'Wat betekent een rood licht bij een brug?',
+        opts:['Doorvaart toegestaan','Doorvaart verboden','Tegenliggers verwachten','Brug is buiten bedrijf'], correct:1,
+        why:'Rood = doorvaart verboden.'}
+    ]
+  },
+  {
+    id:'tekens', icon:'🔺', title:'Tekens van schepen',
+    desc:'Kegels, bollen en sleeptekens',
+    lessons:[
+      {title:'Blauwe kegels — afstand', body:`
+        <p>Een schip met blauwe kegels vervoert gevaarlijke stoffen. Hoeveel afstand moet je houden?</p>
+        ${kegelSvg()}
+        <div class="compare">
+          <div class="compare-col"><h4>1 blauwe kegel</h4><p>Min. <strong>10 meter</strong></p><p style="font-size:0.78rem">Brandbare stoffen</p></div>
+          <div class="compare-col"><h4>2 blauwe kegels</h4><p>Min. <strong>50 meter</strong></p><p style="font-size:0.78rem">Schadelijk voor gezondheid</p></div>
+        </div>
+        <div style="text-align:center;margin:12px 0;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px"><h4 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:6px">3 blauwe kegels</h4><p style="margin:0">Min. <strong>100 meter</strong></p><p style="font-size:0.78rem;color:var(--muted);margin-top:4px">Ontplofbare stoffen</p></div>
+      `},
+      {title:'Andere tekens', body:`
+        <ul>
+          <li><strong>Sleepkegel</strong> (gele kegel met punt omlaag) — voorste schip van een sleep</li>
+          <li><strong>Zwarte bol</strong> — schip ligt voor anker</li>
+          <li><strong>Gele kegel</strong> — passagiersschip</li>
+        </ul>
+      `}
+    ],
+    quiz:[
+      {q:'Hoeveel afstand bij 2 blauwe kegels?',
+        opts:['10 meter','25 meter','50 meter','100 meter'], correct:2, why:'2 kegels = minimaal 50 meter afstand.'},
+      {q:'Wat betekent een zwarte bol op een schip?',
+        opts:['Het ligt voor anker','Het is een sleep','Het vervoert gevaarlijke stoffen','Het is een passagiersschip'], correct:0,
+        why:'Een zwarte bol = het schip ligt voor anker.'},
+      {q:'Wat betekent één blauwe kegel?',
+        opts:['Sleep','Brandbare stoffen — 10m afstand','Passagiersschip','Schip ligt voor anker'], correct:1,
+        why:'1 blauwe kegel = brandbare stoffen, min. 10 m afstand.'}
+    ]
+  },
+  {
+    id:'kleurcodes', icon:'🎨', title:'Vletten & kleurcodes',
+    desc:'7 vletten, koppel ze aan kleuren',
+    custom:'memory',
+    lessons:[
+      {title:'Onze 7 vletten', body:`
+        <p>Op het examen wordt gevraagd: welke nummers en kleurcodes hebben de vletten, gezien vanaf de Zeun?</p>
+        <ul>
+          <li><strong>294</strong> — geel</li>
+          <li><strong>419</strong> — rood</li>
+          <li><strong>495</strong> — paars / roze</li>
+          <li><strong>522</strong> — zwart (zelf inbeelden 😄)</li>
+          <li><strong>687</strong> — groen</li>
+          <li><strong>688</strong> — bruin</li>
+          <li><strong>925</strong> — blauw</li>
+        </ul>
+        <p class="hint">Tip: oefen dit door op "Volgende" te tikken voor een memory-spel!</p>
+      `},
+      {title:'Memoryspel — koppel nummer aan kleur',
+        body:`<div id="memGame"></div><p class="hint">Tik op een kaart om hem om te draaien.</p>`,
+        custom:'memory'
+      }
+    ],
+    quiz:[
+      {q:'Welke kleur hoort bij vlet 294?', opts:['Rood','Geel','Groen','Blauw'], correct:1, why:'294 = geel.'},
+      {q:'Welke kleur hoort bij vlet 925?', opts:['Bruin','Paars','Blauw','Zwart'], correct:2, why:'925 = blauw.'},
+      {q:'Welke vlet is rood?', opts:['294','419','687','925'], correct:1, why:'419 = rood.'},
+      {q:'Welke kleur hoort bij vlet 688?', opts:['Bruin','Groen','Geel','Roze'], correct:0, why:'688 = bruin.'}
+    ]
+  }
+];
+
+const EXAMEN = {
+  roeien1:[
+    {q:'Welke knoop wordt hieronder afgebeeld? En wanneer gebruiken we deze knoop?', img:knotSvg('paal',120),
+      opts:['Achtknoop — als stopknoop','Paalsteek — vaste lus die niet dichttrekt','Mastworp — vastmaken aan paal','Schootsteek — twee verschillende lijnen'], correct:1,
+      why:'Paalsteek: vaste lus die niet dichttrekt. Voor vastmaken aan paal/ring of als reddingslus.'},
+    {q:'Wat gebeurt er als stuurboord haalt en bakboord strijkt?',
+      opts:['Vlet draait naar stuurboord','Vlet draait naar bakboord','Vlet stopt af','Vlet gaat achteruit'], correct:0,
+      why:'Stuurboord vooruit + bakboord achteruit = draaien om de as naar stuurboord.'},
+    {q:'Je vaart achteruit. Je duwt de helmstok naar stuurboord. Welke kant draait de punt op?',
+      opts:['Bakboord','Stuurboord','Recht door','Geen beweging'], correct:1,
+      why:'Bij achteruit varen werkt het roer omgekeerd: helmstok naar stuurboord → punt naar stuurboord.'},
+    {q:'Wat is onderdeel 54 van de vlet?', opts:['Spant','Dolpot','Grendelbout','Riem'], correct:2, why:'54 = grendelbout, het object dat door de dol gaat.'},
+    {q:'Wat is onderdeel 57?', opts:['Dolpot','Spant','Spiegel','Mast'], correct:0, why:'57 = dolpot, de houder voor de dol op de boord.'},
+    {q:'Wat is onderdeel 84?', opts:['Grendelbout','Dolpot','Spant','Roer'], correct:2, why:'84 = spant, de dwarsbalk binnenin.'},
+    {q:'Welk verbodsbord mag jij wél passeren met je roeiboot?',
+      opts:['Verboden voor zeilschepen','Verboden voor spierkracht','Verboden voor motorschepen','Verboden doorvaart'], correct:2,
+      why:'Een roeiboot is spierkracht, geen motor — dus het bord "verboden voor motorschepen" geldt niet voor jou.'},
+    {q:'Welke commando\'s gebruik je om een acht met één groot en één klein rondje te roeien?',
+      opts:['Bakboord/stuurboord halen — Op riemen — Stuurboord/bakboord haalt, andere strijkt — Op riemen','Beide boorden halen','Op riemen — strijken','Pikhaak voor — landen vast'], correct:0,
+      why:'Voor een acht: groot rondje door één boord laten halen + ge-lijk; dan op riemen; dan klein rondje met haal-en-strijk gecombineerd; dan weer op riemen.'},
+    {q:'Welke kleur hoort bij vlet 522?', opts:['Zwart (zelf inbeelden)','Wit','Geel','Geen kleur'], correct:0, why:'522 = zwart (zelf inbeelden).'}
+  ],
+  roeien2:[
+    {q:'Hoe weet je of je in de dode hoek van een groot schip zit?',
+      opts:['Hij toetert','Je ziet de stuurhut/de schipper niet meer','Hij komt dichterbij','Je staat in zijn schaduw'], correct:1,
+      why:'Als jij de schipper niet meer kunt zien — kan hij jou ook niet zien.'},
+    {q:'Bij een brug zie je 2 gele ruiten. Wat betekent dat?',
+      opts:['Doorvaart verboden','Doorvaart toegestaan, mits je eronder past, géén tegenliggers','Brug gaat zo open','Doorvaart toegestaan, tegenliggers mogelijk'], correct:1,
+      why:'2 ruiten/E\'s = doorvaart in één richting toegestaan, dus géén tegenliggers.'},
+    {q:'Stappen om aan te leggen op bakboord. Wat is stap 1?',
+      opts:['Pikhaak voor','Op riemen, beide boorden stoppen af','Stootwillen uit','Landen vast'], correct:1,
+      why:'Stap 1 is altijd: op riemen, beide boorden stoppen af, ge-lijk. Daarna pas verder.'},
+    {q:'Een ton aan een splitsing is half groen (boven) en half rood (onder). Wat betekent dit?',
+      opts:['Bakboordwal van het hoofdvaarwater kruist met stuurboordwal van het nevenvaarwater','Geen doorvaart','Stuurboordwal kruist met bakboordwal','Doorvaart verboden'], correct:0,
+      why:'De bovenste kleur geeft aan welke kant het hoofdvaarwater op gaat. Groen boven = bakboordwal hoofdvaarwater kruist met stuurboordwal nevenvaarwater.'},
+    {q:'Noem een situatie waarin een reddingsvest verplicht is.',
+      opts:['Bij zonneschijn','Tijdens een sleep','Als je honger hebt','Als de boot stilligt'], correct:1,
+      why:'Reddingsvest verplicht: tijdens sleep, bij onweer, harde wind/gereefd, of de "2 van de 3"-regel.'},
+    {q:'Twee schepen komen recht op elkaar af, beide gelijk. Wat doe jij?',
+      opts:['Ik ga bakboord uit','Ik ga stuurboord uit','Ik blijf rechtdoor','Ik stop'], correct:1,
+      why:'Bij tegengestelde koers wijken beiden naar stuurboord (rechts).'},
+    {q:'Onweer komt op terwijl je midden op het water zit. Wat is een goede actie?',
+      opts:['Mast omhoog houden','Op het staal blijven zitten','Zo snel mogelijk naar de kant + reddingsvest aan + mast strijken','Anker uit'], correct:2,
+      why:'Naar de kant, vest aan, mast strijken, op het hout blijven (niet op staal!).'}
+  ],
+  bpr:[
+    {q:'Een klein zeilbootje (B) en een groot vrachtschip (A) varen kruisend. Wie wijkt?',
+      svg:bprSvg('klein-groot'),
+      opts:['A wijkt','B wijkt — Klein wijkt voor Groot','Geen','De vlet'], correct:1,
+      why:'Klein wijkt altijd voor Groot.'},
+    {q:'Een spierkrachtboot (B) en een zeilboot (A) varen kruisend. Wie wijkt?',
+      svg:bprSvg('spier-zeil'),
+      opts:['A wijkt','B wijkt — Spier wijkt voor Zeil','Beiden wijken','Niemand'], correct:1,
+      why:'Motor wijkt voor Spier wijkt voor Zeil. Spier wijkt dus voor zeil.'},
+    {q:'Twee zeilboten kruisen. A heeft zeil over stuurboord, B heeft zeil over bakboord. Wie wijkt?',
+      svg:bprSvg('bak-stuur'),
+      opts:['A wijkt — zeil over bakboord heeft voorrang','B wijkt','Beiden wijken','Niemand'], correct:0,
+      why:'Zeil over bakboord heeft voorrang. Maar B HEEFT zeil over bakboord, dus A (zeil over stuurboord) wijkt.'},
+    {q:'Twee zeilboten met zelfde windzijde, A is loef, B is lij. Wie wijkt?',
+      svg:bprSvg('loef-lij'),
+      opts:['A wijkt — Loef wijkt voor Lij','B wijkt','Niemand','De wind beslist'], correct:0,
+      why:'Loef wijkt voor lij. Loef = de zijde waar de wind vandaan komt.'},
+    {q:'Hoofdvaarwater met betonning + nevenvaarwater dat erin uitkomt. A vaart op hoofd, B komt uit neven. Wie wijkt?',
+      svg:bprSvg('hoofd-neven'),
+      opts:['A wijkt','B wijkt — Klein wijkt voor Groot / Hoofdvaarwater voor','Geen','Beiden'], correct:1,
+      why:'B (kleiner schip uit nevenvaarwater) wijkt — zowel klein-voor-groot als hoofd-voor-neven werken hier.'},
+    {q:'Twee schepen kruisen, beiden gelijk. A komt van links, B komt van rechts. Wie wijkt?',
+      svg:bprSvg('rechts'),
+      opts:['A — rechts heeft voorrang','B','Beiden','Niemand'], correct:0,
+      why:'Bij gelijke schepen met kruisende koers heeft rechts voorrang. B komt van rechts, dus A wijkt.'},
+    {q:'Engte (smalle doorgang). A vaart stroomopwaarts, B vaart met de stroom mee. Wie wijkt?',
+      svg:bprSvg('engte'),
+      opts:['A wijkt — stroom mee bij engtes heeft voorrang','B wijkt','Niemand','Beiden'], correct:0,
+      why:'In een engte heeft het schip met de stroom mee voorrang — die kan namelijk minder makkelijk wijken.'}
+  ]
+};
+
+/* ============ SVG GENERATORS ============ */
+function knotSvg(type, size=46){
+  const c='#E0A458', g='#7BA05B', n='#13315C';
+  const svgs = {
+    acht:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8 Q30 18 20 28 Q10 38 25 48 Q40 58 40 42 Q40 30 30 30 Q20 30 20 18 Q20 8 30 8 Q40 8 40 18"/></svg>`,
+    paal:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="30" cy="20" r="12" fill="none"/><path d="M22 28 Q14 36 22 44 Q30 50 38 44 Q46 36 38 28"/><path d="M30 50 L30 58"/></svg>`,
+    plat:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke-width="5" stroke-linecap="round"><path stroke="${c}" d="M5 22 Q22 22 30 30 Q38 38 55 38"/><path stroke="${g}" d="M5 38 Q22 38 30 30 Q38 22 55 22"/></svg>`,
+    schoot:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke-linecap="round"><path stroke="${c}" stroke-width="6" d="M10 30 Q24 30 30 30"/><path stroke="${g}" stroke-width="3" d="M30 18 Q40 18 40 30 Q40 42 30 42 Q20 42 20 32"/></svg>`,
+    mast:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke-linecap="round"><rect x="24" y="6" width="12" height="48" fill="${g}" opacity="0.6" stroke="${n}" stroke-width="1"/><path stroke="${c}" stroke-width="4" d="M10 22 L42 22 Q48 22 42 28 L18 28 Q12 28 18 34 L42 34"/></svg>`,
+    slip:`<svg width="${size}" height="${size}" viewBox="0 0 60 60" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30 Q20 30 26 36 Q32 42 26 44 L20 44"/><path d="M28 28 Q34 22 42 28 Q46 32 38 36 Q32 38 28 36"/><path d="M42 30 L52 30"/></svg>`
+  };
+  return svgs[type]||'';
+}
+
+function bbsbSvg(){
+  return `<svg viewBox="0 0 320 160" style="width:100%;max-width:320px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="bbg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#D6E1ED"/><stop offset="1" stop-color="#8DA9C4"/></linearGradient></defs>
+    <rect width="320" height="160" fill="url(#bbg)" rx="12"/>
+    <path d="M70 80 Q160 30 250 80 Q260 100 240 110 L80 110 Q60 100 70 80 Z" fill="#FAF7F2" stroke="#13315C" stroke-width="2.5"/>
+    <path d="M155 30 L165 80" stroke="#13315C" stroke-width="2"/>
+    <path d="M160 78 L160 35" stroke="#E0A458" stroke-width="3"/>
+    <text x="50" y="75" fill="#C44536" font-family="Fraunces,serif" font-weight="700" font-size="16">BAKBOORD</text>
+    <text x="50" y="92" fill="#C44536" font-family="Manrope" font-size="11">(links)</text>
+    <text x="225" y="75" fill="#2D6A4F" font-family="Fraunces,serif" font-weight="700" font-size="16">STUURBOORD</text>
+    <text x="225" y="92" fill="#2D6A4F" font-family="Manrope" font-size="11">(rechts)</text>
+    <text x="160" y="140" fill="#13315C" font-family="Manrope" font-size="11" text-anchor="middle">↑ vanaf achterdek naar voren kijkend</text>
+  </svg>`;
+}
+
+function wallSvg(){
+  return `<svg viewBox="0 0 320 160" style="width:100%;max-width:320px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="320" height="160" fill="#D6E1ED" rx="12"/>
+    <rect x="0" y="0" width="60" height="160" fill="#7BA05B" opacity="0.7"/>
+    <rect x="260" y="0" width="60" height="160" fill="#7BA05B" opacity="0.7"/>
+    <text x="30" y="20" fill="#fff" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">HOGER</text>
+    <text x="30" y="34" fill="#fff" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">WAL</text>
+    <text x="290" y="20" fill="#fff" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">LAGER</text>
+    <text x="290" y="34" fill="#fff" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">WAL</text>
+    <path d="M70 80 L250 80" stroke="#0B2545" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><polygon points="0,0 10,5 0,10" fill="#0B2545"/></marker></defs>
+    <text x="160" y="72" fill="#0B2545" font-family="Manrope" font-size="13" font-weight="700" text-anchor="middle">WIND</text>
+    <ellipse cx="160" cy="115" rx="50" ry="14" fill="#FAF7F2" stroke="#13315C" stroke-width="2"/>
+    <text x="160" y="145" fill="#5C6B7A" font-family="Manrope" font-size="11" text-anchor="middle">wind komt van hoger → naar lager</text>
+  </svg>`;
+}
+
+function vletSvg(){
+  return `<svg class="vlet-svg" viewBox="0 0 380 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="380" height="200" fill="#F0F4F9" rx="10"/>
+    <!-- water -->
+    <path d="M0 145 Q60 142 120 145 Q180 148 240 145 Q300 142 380 145 L380 200 L0 200 Z" fill="#8DA9C4" opacity="0.4"/>
+    <!-- hull -->
+    <path d="M30 100 Q40 80 100 80 L300 80 Q340 82 360 100 Q358 145 340 150 L40 150 Q20 145 30 100 Z" fill="#FAF7F2" stroke="#13315C" stroke-width="2"/>
+    <!-- inside lines (boards) -->
+    <path d="M50 100 L340 100" stroke="#13315C" stroke-width="1" opacity="0.5"/>
+    <!-- spanten -->
+    <line x1="100" y1="100" x2="100" y2="148" stroke="#13315C" stroke-width="1" opacity="0.5"/>
+    <line x1="180" y1="100" x2="180" y2="148" stroke="#13315C" stroke-width="1" opacity="0.5"/>
+    <line x1="260" y1="100" x2="260" y2="148" stroke="#13315C" stroke-width="1" opacity="0.5"/>
+    <!-- dolpotten on top -->
+    <circle cx="130" cy="83" r="6" fill="#E0A458" stroke="#13315C" stroke-width="1.5"/>
+    <circle cx="220" cy="83" r="6" fill="#E0A458" stroke="#13315C" stroke-width="1.5"/>
+    <circle cx="290" cy="83" r="6" fill="#E0A458" stroke="#13315C" stroke-width="1.5"/>
+    <!-- mast/zwaard hint -->
+    <rect x="165" y="60" width="3" height="22" fill="#13315C"/>
+    <!-- callouts: 54 grendelbout -->
+    <line x1="130" y1="83" x2="130" y2="40" stroke="#C44536" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <circle cx="130" cy="32" r="14" fill="#C44536"/><text x="130" y="36" fill="#fff" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">54</text>
+    <!-- 57 dolpot -->
+    <line x1="220" y1="83" x2="240" y2="35" stroke="#E0A458" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <circle cx="248" cy="30" r="14" fill="#E0A458"/><text x="248" y="34" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">57</text>
+    <!-- 84 spant -->
+    <line x1="180" y1="125" x2="80" y2="180" stroke="#2D6A4F" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <circle cx="68" cy="180" r="14" fill="#2D6A4F"/><text x="68" y="184" fill="#fff" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">84</text>
+    <!-- labels -->
+    <text x="148" y="36" fill="#C44536" font-family="Manrope" font-size="11" font-weight="700">grendelbout</text>
+    <text x="266" y="34" fill="#13315C" font-family="Manrope" font-size="11" font-weight="700">dolpot</text>
+    <text x="86" y="184" fill="#2D6A4F" font-family="Manrope" font-size="11" font-weight="700">spant</text>
+  </svg>`;
+}
+
+function linesSvg(){
+  return `<svg viewBox="0 0 360 180" style="width:100%;max-width:360px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="360" height="180" fill="#D6E1ED" rx="10"/>
+    <!-- kade -->
+    <rect x="0" y="0" width="360" height="40" fill="#5C6B7A"/>
+    <text x="180" y="24" fill="#fff" font-family="Manrope" font-size="12" font-weight="700" text-anchor="middle">KADE</text>
+    <!-- bollards -->
+    <circle cx="60" cy="40" r="6" fill="#1A2238"/>
+    <circle cx="180" cy="40" r="6" fill="#1A2238"/>
+    <circle cx="300" cy="40" r="6" fill="#1A2238"/>
+    <!-- vlet -->
+    <path d="M50 110 Q60 95 100 95 L260 95 Q300 95 310 110 Q308 145 290 148 L70 148 Q52 145 50 110 Z" fill="#FAF7F2" stroke="#13315C" stroke-width="2"/>
+    <!-- voorland -->
+    <path d="M60 40 Q60 80 65 100" stroke="#E0A458" stroke-width="3" fill="none"/>
+    <text x="22" y="80" fill="#E0A458" font-family="Manrope" font-size="11" font-weight="700">voorland</text>
+    <!-- achterland -->
+    <path d="M300 40 Q300 80 295 100" stroke="#E0A458" stroke-width="3" fill="none"/>
+    <text x="304" y="80" fill="#E0A458" font-family="Manrope" font-size="11" font-weight="700">achterland</text>
+    <!-- spring -->
+    <path d="M180 40 Q140 60 110 100" stroke="#C44536" stroke-width="3" fill="none"/>
+    <text x="118" y="65" fill="#C44536" font-family="Manrope" font-size="11" font-weight="700">spring</text>
+    <!-- wind arrow -->
+    <path d="M340 100 L340 150" stroke="#13315C" stroke-width="2" marker-end="url(#a2)"/>
+    <defs><marker id="a2" markerWidth="10" markerHeight="10" refX="5" refY="9" orient="auto"><polygon points="0,0 10,0 5,10" fill="#13315C"/></marker></defs>
+    <text x="345" y="125" fill="#13315C" font-family="Manrope" font-size="10" font-weight="700">WIND</text>
+  </svg>`;
+}
+
+function dodeHoekSvg(){
+  return `<svg viewBox="0 0 320 200" style="width:100%;max-width:320px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="320" height="200" fill="#D6E1ED" rx="10"/>
+    <!-- big ship -->
+    <rect x="60" y="70" width="200" height="60" fill="#13315C" rx="6"/>
+    <rect x="220" y="50" width="35" height="22" fill="#E0A458"/>
+    <text x="237" y="65" fill="#13315C" font-family="Manrope" font-size="9" font-weight="700" text-anchor="middle">stuur</text>
+    <!-- dode hoek zone -->
+    <path d="M60 100 L20 180 L260 180 L235 70 Z" fill="#C44536" opacity="0.2"/>
+    <text x="140" y="170" fill="#C44536" font-family="Manrope" font-size="13" font-weight="700" text-anchor="middle">DODE HOEK</text>
+    <!-- klein bootje -->
+    <ellipse cx="105" cy="160" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+    <text x="105" y="180" fill="#13315C" font-family="Manrope" font-size="9" text-anchor="middle">jij?</text>
+  </svg>`;
+}
+
+function betonningSvg(){
+  return `<svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+    <!-- water -->
+    <path d="M0 100 Q70 95 140 100 Q210 105 280 100 L280 160 L0 160 Z" fill="#8DA9C4" opacity="0.5"/>
+    <!-- left red ton (stomp) -->
+    <rect x="70" y="60" width="22" height="50" fill="#C44536" stroke="#1A2238" stroke-width="1"/>
+    <rect x="74" y="55" width="14" height="8" fill="#C44536" stroke="#1A2238" stroke-width="1"/>
+    <text x="81" y="135" fill="#C44536" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">STUUR</text>
+    <text x="81" y="148" fill="#C44536" font-family="Manrope" font-size="10" text-anchor="middle">rood/stomp</text>
+    <!-- right green ton (spits) -->
+    <polygon points="195,60 213,60 204,40" fill="#2D6A4F" stroke="#1A2238" stroke-width="1"/>
+    <rect x="196" y="60" width="16" height="50" fill="#2D6A4F" stroke="#1A2238" stroke-width="1"/>
+    <text x="204" y="135" fill="#2D6A4F" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">BAK</text>
+    <text x="204" y="148" fill="#2D6A4F" font-family="Manrope" font-size="10" text-anchor="middle">groen/spits</text>
+    <!-- wave arrow stream -->
+    <path d="M30 18 L60 18" stroke="#13315C" stroke-width="2" marker-end="url(#sa)"/>
+    <defs><marker id="sa" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><polygon points="0,0 10,5 0,10" fill="#13315C"/></marker></defs>
+    <text x="68" y="22" fill="#13315C" font-family="Manrope" font-size="11" font-weight="700">stroom mee</text>
+  </svg>`;
+}
+
+function splitsingSvg(){
+  return `<svg viewBox="0 0 280 160" style="width:100%;max-width:280px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+    <!-- ton with red below green -->
+    <rect x="120" y="40" width="40" height="40" fill="#2D6A4F" stroke="#1A2238" stroke-width="1.5"/>
+    <rect x="120" y="80" width="40" height="40" fill="#C44536" stroke="#1A2238" stroke-width="1.5"/>
+    <text x="140" y="64" fill="#fff" font-family="Manrope" font-size="14" font-weight="700" text-anchor="middle">G</text>
+    <text x="140" y="104" fill="#fff" font-family="Manrope" font-size="14" font-weight="700" text-anchor="middle">R</text>
+    <!-- arrow split -->
+    <path d="M140 130 L80 145" stroke="#13315C" stroke-width="2" marker-end="url(#sa3)"/>
+    <path d="M140 130 L210 145" stroke="#13315C" stroke-width="2" marker-end="url(#sa3)"/>
+    <defs><marker id="sa3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#13315C"/></marker></defs>
+    <text x="140" y="22" fill="#13315C" font-family="Manrope" font-size="11" text-anchor="middle">splitsingston</text>
+  </svg>`;
+}
+
+function kegelSvg(){
+  const k=(c)=>`<polygon points="0,30 14,30 7,8" fill="${c}" stroke="#1A2238" stroke-width="1"/>`;
+  return `<svg viewBox="0 0 280 100" style="width:100%;max-width:280px;display:block;margin:12px auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="280" height="100" fill="#FBF8F3" rx="10"/>
+    <g transform="translate(40,40)">${k('#13315C')}<text x="7" y="50" fill="#13315C" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">10m</text></g>
+    <g transform="translate(110,40)">${k('#13315C')}<g transform="translate(20,0)">${k('#13315C')}</g><text x="17" y="50" fill="#13315C" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">50m</text></g>
+    <g transform="translate(200,40)">${k('#13315C')}<g transform="translate(18,0)">${k('#13315C')}</g><g transform="translate(36,0)">${k('#13315C')}</g><text x="25" y="50" fill="#13315C" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle">100m</text></g>
+  </svg>`;
+}
+
+/* BORD ICONS */
+function bordCard(type, label){
+  const svgs = {
+    'verbod-doorvaart':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><line x1="10" y1="30" x2="50" y2="30" stroke="#C44536" stroke-width="6"/></svg>`,
+    'verbod-golf':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><path d="M10 35 Q20 28 30 35 Q40 42 50 35" stroke="#1A2238" stroke-width="2.5" fill="none"/><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-anker':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><text x="30" y="36" font-family="Manrope" font-weight="700" font-size="22" fill="#1A2238" text-anchor="middle">⚓</text><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-meren':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><text x="30" y="42" font-family="Fraunces,serif" font-weight="900" font-size="30" fill="#1A2238" text-anchor="middle">P</text><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-motor':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><path d="M14 38 L14 32 L46 32 L46 38 Z" fill="#1A2238"/><circle cx="22" cy="26" r="4" fill="#1A2238"/><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-zeil':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><polygon points="30,12 30,42 16,42" fill="#1A2238"/><polygon points="32,16 32,42 44,42" fill="#1A2238"/><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-spier':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><ellipse cx="30" cy="34" rx="14" ry="5" fill="#1A2238"/><line x1="14" y1="32" x2="6" y2="22" stroke="#1A2238" stroke-width="3" stroke-linecap="round"/><line x1="46" y1="32" x2="54" y2="42" stroke="#1A2238" stroke-width="3" stroke-linecap="round"/><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'verbod-klein':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#fff" stroke="#C44536" stroke-width="3" rx="4"/><ellipse cx="30" cy="34" rx="14" ry="5" fill="#1A2238"/><line x1="10" y1="10" x2="50" y2="50" stroke="#C44536" stroke-width="3.5"/></svg>`,
+    'gebod-pijl':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#13315C" rx="4"/><polygon points="30,12 44,32 36,32 36,48 24,48 24,32 16,32" fill="#fff"/></svg>`,
+    'gebod-bb':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#13315C" rx="4"/><polygon points="40,30 18,42 18,18" fill="#fff"/></svg>`,
+    'gebod-sb':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#13315C" rx="4"/><polygon points="20,30 42,42 42,18" fill="#fff"/></svg>`,
+    'gebod-stop':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#13315C" rx="4"/><rect x="14" y="20" width="32" height="20" fill="#fff"/></svg>`,
+    'gebod-let':`<svg viewBox="0 0 60 60" class="bord-svg"><rect x="2" y="2" width="56" height="56" fill="#13315C" rx="4"/><text x="30" y="42" fill="#fff" font-family="Fraunces,serif" font-weight="900" font-size="32" text-anchor="middle">!</text></svg>`
+  };
+  return `<div class="bord-card">${svgs[type]||''}<div class="bord-name">${label}</div></div>`;
+}
+
+/* BPR voorrang situations - simplified diagrams */
+function bprSvg(scenario){
+  // Simple top-down diagrams with boats labelled A/B
+  const boats = {
+    'klein-groot':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <!-- big ship A horizontal -->
+      <rect x="40" y="65" width="120" height="20" fill="#13315C" rx="3"/>
+      <polygon points="160,65 175,75 160,85" fill="#13315C"/>
+      <text x="100" y="80" fill="#fff" font-family="Fraunces,serif" font-weight="700" font-size="14" text-anchor="middle">A</text>
+      <!-- arrow -->
+      <line x1="170" y1="75" x2="200" y2="75" stroke="#13315C" stroke-width="2" stroke-dasharray="4,3"/>
+      <!-- small boat B vertical -->
+      <ellipse cx="200" cy="130" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="200" y="135" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="11" text-anchor="middle">B</text>
+      <line x1="200" y1="120" x2="200" y2="100" stroke="#13315C" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="195,102 205,102 200,93" fill="#13315C"/>`,
+    'spier-zeil':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <!-- A: zeilboot with sail -->
+      <ellipse cx="80" cy="80" rx="18" ry="8" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <polygon points="80,68 80,40 95,68" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="80" y="100" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">A (zeil)</text>
+      <line x1="98" y1="80" x2="130" y2="80" stroke="#13315C" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="128,76 138,80 128,84" fill="#13315C"/>
+      <!-- B: roeiboot -->
+      <ellipse cx="200" cy="130" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <line x1="186" y1="125" x2="180" y2="120" stroke="#13315C" stroke-width="1.5"/>
+      <line x1="214" y1="125" x2="220" y2="120" stroke="#13315C" stroke-width="1.5"/>
+      <text x="200" y="148" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">B (spier)</text>
+      <line x1="200" y1="120" x2="200" y2="95" stroke="#13315C" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="195,97 205,97 200,87" fill="#13315C"/>`,
+    'bak-stuur':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <!-- wind from top -->
+      <line x1="140" y1="10" x2="140" y2="35" stroke="#1A2238" stroke-width="2"/>
+      <polygon points="135,33 145,33 140,42" fill="#1A2238"/>
+      <text x="148" y="22" fill="#1A2238" font-family="Manrope" font-size="10" font-weight="700">WIND</text>
+      <!-- A zeil over stuurboord (sail to left) -->
+      <ellipse cx="80" cy="100" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <polygon points="80,90 60,110 80,100" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="80" y="130" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">A</text>
+      <text x="80" y="146" fill="#5C6B7A" font-family="Manrope" font-size="9" text-anchor="middle">zeil over stuurboord</text>
+      <!-- B zeil over bakboord (sail to right) -->
+      <ellipse cx="200" cy="100" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <polygon points="200,90 220,110 200,100" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="200" y="130" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">B</text>
+      <text x="200" y="146" fill="#5C6B7A" font-family="Manrope" font-size="9" text-anchor="middle">zeil over bakboord</text>`,
+    'loef-lij':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <line x1="140" y1="10" x2="140" y2="35" stroke="#1A2238" stroke-width="2"/>
+      <polygon points="135,33 145,33 140,42" fill="#1A2238"/>
+      <text x="148" y="22" fill="#1A2238" font-family="Manrope" font-size="10" font-weight="700">WIND</text>
+      <!-- A loef (closer to wind) -->
+      <ellipse cx="100" cy="80" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <polygon points="100,72 115,90 100,82" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="100" y="105" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">A (loef)</text>
+      <!-- B lij (further from wind) -->
+      <ellipse cx="180" cy="125" rx="14" ry="7" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <polygon points="180,117 195,135 180,127" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="180" y="150" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="13" text-anchor="middle">B (lij)</text>`,
+    'hoofd-neven':`
+      <rect width="280" height="160" fill="#8DA9C4" opacity="0.5" rx="10"/>
+      <rect width="280" height="160" fill="none" stroke="#0B2545" stroke-width="0.5" rx="10"/>
+      <!-- hoofd horizontal channel -->
+      <rect x="0" y="50" width="280" height="60" fill="#D6E1ED"/>
+      <text x="20" y="44" fill="#13315C" font-family="Manrope" font-size="10" font-weight="700">HOOFDVAARWATER</text>
+      <!-- neven from below -->
+      <rect x="180" y="110" width="40" height="50" fill="#D6E1ED"/>
+      <text x="200" y="155" fill="#13315C" font-family="Manrope" font-size="9" font-weight="700" text-anchor="middle">NEVEN</text>
+      <!-- A on hoofd -->
+      <ellipse cx="60" cy="80" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="60" y="84" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="11" text-anchor="middle">A</text>
+      <line x1="76" y1="80" x2="120" y2="80" stroke="#13315C" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="118,76 128,80 118,84" fill="#13315C"/>
+      <!-- B from neven -->
+      <ellipse cx="200" cy="130" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="200" y="134" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="11" text-anchor="middle">B</text>
+      <line x1="200" y1="116" x2="200" y2="100" stroke="#13315C" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="195,102 205,102 200,92" fill="#13315C"/>`,
+    'rechts':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <!-- A from left -->
+      <ellipse cx="60" cy="80" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="60" y="84" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="12" text-anchor="middle">A</text>
+      <line x1="76" y1="80" x2="130" y2="80" stroke="#13315C" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="128,76 138,80 128,84" fill="#13315C"/>
+      <!-- B from right -->
+      <ellipse cx="220" cy="80" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="220" y="84" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="12" text-anchor="middle">B</text>
+      <line x1="204" y1="80" x2="150" y2="80" stroke="#13315C" stroke-width="2" stroke-dasharray="3,3"/>
+      <polygon points="152,76 142,80 152,84" fill="#13315C"/>
+      <!-- crossing point indicator -->
+      <circle cx="140" cy="80" r="3" fill="#C44536"/>`,
+    'engte':`
+      <rect width="280" height="160" fill="#D6E1ED" rx="10"/>
+      <!-- engte with banks -->
+      <path d="M0 0 L0 60 Q80 70 140 80 Q200 70 280 60 L280 0 Z" fill="#7BA05B" opacity="0.6"/>
+      <path d="M0 160 L0 100 Q80 90 140 80 Q200 90 280 100 L280 160 Z" fill="#7BA05B" opacity="0.6"/>
+      <!-- stream arrow direction -->
+      <line x1="20" y1="80" x2="60" y2="80" stroke="#1A2238" stroke-width="2"/>
+      <polygon points="58,76 68,80 58,84" fill="#1A2238"/>
+      <text x="40" y="100" fill="#1A2238" font-family="Manrope" font-size="9" font-weight="700">stroom</text>
+      <!-- A against stream from right -->
+      <ellipse cx="220" cy="80" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="220" y="84" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="12" text-anchor="middle">A</text>
+      <text x="220" y="105" fill="#5C6B7A" font-family="Manrope" font-size="8" text-anchor="middle">stroom op</text>
+      <!-- B with stream from left -->
+      <ellipse cx="80" cy="80" rx="14" ry="6" fill="#FAF7F2" stroke="#13315C" stroke-width="1.5"/>
+      <text x="80" y="84" fill="#13315C" font-family="Fraunces,serif" font-weight="700" font-size="12" text-anchor="middle">B</text>
+      <text x="80" y="105" fill="#5C6B7A" font-family="Manrope" font-size="8" text-anchor="middle">stroom mee</text>`
+  };
+  return `<svg viewBox="0 0 280 160" class="voorrang-svg" xmlns="http://www.w3.org/2000/svg">${boats[scenario]||''}</svg>`;
+}
+
+/* ============ STATE ============ */
+const STORAGE_KEY = 'roeiexamen_v1';
+let state = {
+  modulesDone:{},      // {moduleId: bestPercent}
+  modulesProgress:{},  // {moduleId: {lessonIndex, quizIndex, score}}
+  examenScore:null,
+  totalCorrect:0,
+  totalAnswered:0,
+  streak:0,
+  lastDate:null
+};
+
+function saveState(){ try{localStorage.setItem(STORAGE_KEY, JSON.stringify(state));}catch(e){} }
+function loadState(){ 
+  try{
+    const s = localStorage.getItem(STORAGE_KEY);
+    if(s) state = Object.assign(state, JSON.parse(s));
+  }catch(e){}
+}
+
+let currentView = 'home';
+let currentModule = null;
+let currentMode = null; // 'learn' | 'quiz' | 'examen'
+let currentIndex = 0;
+let currentScore = 0;
+let currentAnswers = [];
+let examenSection = 0; // 0 R1, 1 R2, 2 BPR
+let examenAllQuestions = [];
+
+/* ============ ROUTER / RENDER ============ */
+const main = document.getElementById('main');
+const topTitle = document.getElementById('topTitle');
+const backBtn = document.getElementById('backBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+backBtn.addEventListener('click', ()=>{
+  if(currentMode === 'examen') { goHome(); return; }
+  if(currentMode === 'learn' && currentIndex > 0){ currentIndex--; renderLesson(); return; }
+  if(currentMode === 'quiz'){ /* go to lesson last */ currentMode='learn'; currentIndex = currentModule.lessons.length-1; renderLesson(); return; }
+  goHome();
+});
+
+resetBtn.addEventListener('click', () => {
+  showResetConfirm();
+});
+
+function showResetConfirm(){
+  const m = document.createElement('div');
+  m.className = 'modal-bg';
+  m.innerHTML = `<div class="modal">
+    <h3>Voortgang resetten?</h3>
+    <p>Al je scores worden gewist. Dit kan niet ongedaan gemaakt worden.</p>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" id="cancelReset">Annuleren</button>
+      <button class="btn btn-primary" id="confirmReset">Reset</button>
+    </div>
+  </div>`;
+  document.body.appendChild(m);
+  m.querySelector('#cancelReset').onclick = () => m.remove();
+  m.querySelector('#confirmReset').onclick = () => {
+    state = {modulesDone:{},modulesProgress:{},examenScore:null,totalCorrect:0,totalAnswered:0,streak:0,lastDate:null};
+    saveState();
+    m.remove();
+    goHome();
+  };
+}
+
+function goHome(){
+  currentView = 'home';
+  currentMode = null;
+  currentModule = null;
+  topTitle.textContent = 'Roei-examen';
+  backBtn.style.display = 'none';
+  renderHome();
+  window.scrollTo(0,0);
+}
+
+function openModule(modId){
+  currentModule = MODULES.find(m=>m.id===modId);
+  if(!currentModule) return;
+  currentMode = 'learn';
+  currentIndex = 0;
+  currentScore = 0;
+  currentAnswers = [];
+  topTitle.textContent = currentModule.title;
+  backBtn.style.display = 'grid';
+  renderLesson();
+  window.scrollTo(0,0);
+}
+
+function startExamen(){
+  currentMode = 'examen';
+  currentModule = null;
+  currentIndex = 0;
+  currentScore = 0;
+  currentAnswers = [];
+  examenAllQuestions = [...EXAMEN.roeien1.map(q=>({...q,sec:'Roeien I'})), ...EXAMEN.roeien2.map(q=>({...q,sec:'Roeien II'})), ...EXAMEN.bpr.map(q=>({...q,sec:'BPR'}))];
+  topTitle.textContent = 'Examen-modus';
+  backBtn.style.display = 'grid';
+  renderExamen();
+  window.scrollTo(0,0);
+}
+
+/* ============ HOME ============ */
+function renderHome(){
+  const totalMods = MODULES.length;
+  const doneMods = Object.values(state.modulesDone).filter(p=>p>=70).length;
+  const totalPct = Math.round((doneMods/totalMods)*100);
+  const accuracy = state.totalAnswered ? Math.round(state.totalCorrect/state.totalAnswered*100) : 0;
+  
+  let html = `
+    <div class="hero">
+      <div class="hero-eyebrow">Zeeverkenners</div>
+      <h1>Roei-examen training</h1>
+      <p class="hero-sub">Klein hapje voor klein hapje. Tik een onderwerp aan om te beginnen.</p>
+    </div>
+    
+    <div class="stats">
+      <div class="stat"><div class="stat-num">${doneMods}/${totalMods}</div><div class="stat-lbl">Gedaan</div></div>
+      <div class="stat"><div class="stat-num">${totalPct}%</div><div class="stat-lbl">Voltooid</div></div>
+      <div class="stat"><div class="stat-num">${accuracy}%</div><div class="stat-lbl">Goed</div></div>
+    </div>
+  `;
+  
+  // Exam CTA only if some progress
+  if(doneMods >= 3){
+    html += `
+      <button class="exam-cta" onclick="startExamen()">
+        <div class="exam-cta-eyebrow">Klaar voor de echte test?</div>
+        <h2>Examen-modus</h2>
+        <p>Alle vragen achter elkaar — net als op kamp</p>
+        <div class="exam-cta-arrow">→</div>
+      </button>
+    `;
+  }
+  
+  html += `<div class="section-title"><h2>Onderwerpen</h2><small>${MODULES.length} modules</small></div>`;
+  html += `<div class="modules">`;
+  MODULES.forEach(m=>{
+    const score = state.modulesDone[m.id]||0;
+    const isDone = score>=70;
+    let progLine;
+    if(isDone){
+      progLine = `<div class="mod-prog">✓ ${score}% — Voltooid</div>`;
+    } else if(score>0){
+      progLine = `<div class="mod-prog">${score}% — Probeer nog eens!</div>`;
+    } else {
+      progLine = `<div class="mod-prog">Niet gestart</div>`;
+    }
+    html += `
+      <button class="mod-card ${isDone?'done':''}" onclick="openModule('${m.id}')">
+        <div class="mod-icon">${m.icon}</div>
+        <div class="mod-body">
+          <div class="mod-title">${m.title}</div>
+          <div class="mod-desc">${m.desc}</div>
+          ${progLine}
+        </div>
+        <div class="mod-arrow">›</div>
+      </button>
+    `;
+  });
+  html += `</div>`;
+  
+  // Always show exam button
+  if(doneMods < 3){
+    html += `<div style="margin-top:24px;text-align:center;color:var(--muted);font-size:0.9rem">Voltooi minstens 3 modules om de examen-modus te ontgrendelen.</div>`;
+  }
+  
+  main.innerHTML = html;
+}
+
+/* ============ LESSON ============ */
+function renderLesson(){
+  const lessons = currentModule.lessons;
+  const total = lessons.length;
+  const lesson = lessons[currentIndex];
+  
+  // dots
+  let dots = '<div class="dots">';
+  for(let i=0;i<total;i++){
+    let cls = 'dot';
+    if(i===currentIndex) cls += ' active';
+    else if(i<currentIndex) cls += ' done';
+    dots += `<span class="${cls}"></span>`;
+  }
+  dots += '<span class="dot"></span>'; // for quiz
+  dots += '</div>';
+  
+  const isLast = currentIndex === total-1;
+  const nextLabel = isLast ? 'Naar de oefenvragen →' : 'Volgende →';
+  
+  let html = `
+    <div class="lesson-wrap">
+      ${dots}
+      <article class="lesson-card">
+        <div class="lesson-eyebrow">${currentModule.title} — Stap ${currentIndex+1} van ${total}</div>
+        <h2>${lesson.title}</h2>
+        <div class="body">${lesson.body}</div>
+        <div class="lesson-nav">
+          ${currentIndex>0 ? '<button class="btn btn-secondary" onclick="prevLesson()">← Vorige</button>' : ''}
+          <button class="btn btn-primary" onclick="nextLesson()">${nextLabel}</button>
+        </div>
+      </article>
+    </div>
+  `;
+  
+  main.innerHTML = html;
+  
+  // Init memory game if needed
+  if(lesson.custom === 'memory'){
+    initMemoryGame();
+  }
+  window.scrollTo(0,0);
+}
+function prevLesson(){ if(currentIndex>0){currentIndex--; renderLesson();} }
+function nextLesson(){
+  if(currentIndex < currentModule.lessons.length-1){
+    currentIndex++;
+    renderLesson();
+  } else {
+    // start quiz
+    currentMode = 'quiz';
+    currentIndex = 0;
+    currentScore = 0;
+    currentAnswers = [];
+    renderQuiz();
+  }
+}
+
+/* ============ QUIZ ============ */
+function renderQuiz(){
+  const questions = currentModule.quiz;
+  const total = questions.length;
+  const q = questions[currentIndex];
+  
+  let dots = '<div class="dots">';
+  // lesson dots all done
+  for(let i=0;i<currentModule.lessons.length;i++){
+    dots += `<span class="dot done"></span>`;
+  }
+  for(let i=0;i<total;i++){
+    let cls = 'dot';
+    if(i===currentIndex) cls += ' active';
+    else if(i<currentIndex) cls += ' done';
+    dots += `<span class="${cls}"></span>`;
+  }
+  dots += '</div>';
+  
+  let html = `
+    <div class="lesson-wrap">
+      ${dots}
+      <article class="lesson-card">
+        <div class="lesson-eyebrow">Oefenvraag ${currentIndex+1} van ${total}</div>
+        ${q.img ? `<div style="text-align:center;margin:8px 0">${q.img}</div>` : ''}
+        ${q.svg ? `<div style="text-align:center;margin:8px 0">${q.svg}</div>` : ''}
+        <div class="quiz-question">${q.q}</div>
+        <div class="quiz-options" id="quizOpts">
+  `;
+  q.opts.forEach((opt,i)=>{
+    const letter = String.fromCharCode(65+i);
+    html += `<button class="quiz-opt" data-i="${i}" onclick="answerQuiz(${i})"><span class="quiz-opt-letter">${letter}</span><span>${opt}</span></button>`;
+  });
+  html += `
+        </div>
+        <div id="feedback"></div>
+        <div class="lesson-nav" id="nextNav" style="display:none">
+          <button class="btn btn-primary" onclick="nextQuiz()">${currentIndex < total-1 ? 'Volgende vraag →' : 'Bekijk je score →'}</button>
+        </div>
+      </article>
+    </div>
+  `;
+  main.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function answerQuiz(idx){
+  const q = currentModule.quiz[currentIndex];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(b=>b.disabled = true);
+  const isCorrect = idx === q.correct;
+  if(isCorrect){
+    currentScore++;
+    state.totalCorrect++;
+  }
+  state.totalAnswered++;
+  saveState();
+  currentAnswers.push({i:currentIndex, correct:isCorrect, picked:idx});
+  
+  opts[idx].classList.add(isCorrect?'correct':'wrong');
+  if(!isCorrect) opts[q.correct].classList.add('correct');
+  
+  const feedback = document.getElementById('feedback');
+  feedback.innerHTML = `<div class="feedback ${isCorrect?'ok':'no'}">
+    <strong>${isCorrect?'Goed zo! ⚓':'Helaas — niet juist'}</strong>
+    ${q.why}
+  </div>`;
+  
+  document.getElementById('nextNav').style.display='flex';
+}
+
+function nextQuiz(){
+  if(currentIndex < currentModule.quiz.length - 1){
+    currentIndex++;
+    renderQuiz();
+  } else {
+    // result
+    const total = currentModule.quiz.length;
+    const pct = Math.round(currentScore/total*100);
+    const prev = state.modulesDone[currentModule.id]||0;
+    if(pct > prev) state.modulesDone[currentModule.id] = pct;
+    saveState();
+    renderModuleResult(pct);
+  }
+}
+
+function renderModuleResult(pct){
+  let emoji, msg;
+  if(pct === 100) { emoji='🏆'; msg='Perfect! Helemaal beheerst.'; }
+  else if(pct >= 80) { emoji='⚓'; msg='Top score! Goed bezig.'; }
+  else if(pct >= 60) { emoji='👍'; msg='Goede basis. Probeer nog een keer voor een hogere score.'; }
+  else { emoji='💪'; msg='Lees het hoofdstuk nog eens door en probeer het opnieuw.'; }
+  
+  main.innerHTML = `
+    <div class="result-wrap">
+      <div class="result-emoji">${emoji}</div>
+      <div class="result-score">${pct}<small>%</small></div>
+      <div class="result-msg">${msg}</div>
+      <div style="font-size:0.95rem;color:var(--muted);margin-bottom:24px">${currentScore} van ${currentModule.quiz.length} goed</div>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:300px;margin:0 auto">
+        <button class="btn btn-primary" onclick="openModule('${currentModule.id}')">Opnieuw oefenen</button>
+        <button class="btn btn-secondary" onclick="goHome()">Terug naar overzicht</button>
+      </div>
+    </div>
+  `;
+  window.scrollTo(0,0);
+}
+
+/* ============ EXAMEN MODUS ============ */
+function renderExamen(){
+  const total = examenAllQuestions.length;
+  const q = examenAllQuestions[currentIndex];
+  
+  // simple top progress
+  const pct = Math.round((currentIndex)/total*100);
+  
+  let html = `
+    <div class="lesson-wrap">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:0.85rem;color:var(--muted)">
+        <span style="font-weight:700;color:var(--gold)">${q.sec}</span>
+        <div style="flex:1;height:6px;background:var(--sea-soft);border-radius:99px;overflow:hidden">
+          <div style="height:100%;background:var(--gold);width:${pct}%;transition:width 0.3s"></div>
+        </div>
+        <span>${currentIndex+1}/${total}</span>
+      </div>
+      <article class="lesson-card">
+        <div class="lesson-eyebrow">Examen — vraag ${currentIndex+1}</div>
+        ${q.img ? `<div style="text-align:center;margin:8px 0">${q.img}</div>` : ''}
+        ${q.svg ? `<div style="text-align:center;margin:8px 0">${q.svg}</div>` : ''}
+        <div class="quiz-question">${q.q}</div>
+        <div class="quiz-options" id="quizOpts">
+  `;
+  q.opts.forEach((opt,i)=>{
+    const letter = String.fromCharCode(65+i);
+    html += `<button class="quiz-opt" data-i="${i}" onclick="answerExamen(${i})"><span class="quiz-opt-letter">${letter}</span><span>${opt}</span></button>`;
+  });
+  html += `
+        </div>
+        <div id="feedback"></div>
+        <div class="lesson-nav" id="nextNav" style="display:none">
+          <button class="btn btn-primary" onclick="nextExamen()">${currentIndex < total-1 ? 'Volgende vraag →' : 'Eindscore bekijken →'}</button>
+        </div>
+      </article>
+    </div>
+  `;
+  main.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function answerExamen(idx){
+  const q = examenAllQuestions[currentIndex];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(b=>b.disabled = true);
+  const isCorrect = idx === q.correct;
+  if(isCorrect){currentScore++; state.totalCorrect++;}
+  state.totalAnswered++;
+  saveState();
+  currentAnswers.push({i:currentIndex, correct:isCorrect, picked:idx, sec:q.sec});
+  
+  opts[idx].classList.add(isCorrect?'correct':'wrong');
+  if(!isCorrect) opts[q.correct].classList.add('correct');
+  
+  document.getElementById('feedback').innerHTML = `<div class="feedback ${isCorrect?'ok':'no'}">
+    <strong>${isCorrect?'Goed zo! ⚓':'Niet juist'}</strong>${q.why}</div>`;
+  document.getElementById('nextNav').style.display='flex';
+}
+
+function nextExamen(){
+  if(currentIndex < examenAllQuestions.length-1){
+    currentIndex++;
+    renderExamen();
+  } else {
+    // final result + per section
+    const sections = {'Roeien I':[0,0],'Roeien II':[0,0],'BPR':[0,0]};
+    currentAnswers.forEach(a=>{
+      sections[a.sec][1]++;
+      if(a.correct) sections[a.sec][0]++;
+    });
+    const totalPct = Math.round(currentScore/examenAllQuestions.length*100);
+    state.examenScore = totalPct;
+    saveState();
+    
+    let emoji, msg;
+    if(totalPct >= 90){ emoji='🏆'; msg='Geweldig! Klaar voor het echte werk.'; }
+    else if(totalPct >= 70){ emoji='⚓'; msg='Geslaagd niveau! Houd dit vast.'; }
+    else if(totalPct >= 50){ emoji='💪'; msg='Bijna geslaagd. Pak je zwakke onderwerpen aan.'; }
+    else { emoji='📖'; msg='Tijd voor een rondje door de modules.'; }
+    
+    let html = `
+      <div class="result-wrap">
+        <div class="result-emoji">${emoji}</div>
+        <div class="result-score">${totalPct}<small>%</small></div>
+        <div class="result-msg">${msg}</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin:20px 0;text-align:left;max-width:340px;margin-left:auto;margin-right:auto">
+          <h4 style="font-family:'Fraunces',serif;color:var(--navy);margin-bottom:10px">Per onderdeel</h4>
+    `;
+    Object.entries(sections).forEach(([nm,[c,t]])=>{
+      const p = t ? Math.round(c/t*100) : 0;
+      const cl = p>=70?'var(--success)':p>=50?'var(--gold)':'var(--error)';
+      html += `<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:0.95rem"><span>${nm}</span><span style="font-weight:700;color:${cl}">${c}/${t} (${p}%)</span></div>`;
+    });
+    html += `
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:300px;margin:0 auto">
+          <button class="btn btn-primary" onclick="startExamen()">Examen opnieuw</button>
+          <button class="btn btn-secondary" onclick="goHome()">Terug naar overzicht</button>
+        </div>
+      </div>
+    `;
+    main.innerHTML = html;
+    window.scrollTo(0,0);
+  }
+}
+
+/* ============ MEMORY GAME (vletten) ============ */
+function initMemoryGame(){
+  const container = document.getElementById('memGame');
+  if(!container) return;
+  const pairs = [
+    ['294','Geel'],['419','Rood'],['495','Paars'],
+    ['522','Zwart'],['687','Groen'],['688','Bruin'],['925','Blauw']
+  ];
+  // Build cards
+  const cards = [];
+  pairs.forEach((p,i)=>{
+    cards.push({id:i, kind:'num', val:p[0], pair:i});
+    cards.push({id:i+100, kind:'col', val:p[1], pair:i});
+  });
+  // shuffle
+  cards.sort(()=>Math.random()-0.5);
+  let flipped = [];
+  let matched = new Set();
+  let moves = 0;
+  
+  const colorBgs = {Geel:'#FFD93D',Rood:'#C44536',Paars:'#9B59B6',Zwart:'#1A1A1A',Groen:'#2D6A4F',Bruin:'#7B4F2F',Blauw:'#1E5F8E'};
+  const colorTexts = {Geel:'#000',Rood:'#fff',Paars:'#fff',Zwart:'#fff',Groen:'#fff',Bruin:'#fff',Blauw:'#fff'};
+  
+  function render(){
+    let h = `<div class="mem-feedback">Zetten: ${moves} • Gevonden: ${matched.size}/${pairs.length}</div>`;
+    h += '<div class="mem-grid" style="grid-template-columns:repeat(3,1fr)">';
+    cards.forEach((c,idx)=>{
+      const isFlipped = flipped.includes(idx) || matched.has(c.pair);
+      const isMatched = matched.has(c.pair);
+      const bg = (isFlipped && c.kind==='col') ? colorBgs[c.val]||'#000' : '';
+      const tx = (isFlipped && c.kind==='col') ? colorTexts[c.val]||'#fff' : '';
+      const style = bg ? `background:${bg};color:${tx};border-color:${bg}` : '';
+      h += `<div class="mem-cell ${isFlipped?'flipped':''} ${isMatched?'matched':''} ${c.kind==='col'?'color':''}" data-idx="${idx}" style="${style}">${isFlipped ? c.val : '?'}</div>`;
+    });
+    h += '</div>';
+    if(matched.size === pairs.length){
+      h += `<div style="text-align:center;padding:14px;background:var(--success-soft);border-radius:12px;margin-top:12px;color:var(--success);font-weight:700;font-family:'Fraunces',serif">🎉 Alle koppels gevonden in ${moves} zetten!</div>`;
+      h += `<button class="btn btn-secondary" style="margin-top:8px" onclick="initMemoryGame()">Nog een keer</button>`;
+    }
+    container.innerHTML = h;
+    container.querySelectorAll('.mem-cell:not(.matched)').forEach(el=>{
+      el.onclick = ()=>{
+        const i = +el.dataset.idx;
+        if(flipped.includes(i)) return;
+        if(flipped.length === 2) return;
+        flipped.push(i);
+        if(flipped.length === 2){
+          moves++;
+          const c1=cards[flipped[0]], c2=cards[flipped[1]];
+          if(c1.pair === c2.pair){
+            matched.add(c1.pair);
+            setTimeout(()=>{flipped=[]; render();}, 600);
+          } else {
+            setTimeout(()=>{flipped=[]; render();}, 1200);
+          }
+        }
+        render();
+      };
+    });
+  }
+  render();
+}
+window.initMemoryGame = initMemoryGame;
+
+/* ============ INIT ============ */
+loadState();
+goHome();
+
+</script>
+</body>
+</html>
