@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beheer — ZV Canisius Leerplatform</title>
+<style>
+:root{
+  --bg:#f1f5f9;--surf:#fff;--side:#1e2d4e;--side-hl:#2d4270;--side-act:#3b5ea6;
+  --acc:#2563eb;--err:#dc2626;--ok:#16a34a;
+  --txt:#1e293b;--mut:#64748b;--bdr:#e2e8f0;--r:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);height:100vh;display:flex;flex-direction:column;font-size:14px}
+
+/* LOGIN */
+#loginScreen{display:flex;align-items:center;justify-content:center;height:100vh;background:var(--side)}
+.lbox{background:var(--surf);border-radius:12px;padding:40px 36px;width:300px;text-align:center}
+.lbox h1{font-size:1.3rem;margin-bottom:2px}
+.lbox p{color:var(--mut);font-size:.85rem;margin-bottom:20px}
+.lbox input{width:100%;padding:9px 12px;border:1px solid var(--bdr);border-radius:var(--r);font-size:.95rem;margin-bottom:10px}
+.lbox button{width:100%;padding:9px;background:var(--acc);color:#fff;border:none;border-radius:var(--r);font-size:.95rem;cursor:pointer}
+.lbox .ferr{color:var(--err);font-size:.82rem;min-height:1.1em;margin-top:6px}
+
+/* LAYOUT */
+#app{display:flex;flex-direction:column;height:100vh}
+header{background:var(--side);color:#fff;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px}
+header h1{font-size:.95rem;font-weight:600;white-space:nowrap}
+.hright{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.layout{display:flex;flex:1;overflow:hidden}
+aside{width:230px;background:var(--side);overflow-y:auto;flex-shrink:0}
+main{flex:1;overflow-y:auto;padding:22px}
+#statusBar{background:#0f172a;color:#64748b;font-size:.78rem;padding:5px 18px;flex-shrink:0}
+#statusBar .ok{color:#4ade80}
+#statusBar .warn{color:#fb923c}
+#statusBar .err{color:#f87171}
+
+/* SIDEBAR */
+.sg-group{}
+.sg-head{padding:9px 14px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.4);font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.sg-head:hover{color:rgba(255,255,255,.65)}
+.sg-item{padding:7px 14px 7px 22px;font-size:.83rem;cursor:pointer;color:rgba(255,255,255,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sg-item:hover{background:var(--side-hl);color:#fff}
+.sg-item.active{background:var(--side-act);color:#fff}
+.sg-item.top{padding-left:14px}
+.arrow{transition:transform .15s;display:inline-block}
+.collapsed .sg-items{display:none}
+.collapsed .arrow{transform:rotate(-90deg)}
+
+/* BUTTONS */
+.btn{padding:6px 14px;border-radius:var(--r);border:none;cursor:pointer;font-size:.82rem;font-weight:500;line-height:1.4}
+.btn-primary{background:var(--acc);color:#fff}
+.btn-primary:hover{background:#1d4ed8}
+.btn-primary:disabled{background:#94a3b8;cursor:default}
+.btn-danger{background:var(--err);color:#fff}
+.btn-danger:hover{background:#b91c1c}
+.btn-secondary{background:var(--bdr);color:var(--txt)}
+.btn-secondary:hover{background:#cbd5e1}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:3px 9px;font-size:.78rem}
+
+/* PAGE */
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.ph h2{font-size:1.05rem;font-weight:600}
+.stitle{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:22px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--bdr)}
+
+/* CARDS */
+.q-card,.les-card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 14px;display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.q-num{flex-shrink:0;width:22px;height:22px;background:var(--bg);border-radius:50%;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--mut);margin-top:1px}
+.q-body{flex:1;min-width:0}
+.q-text{font-size:.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-meta{font-size:.77rem;color:var(--mut);margin-top:2px}
+.q-act,.les-act{display:flex;gap:5px;flex-shrink:0;margin-top:1px}
+.les-body{flex:1;min-width:0}
+.les-title{font-size:.875rem;font-weight:500}
+.les-sub{font-size:.77rem;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.empty{color:var(--mut);font-size:.875rem;padding:8px 0}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal{background:var(--surf);border-radius:10px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column}
+.mhead{padding:18px 20px 14px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+.mhead h3{font-size:.95rem;font-weight:600}
+.mbody{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+.mfoot{padding:12px 20px;border-top:1px solid var(--bdr);display:flex;justify-content:flex-end;gap:8px}
+label{display:block;font-size:.82rem;font-weight:600;margin-bottom:4px;color:var(--txt)}
+input[type=text],textarea,select{width:100%;padding:7px 10px;border:1px solid var(--bdr);border-radius:6px;font-size:.875rem;font-family:inherit;color:var(--txt)}
+input[type=text]:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 2px rgba(37,99,235,.12)}
+textarea{resize:vertical}
+.opt-row{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.opt-row input[type=radio]{flex-shrink:0;cursor:pointer;width:16px;height:16px}
+.opt-row input[type=text]{flex:1}
+.hint{font-size:.78rem;color:var(--mut);margin-top:-4px}
+.notice{background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:8px 10px;font-size:.8rem;color:#78350f}
+.notice-info{background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:8px 10px;font-size:.8rem;color:#1e40af}
+
+/* SETTINGS */
+.sform{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:22px;max-width:460px;display:flex;flex-direction:column;gap:14px}
+.sform h3{font-size:.95rem;font-weight:600}
+
+/* dirty indicator */
+#dirtyDot{font-size:.8rem;color:#fb923c;display:none}
+.loading{padding:40px;text-align:center;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="lbox">
+    <h1>⚓ ZV Canisius</h1>
+    <p>Leerplatform Beheer</p>
+    <input type="password" id="loginInput" placeholder="Wachtwoord"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Inloggen</button>
+    <p class="ferr" id="loginErr"></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" hidden>
+  <header>
+    <h1>⚓ ZV Canisius — Leerplatform Beheer</h1>
+    <div class="hright">
+      <span id="dirtyDot">● Niet opgeslagen</span>
+      <button class="btn btn-ghost btn-sm" onclick="doLogout()">Uitloggen</button>
+      <button class="btn btn-primary" id="saveBtn" onclick="saveToGitHub()" disabled>Opslaan op GitHub</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside id="sidebar"></aside>
+    <main id="mainArea"><div class="loading">Laden…</div></main>
+  </div>
+  <div id="statusBar"><span id="statusMsg">—</span></div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="modal" hidden onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="mhead">
+      <h3 id="modalTitle"></h3>
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">✕</button>
+    </div>
+    <div class="mbody" id="modalBody"></div>
+    <div class="mfoot" id="modalFoot"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+const DFLT = {
+  password: 'canisius2025',
+  token: '',
+  owner: 'L3and3r',
+  repo: 'Leerplatform-Zeeverkenners',
+  branch: 'main',
+};
+let cfg = {...DFLT, ...JSON.parse(localStorage.getItem('zvc_beheer') || '{}')};
+function saveCfg(){ localStorage.setItem('zvc_beheer', JSON.stringify(cfg)); }
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let VR = null, MO = null, vrSha = '', moSha = '';
+let dirty = false;
+let activeSec = null;
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function esc(s){ const d=document.createElement('div'); d.textContent=String(s??''); return d.innerHTML; }
+function stripHtml(h){ const d=document.createElement('div'); d.innerHTML=h||''; return d.textContent||''; }
+function emptyQ(){ return {vraag:'',opties:['','','',''],correct:0,uitleg:''}; }
+
+function setStatus(msg, type=''){
+  const el=document.getElementById('statusMsg');
+  el.className=type; el.textContent=msg;
+}
+function markDirty(){
+  dirty=true;
+  document.getElementById('dirtyDot').style.display='';
+  document.getElementById('saveBtn').disabled=false;
+}
+
+// UTF-8-safe base64 for GitHub API
+function b64enc(str){
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+// Safely traverse/create nested path, ensure leaf is an array
+function ensureArr(obj, ...keys){
+  let cur=obj;
+  for(let i=0;i<keys.length-1;i++){
+    if(cur[keys[i]]==null||typeof cur[keys[i]]!=='object') cur[keys[i]]={};
+    cur=cur[keys[i]];
+  }
+  const last=keys[keys.length-1];
+  if(!Array.isArray(cur[last])) cur[last]=[];
+  return cur[last];
+}
+
+// ── LOGIN ─────────────────────────────────────────────────────────────────────
+function doLogin(){
+  if(document.getElementById('loginInput').value===cfg.password){
+    document.getElementById('loginScreen').hidden=true;
+    document.getElementById('app').hidden=false;
+    startApp();
+  } else {
+    document.getElementById('loginErr').textContent='Onjuist wachtwoord.';
+  }
+}
+function doLogout(){
+  if(dirty&&!confirm('Er zijn niet-opgeslagen wijzigingen. Toch uitloggen?')) return;
+  document.getElementById('app').hidden=true;
+  document.getElementById('loginScreen').hidden=false;
+  document.getElementById('loginInput').value='';
+  VR=MO=null; dirty=false;
+}
+window.onbeforeunload=()=>dirty?'Er zijn niet-opgeslagen wijzigingen.':undefined;
+
+// ── GITHUB API ────────────────────────────────────────────────────────────────
+function ghH(){
+  return {
+    'Authorization':'token '+cfg.token,
+    'Accept':'application/vnd.github+json',
+    'X-GitHub-Api-Version':'2022-11-28',
+  };
+}
+async function ghGet(file){
+  const r=await fetch(
+    `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${file}?ref=${cfg.branch}`,
+    {headers:ghH()}
+  );
+  if(!r.ok) throw new Error(`${file}: HTTP ${r.status}`);
+  const d=await r.json();
+  return {content:JSON.parse(atob(d.content.replace(/\n/g,''))), sha:d.sha};
+}
+async function ghPut(file, content, sha, msg){
+  const r=await fetch(
+    `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${file}`,
+    {
+      method:'PUT',
+      headers:{...ghH(),'Content-Type':'application/json'},
+      body:JSON.stringify({message:msg, content:b64enc(JSON.stringify(content,null,2)), sha, branch:cfg.branch}),
+    }
+  );
+  if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.message||`HTTP ${r.status}`); }
+  return r.json();
+}
+
+// ── LOAD ──────────────────────────────────────────────────────────────────────
+async function startApp(){
+  if(!cfg.token){
+    openSec({type:'settings'});
+    setStatus('Voer eerst een GitHub-token in bij Instellingen.','warn');
+    renderSidebar();
+    return;
+  }
+  setStatus('Data laden van GitHub…');
+  try{
+    const [vr,mo]=await Promise.all([ghGet('vragen.json'),ghGet('modules.json')]);
+    VR=vr.content; vrSha=vr.sha;
+    MO=mo.content; moSha=mo.sha;
+    setStatus('Data geladen.','ok');
+    renderSidebar();
+    const first=(MO.roeien||[])[0];
+    if(first) openSec({type:'roeienMod', modId:first.id});
+  } catch(e){
+    setStatus('Laden mislukt: '+e.message,'err');
+    document.getElementById('mainArea').innerHTML=
+      `<div class="loading" style="color:var(--err)">Laden mislukt: ${esc(e.message)}<br><br>`+
+      `Controleer het GitHub-token en de repo-naam in <a href="#" onclick="openSec({type:'settings'})">Instellingen</a>.</div>`;
+    renderSidebar();
+  }
+}
+
+// ── SAVE ──────────────────────────────────────────────────────────────────────
+async function saveToGitHub(){
+  if(!dirty) return;
+  const btn=document.getElementById('saveBtn');
+  btn.disabled=true; btn.textContent='Opslaan…';
+  setStatus('Opslaan op GitHub…');
+  try{
+    const vRes=await ghPut('vragen.json', VR, vrSha, 'Vragen bijgewerkt via beheer');
+    vrSha=vRes.content.sha;
+    const mRes=await ghPut('modules.json', MO, moSha, 'Modules bijgewerkt via beheer');
+    moSha=mRes.content.sha;
+    dirty=false;
+    document.getElementById('dirtyDot').style.display='none';
+    btn.textContent='Opgeslagen ✓';
+    setStatus('Opgeslagen. Wijzigingen zijn live over ~1 minuut.','ok');
+    setTimeout(()=>{ btn.textContent='Opslaan op GitHub'; },3000);
+  } catch(e){
+    btn.disabled=false; btn.textContent='Opslaan op GitHub';
+    setStatus('Opslaan mislukt: '+e.message,'err');
+    alert('Opslaan mislukt:\n'+e.message);
+  }
+}
+
+// ── SIDEBAR ───────────────────────────────────────────────────────────────────
+const EXAM_LABELS={roeien1:'Examen Roeien I',roeien2:'Examen Roeien II',bpr:'Examen BPR'};
+
+function renderSidebar(){
+  let h=`<div class="sg-item top ${activeSec?.type==='settings'?'active':''}"
+             onclick="openSec({type:'settings'})">⚙️ Instellingen</div>`;
+  if(MO){
+    // Roeien
+    h+=sgGroup('🚣 Roeien', ()=>{
+      let s='';
+      for(const m of MO.roeien||[])
+        s+=sgItem(`openSec({type:'roeienMod',modId:'${m.id}'})`,
+          activeSec?.type==='roeienMod'&&activeSec.modId===m.id,
+          (m.icoon||'')+' '+(m.titel||m.id));
+      for(const k of ['roeien1','roeien2','bpr'])
+        s+=sgItem(`openSec({type:'roeienEx',exKey:'${k}'})`,
+          activeSec?.type==='roeienEx'&&activeSec.exKey===k,
+          '📝 '+EXAM_LABELS[k], true);
+      return s;
+    });
+    // Zeilen levels
+    for(const [lk,lv] of Object.entries(MO.zeilen||{})){
+      h+=sgGroup((lv.icoon||'⛵')+' '+(lv.naam||lk), ()=>{
+        let s='';
+        for(const m of lv.modules||[])
+          s+=sgItem(`openSec({type:'zeilenMod',level:'${lk}',modId:'${m.id}'})`,
+            activeSec?.type==='zeilenMod'&&activeSec.level===lk&&activeSec.modId===m.id,
+            (m.icoon||'')+' '+(m.titel||m.id));
+        s+=sgItem(`openSec({type:'zeilenEx',level:'${lk}'})`,
+          activeSec?.type==='zeilenEx'&&activeSec.level===lk,
+          '📝 Examen', true);
+        return s;
+      });
+    }
+  }
+  document.getElementById('sidebar').innerHTML=h;
+}
+
+function sgGroup(label, contentFn){
+  return `<div class="sg-group"><div class="sg-head" onclick="this.closest('.sg-group').classList.toggle('collapsed')">
+    ${esc(label)} <span class="arrow">▾</span></div>
+    <div class="sg-items">${contentFn()}</div></div>`;
+}
+function sgItem(onclick, active, label, italic=false){
+  return `<div class="sg-item${active?' active':''}" onclick="${onclick}"${italic?' style="font-style:italic"':''}>${esc(label)}</div>`;
+}
+
+// ── ROUTING ───────────────────────────────────────────────────────────────────
+function openSec(sec){
+  activeSec=sec;
+  renderSidebar();
+  if(sec.type==='settings'){ renderSettings(); return; }
+  if(!VR||!MO){
+    document.getElementById('mainArea').innerHTML='<div class="loading">Data nog niet geladen.</div>'; return;
+  }
+  if(sec.type==='roeienMod'){
+    const mod=(MO.roeien||[]).find(m=>m.id===sec.modId);
+    const quiz=ensureArr(VR,'roeien','modules',sec.modId,'quiz');
+    renderModView(mod, quiz, 'roeienMod');
+  } else if(sec.type==='roeienEx'){
+    const qs=ensureArr(VR,'roeien','examen',sec.exKey);
+    renderExamView(EXAM_LABELS[sec.exKey], qs);
+  } else if(sec.type==='zeilenMod'){
+    const lv=(MO.zeilen||{})[sec.level]||{};
+    const mod=(lv.modules||[]).find(m=>m.id===sec.modId);
+    const quiz=ensureArr(VR,'zeilen',sec.level,'modules',sec.modId,'quiz');
+    renderModView(mod, quiz, 'zeilenMod');
+  } else if(sec.type==='zeilenEx'){
+    const lv=(MO.zeilen||{})[sec.level]||{};
+    const qs=ensureArr(VR,'zeilen',sec.level,'examen');
+    renderExamView((lv.naam||sec.level)+' — Examen', qs);
+  }
+}
+
+// ── MODULE VIEW (lessen + oefenvragen) ────────────────────────────────────────
+function renderModView(mod, quiz, type){
+  if(!mod){
+    document.getElementById('mainArea').innerHTML='<div class="loading">Module niet gevonden.</div>'; return;
+  }
+  const lessen=mod.lessen||[];
+  let h=`<div class="ph"><h2>${esc(mod.icoon||'')} ${esc(mod.titel||mod.id)}</h2></div>`;
+
+  // Lessen
+  h+=`<div class="stitle">Lessen (${lessen.length})</div>`;
+  if(!lessen.length) h+=`<p class="empty">Geen lessen.</p>`;
+  for(let i=0;i<lessen.length;i++){
+    const les=lessen[i];
+    const isSpecial=les.type||les.spel||les.custom;
+    const preview=stripHtml(les.inhoud||'').substring(0,90);
+    h+=`<div class="les-card">
+      <div class="les-body">
+        <div class="les-title">${esc(les.titel||'(naamloos)')}${isSpecial?` <span style="font-size:.72rem;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:10px">${esc(les.custom||les.type||les.spel)}</span>`:''}}</div>
+        ${preview?`<div class="les-sub">${esc(preview)}…</div>`:''}
+      </div>
+      <div class="les-act">
+        <button class="btn btn-secondary btn-sm" onclick="editLesson('${esc(type)}','${esc(mod.id)}',${i})">✏️ Bewerken</button>
+      </div></div>`;
+  }
+
+  // Oefenvragen
+  h+=`<div class="stitle" style="margin-top:24px">Oefenvragen (${quiz.length})</div>`;
+  h+=renderQCards(quiz);
+  h+=`<button class="btn btn-secondary btn-sm" style="margin-top:8px" onclick="addActiveQ()">+ Nieuwe vraag</button>`;
+
+  document.getElementById('mainArea').innerHTML=h;
+}
+
+// ── EXAM VIEW (alleen vragen) ─────────────────────────────────────────────────
+function renderExamView(title, qs){
+  let h=`<div class="ph"><h2>📝 ${esc(title)}</h2></div>`;
+  h+=renderQCards(qs);
+  h+=`<button class="btn btn-secondary btn-sm" style="margin-top:8px" onclick="addActiveQ()">+ Nieuwe vraag</button>`;
+  document.getElementById('mainArea').innerHTML=h;
+}
+
+// ── QUESTION CARDS ────────────────────────────────────────────────────────────
+function renderQCards(qs){
+  if(!qs.length) return `<p class="empty">Nog geen vragen.</p>`;
+  return qs.map((q,i)=>{
+    const ans=(q.opties||[])[q.correct]||'?';
+    const hasSvg=q.afbeelding||q.diagram;
+    return `<div class="q-card">
+      <div class="q-num">${i+1}</div>
+      <div class="q-body">
+        <div class="q-text">${esc(q.vraag||'(geen tekst)')}</div>
+        <div class="q-meta">✓ ${esc(ans)}${hasSvg?' · 🖼 tekening':''}</div>
+      </div>
+      <div class="q-act">
+        <button class="btn btn-secondary btn-sm" onclick="editActiveQ(${i})">✏️</button>
+        <button class="btn btn-danger btn-sm" onclick="if(confirm('Vraag ${i+1} verwijderen?'))deleteActiveQ(${i})">🗑</button>
+      </div></div>`;
+  }).join('');
+}
+
+// ── ACTIVE SECTION Q HELPERS ──────────────────────────────────────────────────
+function getActiveQArr(){
+  const s=activeSec;
+  if(s.type==='roeienMod') return ensureArr(VR,'roeien','modules',s.modId,'quiz');
+  if(s.type==='roeienEx')  return ensureArr(VR,'roeien','examen',s.exKey);
+  if(s.type==='zeilenMod') return ensureArr(VR,'zeilen',s.level,'modules',s.modId,'quiz');
+  if(s.type==='zeilenEx')  return ensureArr(VR,'zeilen',s.level,'examen');
+  return [];
+}
+function editActiveQ(i)  { openQModal(getActiveQArr(),i); }
+function deleteActiveQ(i){ getActiveQArr().splice(i,1); markDirty(); openSec(activeSec); }
+function addActiveQ()    { getActiveQArr().push(emptyQ()); markDirty(); openSec(activeSec); }
+
+// ── QUESTION MODAL ────────────────────────────────────────────────────────────
+function openQModal(qs, idx){
+  const q=qs[idx];
+  document.getElementById('modalTitle').textContent=`Vraag ${idx+1} bewerken`;
+
+  const opts=['A','B','C','D'];
+  let body=`<div><label>Vraagtekst</label>
+    <textarea id="mVraag" rows="3">${esc(q.vraag||'')}</textarea></div>`;
+  body+=`<div><label>Antwoordopties — klik het rondje van het juiste antwoord</label>`;
+  for(let i=0;i<4;i++){
+    body+=`<div class="opt-row">
+      <input type="radio" name="mCorrect" value="${i}" id="r${i}" ${q.correct===i?'checked':''}>
+      <input type="text" id="opt${i}" placeholder="Optie ${opts[i]}" value="${esc((q.opties||[])[i]||'')}">
+    </div>`;
+  }
+  body+=`<p class="hint">Klik het rondje links van de optie om die als juist antwoord aan te merken.</p></div>`;
+  body+=`<div><label>Uitleg (zichtbaar na beantwoorden)</label>
+    <textarea id="mUitleg" rows="2">${esc(q.uitleg||'')}</textarea></div>`;
+
+  if(q.afbeelding||q.diagram){
+    body+=`<div class="notice">⚠️ Deze vraag heeft een tekening. Die hoef je hier niet aan te passen — de tekening blijft bewaard.</div>`;
+  }
+
+  document.getElementById('modalBody').innerHTML=body;
+  document.getElementById('modalFoot').innerHTML=`
+    <button class="btn btn-secondary" onclick="closeModal()">Annuleren</button>
+    <button class="btn btn-primary" onclick="_saveQ()">Opslaan</button>`;
+  document.getElementById('modal').hidden=false;
+
+  window._saveQ=()=>{
+    q.vraag=document.getElementById('mVraag').value.trim();
+    q.opties=[0,1,2,3].map(i=>document.getElementById('opt'+i).value.trim());
+    const sel=document.querySelector('input[name=mCorrect]:checked');
+    q.correct=sel?parseInt(sel.value):0;
+    q.uitleg=document.getElementById('mUitleg').value.trim();
+    markDirty();
+    closeModal();
+    openSec(activeSec);
+  };
+}
+
+// ── LESSON MODAL ──────────────────────────────────────────────────────────────
+function editLesson(type, modId, idx){
+  let mod, lessen;
+  if(type==='roeienMod'){
+    mod=(MO.roeien||[]).find(m=>m.id===modId);
+  } else {
+    mod=((MO.zeilen||{})[activeSec.level]?.modules||[]).find(m=>m.id===modId);
+  }
+  lessen=mod.lessen||[];
+  const les=lessen[idx];
+  const isSpecial=les.type||les.spel||les.custom;
+  const hasSvg=(les.inhoud||'').includes('{{svg:');
+
+  document.getElementById('modalTitle').textContent='Les bewerken';
+
+  let body=`<div><label>Titel</label>
+    <input type="text" id="mTitel" value="${esc(les.titel||'')}"></div>`;
+
+  if(isSpecial){
+    body+=`<div class="notice">⚠️ Dit is een interactieve les (type: <strong>${esc(les.custom||les.type||les.spel)}</strong>). Alleen de titel aanpassen is veilig.</div>`;
+  } else {
+    body+=`<div><label>Inhoud (HTML)</label>
+      <textarea id="mInhoud" rows="10" style="font-family:monospace;font-size:.8rem">${esc(les.inhoud||'')}</textarea>`;
+    if(hasSvg){
+      body+=`<p class="hint" style="color:#b45309">Teksten buiten <code>{{svg:…}}</code> mag je aanpassen. De tekencodes zelf (inclusief dubbele accolades) niet wijzigen.</p>`;
+    }
+    body+=`</div>`;
+  }
+
+  document.getElementById('modalBody').innerHTML=body;
+  document.getElementById('modalFoot').innerHTML=`
+    <button class="btn btn-secondary" onclick="closeModal()">Annuleren</button>
+    <button class="btn btn-primary" onclick="_saveLes()">Opslaan</button>`;
+  document.getElementById('modal').hidden=false;
+
+  window._saveLes=()=>{
+    les.titel=document.getElementById('mTitel').value.trim();
+    if(!isSpecial&&document.getElementById('mInhoud')){
+      les.inhoud=document.getElementById('mInhoud').value;
+    }
+    lessen[idx]=les;
+    markDirty();
+    closeModal();
+    openSec(activeSec);
+  };
+}
+
+// ── SETTINGS ──────────────────────────────────────────────────────────────────
+function renderSettings(){
+  document.getElementById('mainArea').innerHTML=`
+  <div class="ph"><h2>⚙️ Instellingen</h2></div>
+
+  <div class="sform">
+    <h3>GitHub-verbinding</h3>
+    <div class="notice-info">Het token geeft de editor schrijftoegang tot de repository. Deel het niet met anderen. Je kunt het op elk moment intrekken via GitHub → Settings → Developer settings.</div>
+    <div><label>Repository eigenaar (GitHub-gebruikersnaam)</label>
+      <input type="text" id="sOwner" value="${esc(cfg.owner)}"></div>
+    <div><label>Repository naam</label>
+      <input type="text" id="sRepo" value="${esc(cfg.repo)}"></div>
+    <div><label>Branch</label>
+      <input type="text" id="sBranch" value="${esc(cfg.branch)}"></div>
+    <div><label>GitHub Personal Access Token</label>
+      <input type="text" id="sToken" value="${esc(cfg.token)}" placeholder="ghp_…" autocomplete="off">
+      <p class="hint" style="margin-top:5px">
+        Aanmaken: github.com → jouw profiel → Settings → Developer settings →
+        Personal access tokens (classic) → Generate new token.<br>
+        Vink alleen <strong>repo</strong> aan. Sla het token goed op — je ziet het maar één keer.
+      </p>
+    </div>
+    <button class="btn btn-primary" style="align-self:flex-start" onclick="saveSettings()">Verbinding opslaan en opnieuw laden</button>
+  </div>
+
+  <div class="sform" style="margin-top:16px">
+    <h3>Wachtwoord beheerder</h3>
+    <div><label>Wachtwoord voor deze beheerpagina</label>
+      <input type="text" id="sPw" value="${esc(cfg.password)}"></div>
+    <button class="btn btn-secondary btn-sm" style="align-self:flex-start" onclick="savePw()">Wachtwoord opslaan</button>
+    <p class="hint">Het wachtwoord wordt alleen lokaal opgeslagen in de browser. Iedereen die de beheerpagina opent heeft dit wachtwoord nodig.</p>
+  </div>`;
+}
+
+function saveSettings(){
+  cfg.owner =document.getElementById('sOwner').value.trim();
+  cfg.repo  =document.getElementById('sRepo').value.trim();
+  cfg.branch=document.getElementById('sBranch').value.trim();
+  cfg.token =document.getElementById('sToken').value.trim();
+  saveCfg();
+  VR=MO=null; dirty=false;
+  document.getElementById('saveBtn').disabled=true;
+  document.getElementById('dirtyDot').style.display='none';
+  startApp();
+}
+function savePw(){
+  cfg.password=document.getElementById('sPw').value;
+  saveCfg();
+  setStatus('Wachtwoord opgeslagen.','ok');
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function closeModal(){ document.getElementById('modal').hidden=true; }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
