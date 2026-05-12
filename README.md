@@ -11,7 +11,7 @@ Werkt op telefoon, tablet en laptop — geen app nodig, geen account, gewoon de 
 
 ## Wat staat er in het platform?
 
-Het platform bevat lesstof en oefeningen voor alle zwemsport-examens van de vereniging:
+Het platform bevat lesstof en oefeningen voor alle zeilsport-examens van de vereniging:
 
 | Cursus | Modules | Oefenvragen | Examenvragen |
 |---|---|---|---|
