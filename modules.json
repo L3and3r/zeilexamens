@@ -7,18 +7,18 @@
     "  zeilen.[niveau]  : { naam, icoon, kleur, modules: [] }",
     "",
     "Per module:",
-    "  id           : interne code â NIET wijzigen",
+    "  id           : interne code — NIET wijzigen",
     "  sectie       : 'exam' of 'verdieping'",
     "  icoon        : emoji",
-    "  titel        : naam van de module (zichtbaar in de app)  â aanpasbaar",
-    "  beschrijving : korte ondertitel  â aanpasbaar",
+    "  titel        : naam van de module (zichtbaar in de app)  ← aanpasbaar",
+    "  beschrijving : korte ondertitel  ← aanpasbaar",
     "  lessen       : array van kaarten/schermen",
     "",
     "Per les:",
-    "  titel   : koptekst  â aanpasbaar",
+    "  titel   : koptekst  ← aanpasbaar",
     "  inhoud  : HTML-tekst. Tekst binnen tags is aanpasbaar.",
-    "            Onderdelen als {{svg:...}} zijn tekeningen â NIET wijzigen.",
-    "  type / spel / custom : technische velden â NIET wijzigen",
+    "            Onderdelen als {{svg:...}} zijn tekeningen — NIET wijzigen.",
+    "  type / spel / custom : technische velden — NIET wijzigen",
     "",
     "Nieuw niveau toevoegen:",
     "  Voeg onder 'zeilen' een sleutel toe (bv. 'lichtblauw') met naam, icoon, kleur en modules.",
@@ -28,7 +28,7 @@
     {
       "id": "knopen",
       "sectie": "exam",
-      "icoon": "â",
+      "icoon": "⚓",
       "titel": "Knopen",
       "beschrijving": "De 6 belangrijke knopen",
       "lessen": [
@@ -42,7 +42,7 @@
         },
         {
           "titel": "Paalsteek",
-          "inhoud": "<div style=\"text-align:center;margin:20px 0\">{{svg:knoopsvg:paal:100}}</div>\n      <p>Een <strong>vaste lus</strong> die niet dichttrekt â zelfs niet onder spanning.</p>\n      <ul><li>Voor vastmaken aan een paal of ring</li><li>Reddingslus om iemand op te trekken</li></ul>\n      <div class=\"callout\"><strong>Examenvraag!</strong> Naam <strong>Ã©n</strong> wanneer je hem gebruikt.</div>"
+          "inhoud": "<div style=\"text-align:center;margin:20px 0\">{{svg:knoopsvg:paal:100}}</div>\n      <p>Een <strong>vaste lus</strong> die niet dichttrekt — zelfs niet onder spanning.</p>\n      <ul><li>Voor vastmaken aan een paal of ring</li><li>Reddingslus om iemand op te trekken</li></ul>\n      <div class=\"callout\"><strong>Examenvraag!</strong> Naam <strong>én</strong> wanneer je hem gebruikt.</div>"
         },
         {
           "titel": "Platte knoop & Schootsteek",
@@ -54,22 +54,22 @@
         },
         {
           "titel": "Schootsteek",
-          "inhoud": "<p>De <strong>schootsteek</strong> verbindt twee touwen van <em>verschillende</em> dikte. De dunste lijn maakt de meeste bochten. Er is ook een <strong>dubbele schootsteek</strong> â die zit steviger.</p>\n      <div class=\"callout-tip callout\">Platte knoop = gelijke dikte. Schootsteek = verschillende dikte.</div>"
+          "inhoud": "<p>De <strong>schootsteek</strong> verbindt twee touwen van <em>verschillende</em> dikte. De dunste lijn maakt de meeste bochten. Er is ook een <strong>dubbele schootsteek</strong> — die zit steviger.</p>\n      <div class=\"callout-tip callout\">Platte knoop = gelijke dikte. Schootsteek = verschillende dikte.</div>"
         },
         {
           "titel": "Kikker beleggen",
-          "inhoud": "<p>Een <strong>kikker</strong> is een metalen klem op de boot. Je belegt hem door de lijn in achten eromheen te slaan. De <strong>laatste slag</strong> moet een slipsteek zijn.</p>\n      <p>Naast kikkers heb je ook <strong>klampen</strong> en <strong>nagels</strong> â die beleg je op dezelfde manier.</p>"
+          "inhoud": "<p>Een <strong>kikker</strong> is een metalen klem op de boot. Je belegt hem door de lijn in achten eromheen te slaan. De <strong>laatste slag</strong> moet een slipsteek zijn.</p>\n      <p>Naast kikkers heb je ook <strong>klampen</strong> en <strong>nagels</strong> — die beleg je op dezelfde manier.</p>"
         },
         {
           "titel": "Lijn opschieten & begrippen",
-          "inhoud": "<p><strong>Lijn opschieten</strong> = netjes oprollen, van vaste eind naar losse eind, in de draairichting van het touw.</p>\n      <ul><li><strong>Tamp</strong> â het uiteinde van een lijn</li><li><strong>Kardelen</strong> â de strengen (meestal 3 of 4)</li><li><strong>Tieren</strong> â de groeven tussen de kardelen</li></ul>"
+          "inhoud": "<p><strong>Lijn opschieten</strong> = netjes oprollen, van vaste eind naar losse eind, in de draairichting van het touw.</p>\n      <ul><li><strong>Tamp</strong> — het uiteinde van een lijn</li><li><strong>Kardelen</strong> — de strengen (meestal 3 of 4)</li><li><strong>Tieren</strong> — de groeven tussen de kardelen</li></ul>"
         }
       ]
     },
     {
       "id": "zeiltermen",
       "sectie": "exam",
-      "icoon": "âµ",
+      "icoon": "⛵",
       "titel": "Zeiltermen",
       "beschrijving": "Bakboord, stuurboord, hogerwal",
       "lessen": [
@@ -83,24 +83,24 @@
         },
         {
           "titel": "Rollen op de vlet",
-          "inhoud": "<ul>\n      <li><strong>Roerganger</strong> â staat achter het roer, geeft commando's</li>\n      <li><strong>Slagroeier</strong> â stuurboordkant, geeft het tempo aan</li>\n      <li><strong>Midroeiers</strong> â zitten op de middoft</li>\n      <li><strong>Haakvoor</strong> â maakt landvasten los/vast, duwt af</li></ul>\n      <div class=\"callout\"><strong>Casco</strong> = al het vaste staal van de boot.</div>"
+          "inhoud": "<ul>\n      <li><strong>Roerganger</strong> — staat achter het roer, geeft commando's</li>\n      <li><strong>Slagroeier</strong> — stuurboordkant, geeft het tempo aan</li>\n      <li><strong>Midroeiers</strong> — zitten op de middoft</li>\n      <li><strong>Haakvoor</strong> — maakt landvasten los/vast, duwt af</li></ul>\n      <div class=\"callout\"><strong>Casco</strong> = al het vaste staal van de boot.</div>"
         }
       ]
     },
     {
       "id": "vlet",
       "sectie": "exam",
-      "icoon": "ð¶",
+      "icoon": "🛶",
       "titel": "Vletonderdelen",
       "beschrijving": "Onderdelen 54, 57 en 84",
       "lessen": [
         {
           "titel": "De vlet: drie examennummers",
-          "inhoud": "<p>Voor het examen zijn er drie onderdelen <strong>Ã©cht</strong> belangrijk:</p>\n      {{svg:vletsvg}}\n      <div class=\"part-list\">\n        <div class=\"part\"><div class=\"part-num\">54</div><div><span class=\"part-name\">Grendelbout</span><br><span class=\"part-desc\">Pen die door de dol gaat zodat hij vast zit</span></div></div>\n        <div class=\"part\"><div class=\"part-num\">57</div><div><span class=\"part-name\">Dolpot</span><br><span class=\"part-desc\">Houder waar de dol in zit op de boord</span></div></div>\n        <div class=\"part\"><div class=\"part-num\">84</div><div><span class=\"part-name\">Spant</span><br><span class=\"part-desc\">Dwarsbalk binnenin die de boot stevigheid geeft</span></div></div>\n      </div>"
+          "inhoud": "<p>Voor het examen zijn er drie onderdelen <strong>écht</strong> belangrijk:</p>\n      {{svg:vletsvg}}\n      <div class=\"part-list\">\n        <div class=\"part\"><div class=\"part-num\">54</div><div><span class=\"part-name\">Grendelbout</span><br><span class=\"part-desc\">Pen die door de dol gaat zodat hij vast zit</span></div></div>\n        <div class=\"part\"><div class=\"part-num\">57</div><div><span class=\"part-name\">Dolpot</span><br><span class=\"part-desc\">Houder waar de dol in zit op de boord</span></div></div>\n        <div class=\"part\"><div class=\"part-num\">84</div><div><span class=\"part-name\">Spant</span><br><span class=\"part-desc\">Dwarsbalk binnenin die de boot stevigheid geeft</span></div></div>\n      </div>"
         },
         {
           "titel": "Onthouden trucje",
-          "inhoud": "<div class=\"ezel\"><div class=\"ezel-lbl\">Truc</div><div class=\"ezel-text\">Een <span class=\"hl\">spant</span> (84) staat onderin, een <span class=\"hl\">dolpot</span> (57) staat boven op de rand, en de <span class=\"hl\">grendelbout</span> (54) houdt de dol op zijn plek.</div></div>\n      <ul><li><strong>Onderaan</strong> â spanten (84)</li><li><strong>Op de rand</strong> â dolpotten (57)</li><li><strong>Door de dol</strong> â grendelbouten (54)</li></ul>"
+          "inhoud": "<div class=\"ezel\"><div class=\"ezel-lbl\">Truc</div><div class=\"ezel-text\">Een <span class=\"hl\">spant</span> (84) staat onderin, een <span class=\"hl\">dolpot</span> (57) staat boven op de rand, en de <span class=\"hl\">grendelbout</span> (54) houdt de dol op zijn plek.</div></div>\n      <ul><li><strong>Onderaan</strong> → spanten (84)</li><li><strong>Op de rand</strong> → dolpotten (57)</li><li><strong>Door de dol</strong> → grendelbouten (54)</li></ul>"
         },
         {
           "titel": "Alle 40 onderdelen",
@@ -112,7 +112,7 @@
     {
       "id": "commandos",
       "sectie": "exam",
-      "icoon": "ð£",
+      "icoon": "📣",
       "titel": "Roeicommando's",
       "beschrijving": "Klaarmaken tot omzetten",
       "lessen": [
@@ -122,23 +122,23 @@
         },
         {
           "titel": "Klaarmaken om te roeien",
-          "inhoud": "<ol>\n      <li><strong>\"Klaarmaken om te roeien!\"</strong> â roeiers pakken een dol</li>\n      <li><strong>\"Dollen in\"</strong> â de dollen mogen in de dolpot</li>\n      <li><strong>\"Riemen toe\"</strong> â riemen in de dollen</li></ol>\n      <div class=\"callout\"><strong>Tip:</strong> het blad van de riem hou je <em>haaks op het water</em>.</div>"
+          "inhoud": "<ol>\n      <li><strong>\"Klaarmaken om te roeien!\"</strong> — roeiers pakken een dol</li>\n      <li><strong>\"Dollen in\"</strong> — de dollen mogen in de dolpot</li>\n      <li><strong>\"Riemen toe\"</strong> — riemen in de dollen</li></ol>\n      <div class=\"callout\"><strong>Tip:</strong> het blad van de riem hou je <em>haaks op het water</em>.</div>"
         },
         {
           "titel": "Een commando opbouwen",
-          "inhoud": "<p>Elk commando heeft <strong>4 onderdelen</strong>:</p>\n      <ol><li><strong>\"Op riemen!\"</strong> â vorige opdracht stoppen</li>\n      <li>Welk boord? â <strong>\"Beide boorden\"</strong>, <strong>\"Bakboord\"</strong> of <strong>\"Stuurboord\"</strong></li>\n      <li>De opdracht â halen, strijken, afstoppen, omzetten...</li>\n      <li>Het tempo â <strong>\"Ge-liiiijk\"</strong></li></ol>"
+          "inhoud": "<p>Elk commando heeft <strong>4 onderdelen</strong>:</p>\n      <ol><li><strong>\"Op riemen!\"</strong> — vorige opdracht stoppen</li>\n      <li>Welk boord? — <strong>\"Beide boorden\"</strong>, <strong>\"Bakboord\"</strong> of <strong>\"Stuurboord\"</strong></li>\n      <li>De opdracht — halen, strijken, afstoppen, omzetten...</li>\n      <li>Het tempo — <strong>\"Ge-liiiijk\"</strong></li></ol>"
         },
         {
           "titel": "De opdrachten",
-          "inhoud": "<ul>\n      <li><strong>Halen</strong> = vooruit roeien</li>\n      <li><strong>Strijken</strong> = andersom roeien â achteruit</li>\n      <li><strong>Afstoppen</strong> = afremmen door riemen in het water te houden</li>\n      <li><strong>Omzetten</strong> = roeiers draaien om en kijken de andere kant op</li></ul>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud</div><div class=\"ezel-text\">Halen = vooruit. Strijken = achteruit.</div></div>"
+          "inhoud": "<ul>\n      <li><strong>Halen</strong> = vooruit roeien</li>\n      <li><strong>Strijken</strong> = andersom roeien — achteruit</li>\n      <li><strong>Afstoppen</strong> = afremmen door riemen in het water te houden</li>\n      <li><strong>Omzetten</strong> = roeiers draaien om en kijken de andere kant op</li></ul>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud</div><div class=\"ezel-text\">Halen = vooruit. Strijken = achteruit.</div></div>"
         },
         {
           "titel": "Op riemen vs. Riemen op",
-          "inhoud": "<div class=\"compare\">\n      <div class=\"compare-col\"><h4>Op riemen</h4><p>Stoppen met opdracht. Riem iets uit het water â rustig stilhouden.</p></div>\n      <div class=\"compare-col\"><h4>Riemen op</h4><p>Riemen <strong>verticaal</strong> de lucht in. Recht omhoog.</p></div></div>\n      <div class=\"callout-warn callout\"><strong>Examenvraag!</strong> Het verschil tussen deze twee.</div>"
+          "inhoud": "<div class=\"compare\">\n      <div class=\"compare-col\"><h4>Op riemen</h4><p>Stoppen met opdracht. Riem iets uit het water — rustig stilhouden.</p></div>\n      <div class=\"compare-col\"><h4>Riemen op</h4><p>Riemen <strong>verticaal</strong> de lucht in. Recht omhoog.</p></div></div>\n      <div class=\"callout-warn callout\"><strong>Examenvraag!</strong> Het verschil tussen deze twee.</div>"
         },
         {
           "titel": "Aanleggen met de punt",
-          "inhoud": "<ol>\n      <li>\"Op riemen!\"</li><li>\"Beide boorden stoppen af!\" <em>(geen \"ge-lijk\")</em></li>\n      <li>\"Pikhaak voor!\" â die persoon stapt af met het voorland</li></ol>"
+          "inhoud": "<ol>\n      <li>\"Op riemen!\"</li><li>\"Beide boorden stoppen af!\" <em>(geen \"ge-lijk\")</em></li>\n      <li>\"Pikhaak voor!\" — die persoon stapt af met het voorland</li></ol>"
         },
         {
           "titel": "Aanleggen met de spiegel (R2)",
@@ -146,24 +146,24 @@
         },
         {
           "titel": "Drie soorten bochten",
-          "inhoud": "<p><strong>Flauwe bocht:</strong> Ã©Ã©n boord haalt, ander doet niets â minst snelheidsverlies.</p>\n      <p><strong>Scherpe bocht:</strong> Ã©Ã©n boord haalt, ander stopt af â draait sneller.</p>\n      <p><strong>Zeer scherpe bocht:</strong> Ã©Ã©n boord haalt, ander strijkt â draait bijna op de plek.</p>\n      <div class=\"callout\"><strong>Hoofdregel:</strong> het boord waar je heen wilt draaien, moet <em>tegenwerken</em>.</div>"
+          "inhoud": "<p><strong>Flauwe bocht:</strong> één boord haalt, ander doet niets → minst snelheidsverlies.</p>\n      <p><strong>Scherpe bocht:</strong> één boord haalt, ander stopt af → draait sneller.</p>\n      <p><strong>Zeer scherpe bocht:</strong> één boord haalt, ander strijkt → draait bijna op de plek.</p>\n      <div class=\"callout\"><strong>Hoofdregel:</strong> het boord waar je heen wilt draaien, moet <em>tegenwerken</em>.</div>"
         },
         {
           "titel": "Speciale commando's",
-          "inhoud": "<ul>\n      <li><strong>\"Riemen lopen\"</strong> â riemen plat langs de boot. GEEN \"op riemen\" vooraf.</li>\n      <li><strong>\"Stopt af\"</strong> â noodstop! GEEN \"op riemen\" vooraf.</li>\n      <li><strong>\"Riemen over\"</strong> â riemen naar binnen, om te rusten.</li>\n      <li><strong>\"Riemen geroeid\"</strong> â riemen langs de boord. Klaar met roeien.</li>\n      <li><strong>\"Riemen op\"</strong> â verticaal omhoog. Bij officiÃ«le gelegenheid.</li></ul>\n      <div class=\"callout-warn callout\"><strong>2 uitzonderingen</strong> zonder \"op riemen\": stopt af en riemen lopen.</div>"
+          "inhoud": "<ul>\n      <li><strong>\"Riemen lopen\"</strong> — riemen plat langs de boot. GEEN \"op riemen\" vooraf.</li>\n      <li><strong>\"Stopt af\"</strong> — noodstop! GEEN \"op riemen\" vooraf.</li>\n      <li><strong>\"Riemen over\"</strong> — riemen naar binnen, om te rusten.</li>\n      <li><strong>\"Riemen geroeid\"</strong> — riemen langs de boord. Klaar met roeien.</li>\n      <li><strong>\"Riemen op\"</strong> — verticaal omhoog. Bij officiële gelegenheid.</li></ul>\n      <div class=\"callout-warn callout\"><strong>2 uitzonderingen</strong> zonder \"op riemen\": stopt af en riemen lopen.</div>"
         }
       ]
     },
     {
       "id": "vastleggen",
       "sectie": "exam",
-      "icoon": "ðª¢",
+      "icoon": "🪢",
       "titel": "Vlet vastleggen",
       "beschrijving": "Voorland, achterland, spring",
       "lessen": [
         {
           "titel": "Altijd 3 lijnen",
-          "inhoud": "<p>De vlet leggen we <strong>altijd</strong> vast met 3 lijnen.</p>\n      {{svg:linessvg}}\n      <ul><li><strong>Voorland</strong> â vooraan vast</li><li><strong>Achterland</strong> â achteraan vast</li><li><strong>Spring</strong> â voorkomt heen en weer schuiven</li></ul>"
+          "inhoud": "<p>De vlet leggen we <strong>altijd</strong> vast met 3 lijnen.</p>\n      {{svg:linessvg}}\n      <ul><li><strong>Voorland</strong> — vooraan vast</li><li><strong>Achterland</strong> — achteraan vast</li><li><strong>Spring</strong> — voorkomt heen en weer schuiven</li></ul>"
         },
         {
           "titel": "De spring",
@@ -175,40 +175,40 @@
         },
         {
           "titel": "4 lijnen: land- en springen",
-          "inhoud": "<ul>\n      <li><strong>Voorlandvast</strong> â van boeg naar voren</li>\n      <li><strong>Achterlandvast</strong> â van achterschip naar achteren</li>\n      <li><strong>Voorspring</strong> â van boeg naar midden van de wal</li>\n      <li><strong>Achterspring</strong> â van achterschip naar midden van de wal</li></ul>\n      <div class=\"callout\"><strong>Landvasten</strong> lopen naar buiten. <strong>Springen</strong> lopen naar het midden.</div>"
+          "inhoud": "<ul>\n      <li><strong>Voorlandvast</strong> — van boeg naar voren</li>\n      <li><strong>Achterlandvast</strong> — van achterschip naar achteren</li>\n      <li><strong>Voorspring</strong> — van boeg naar midden van de wal</li>\n      <li><strong>Achterspring</strong> — van achterschip naar midden van de wal</li></ul>\n      <div class=\"callout\"><strong>Landvasten</strong> lopen naar buiten. <strong>Springen</strong> lopen naar het midden.</div>"
         },
         {
           "titel": "Wind bij aan- en afleggen",
-          "inhoud": "<p><strong>Bij aanleggen:</strong></p>\n      <ul><li>Wind van voren â eerst voorlandvast</li><li>Wind van achteren â eerst achterlandvast</li></ul>\n      <p><strong>Bij wegvaren:</strong> precies omgekeerde volgorde.</p>\n      <div class=\"callout-tip callout\">Kant waar wind vandaan komt = als eerste vastmaken.</div>"
+          "inhoud": "<p><strong>Bij aanleggen:</strong></p>\n      <ul><li>Wind van voren → eerst voorlandvast</li><li>Wind van achteren → eerst achterlandvast</li></ul>\n      <p><strong>Bij wegvaren:</strong> precies omgekeerde volgorde.</p>\n      <div class=\"callout-tip callout\">Kant waar wind vandaan komt = als eerste vastmaken.</div>"
         }
       ]
     },
     {
       "id": "veiligheid",
       "sectie": "exam",
-      "icoon": "ð",
+      "icoon": "🛟",
       "titel": "Veiligheid",
       "beschrijving": "Reddingsvest, onweer, dode hoek",
       "lessen": [
         {
           "titel": "Geschikte kleding",
-          "inhoud": "<ul>\n      <li>Dichte stevige <strong>schoenen</strong> â geen slippers</li>\n      <li>Crocs zijn goedgekeurd</li>\n      <li>Laarzen mogen, maar dan wel een reddingsvest!</li>\n      <li>Warme en waterdichte kleding</li></ul>"
+          "inhoud": "<ul>\n      <li>Dichte stevige <strong>schoenen</strong> — geen slippers</li>\n      <li>Crocs zijn goedgekeurd</li>\n      <li>Laarzen mogen, maar dan wel een reddingsvest!</li>\n      <li>Warme en waterdichte kleding</li></ul>"
         },
         {
-          "titel": "Reddingsvest â wanneer?",
+          "titel": "Reddingsvest — wanneer?",
           "inhoud": "<p>Je moet een reddingsvest dragen:</p>\n      <ul><li>Bij <strong>onweer</strong></li><li>Tijdens een <strong>sleep</strong></li>\n      <li>Bij <strong>harde wind</strong> / als je gereefd hebt</li>\n      <li>De <strong>\"2 van de 3\"-regel</strong></li></ul>\n      <div class=\"callout-warn callout\"><strong>Examenvraag 12:</strong> noem 3 situaties.</div>"
         },
         {
-          "titel": "Reddingsvest â hoe dragen?",
-          "inhoud": "<ul>\n      <li><strong>Boven</strong> alle kleding</li>\n      <li>Normaal vest: strak</li>\n      <li>Plofvest: precies Ã©Ã©n vuist tussen vest en ribbenkast</li>\n      <li>Gebruik de <strong>reetveter</strong></li></ul>\n      <div class=\"callout-warn callout\">Plofvest mag alleen als hij gekeurd is.</div>"
+          "titel": "Reddingsvest — hoe dragen?",
+          "inhoud": "<ul>\n      <li><strong>Boven</strong> alle kleding</li>\n      <li>Normaal vest: strak</li>\n      <li>Plofvest: precies één vuist tussen vest en ribbenkast</li>\n      <li>Gebruik de <strong>reetveter</strong></li></ul>\n      <div class=\"callout-warn callout\">Plofvest mag alleen als hij gekeurd is.</div>"
         },
         {
-          "titel": "Onweer â wat nu?",
+          "titel": "Onweer — wat nu?",
           "inhoud": "<ol>\n      <li>Zo snel mogelijk naar de kant</li><li>Trek je reddingsvest aan</li>\n      <li>Blijf op het hout (niet op het staal!)</li><li>Laat de mast strijken</li></ol>\n      <div class=\"callout-tip callout\">Kom je sneller bij de kant door te zeilen? Doe dat dan eerst.</div>"
         },
         {
           "titel": "Dode hoek",
-          "inhoud": "<p>De <strong>dode hoek</strong> is het gebied rondom een groot schip waar de schipper jou niet kan zien.</p>\n      {{svg:dodehoeksvg}}\n      <div class=\"callout-warn callout\"><strong>Vuistregel:</strong> zie jij de stuurhut niet â hij ziet jou ook niet.</div>"
+          "inhoud": "<p>De <strong>dode hoek</strong> is het gebied rondom een groot schip waar de schipper jou niet kan zien.</p>\n      {{svg:dodehoeksvg}}\n      <div class=\"callout-warn callout\"><strong>Vuistregel:</strong> zie jij de stuurhut niet → hij ziet jou ook niet.</div>"
         },
         {
           "titel": "Zuigende & stuwende werking",
@@ -216,32 +216,32 @@
         },
         {
           "titel": "Reddingsvest vs zwemvest",
-          "inhoud": "<p>Een <strong>reddingsvest</strong> draait je hoofd naar boven â ook bewusteloos blijf je ademen.</p>\n      <p>Een <strong>zwemvest</strong> houdt je alleen drijvend.</p>\n      <p>Goed reddingsvest: kraag, voldoende drijfvermogen, CE-keurmerk.</p>"
+          "inhoud": "<p>Een <strong>reddingsvest</strong> draait je hoofd naar boven — ook bewusteloos blijf je ademen.</p>\n      <p>Een <strong>zwemvest</strong> houdt je alleen drijvend.</p>\n      <p>Goed reddingsvest: kraag, voldoende drijfvermogen, CE-keurmerk.</p>"
         }
       ]
     },
     {
       "id": "voorrang",
       "sectie": "exam",
-      "icoon": "âï¸",
+      "icoon": "⚖️",
       "titel": "BPR Voorrangsregels",
       "beschrijving": "Wie wijkt voor wie?",
       "lessen": [
         {
           "titel": "De volgorde van regels",
-          "inhoud": "<p>Bij twijfel: <strong>goed zeemanschap</strong> komt altijd eerst.</p>\n      <ol><li>Goed zeemanschap</li><li>Stuurboordwal heeft voorrang</li><li>Klein wijkt voor Groot</li>\n      <li>Hoofdvaarwater voor Nevenvaarwater</li><li>Motor wijkt voor Spier wijkt voor Zeil</li>\n      <li>Kruisende koers, gelijke schepen â rechts heeft voorrang</li>\n      <li>Recht op elkaar af â beiden naar stuurboord</li>\n      <li>Zeil over bakboord heeft voorrang</li><li>Loef wijkt voor lij</li>\n      <li><em>Stroom mee bij engtes heeft voorrang</em></li></ol>"
+          "inhoud": "<p>Bij twijfel: <strong>goed zeemanschap</strong> komt altijd eerst.</p>\n      <ol><li>Goed zeemanschap</li><li>Stuurboordwal heeft voorrang</li><li>Klein wijkt voor Groot</li>\n      <li>Hoofdvaarwater voor Nevenvaarwater</li><li>Motor wijkt voor Spier wijkt voor Zeil</li>\n      <li>Kruisende koers, gelijke schepen → rechts heeft voorrang</li>\n      <li>Recht op elkaar af → beiden naar stuurboord</li>\n      <li>Zeil over bakboord heeft voorrang</li><li>Loef wijkt voor lij</li>\n      <li><em>Stroom mee bij engtes heeft voorrang</em></li></ol>"
         },
         {
           "titel": "Klein vs. Groot",
           "inhoud": "<p><strong>Groot</strong> schip: langer dan 20 meter, of alle beroepsvaart (ook &lt;20m).</p>\n      <p><strong>Klein</strong> schip: korter dan 20 meter, geen beroepsvaart.</p>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Regel</div><div class=\"ezel-text\">Klein wijkt <span class=\"hl\">altijd</span> voor Groot</div></div>"
         },
         {
-          "titel": "Motor â Spier â Zeil",
-          "inhoud": "<div style=\"text-align:center;background:var(--gold-soft);padding:14px;border-radius:12px;margin:12px 0;font-size:1.1rem\">\n      <strong>Motor</strong> wijkt voor <strong>Spier</strong> wijkt voor <strong>Zeil</strong></div>\n      <ul><li><strong>Motor</strong> wijkt voor alles behalve andere motors</li>\n      <li><strong>Spier</strong> = roeien, peddelen â wijkt voor zeil</li>\n      <li><strong>Zeil</strong> heeft voorrang op spier en motor</li></ul>"
+          "titel": "Motor — Spier — Zeil",
+          "inhoud": "<div style=\"text-align:center;background:var(--gold-soft);padding:14px;border-radius:12px;margin:12px 0;font-size:1.1rem\">\n      <strong>Motor</strong> wijkt voor <strong>Spier</strong> wijkt voor <strong>Zeil</strong></div>\n      <ul><li><strong>Motor</strong> wijkt voor alles behalve andere motors</li>\n      <li><strong>Spier</strong> = roeien, peddelen — wijkt voor zeil</li>\n      <li><strong>Zeil</strong> heeft voorrang op spier en motor</li></ul>"
         },
         {
           "titel": "Tussen twee zeilboten",
-          "inhoud": "<p><strong>Zeil over bakboord heeft voorrang</strong> â de giek steekt uit aan de bakboordzijde.</p>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud</div><div class=\"ezel-text\">Giek aan <span class=\"hl\">BAKboord</span> â voorrang.</div></div>\n      <p style=\"margin-top:14px\"><strong>Loef wijkt voor lij</strong> â als beide boten op dezelfde wind varen: de loefzijde wijkt.</p>\n      <div class=\"callout\"><strong>Loef</strong> = wind komt hier vandaan. <strong>Lij</strong> = wind waait hier naartoe.</div>"
+          "inhoud": "<p><strong>Zeil over bakboord heeft voorrang</strong> — de giek steekt uit aan de bakboordzijde.</p>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud</div><div class=\"ezel-text\">Giek aan <span class=\"hl\">BAKboord</span> → voorrang.</div></div>\n      <p style=\"margin-top:14px\"><strong>Loef wijkt voor lij</strong> — als beide boten op dezelfde wind varen: de loefzijde wijkt.</p>\n      <div class=\"callout\"><strong>Loef</strong> = wind komt hier vandaan. <strong>Lij</strong> = wind waait hier naartoe.</div>"
         },
         {
           "titel": "Stuurboordwal",
@@ -249,22 +249,22 @@
         },
         {
           "titel": "Recht op elkaar af",
-          "inhoud": "<p>Twee gelijke schepen komen recht op elkaar af: <strong>beiden naar stuurboord</strong> (rechts) â net als auto's.</p>"
+          "inhoud": "<p>Twee gelijke schepen komen recht op elkaar af: <strong>beiden naar stuurboord</strong> (rechts) — net als auto's.</p>"
         },
         {
           "titel": "De gradenboog",
-          "inhoud": "<p>De drie koersen BPR:</p>\n      {{svg:gradenboogsvg}}\n      <ul><li><strong>Tegengestelde koers</strong> â van voren (0Â°â112,5Â°)</li>\n      <li><strong>Kruisende koers</strong> â van opzij</li>\n      <li><strong>Oplopende koers</strong> â van achteren</li></ul>"
+          "inhoud": "<p>De drie koersen BPR:</p>\n      {{svg:gradenboogsvg}}\n      <ul><li><strong>Tegengestelde koers</strong> — van voren (0°–112,5°)</li>\n      <li><strong>Kruisende koers</strong> — van opzij</li>\n      <li><strong>Oplopende koers</strong> — van achteren</li></ul>"
         },
         {
           "titel": "Engtes",
-          "inhoud": "<p>Een engte: zo smal dat je niet naast elkaar kunt varen.</p>\n      <ul><li>Wacht voor stroomafvarend schip</li><li>Wacht voor groot schip</li>\n      <li>Zeilboot engte bezeild â zeil gaat voor</li><li>Motorboot wacht voor roeiboot</li></ul>"
+          "inhoud": "<p>Een engte: zo smal dat je niet naast elkaar kunt varen.</p>\n      <ul><li>Wacht voor stroomafvarend schip</li><li>Wacht voor groot schip</li>\n      <li>Zeilboot engte bezeild → zeil gaat voor</li><li>Motorboot wacht voor roeiboot</li></ul>"
         }
       ]
     },
     {
       "id": "betonning",
       "sectie": "exam",
-      "icoon": "ð¥",
+      "icoon": "🚥",
       "titel": "Betonning",
       "beschrijving": "Rode en groene tonnen",
       "lessen": [
@@ -274,7 +274,7 @@
         },
         {
           "titel": "Ezelsbruggetje",
-          "inhoud": "<div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud!</div><div class=\"ezel-text\">Met st<span class=\"hl\">R</span>oom mee zit <span class=\"hl\">R</span>ood altijd stuu<span class=\"hl\">R</span>boord!</div></div>\n      <p>Andersom: tegen de stroom in â Rood aan bakboord.</p>"
+          "inhoud": "<div class=\"ezel\"><div class=\"ezel-lbl\">Onthoud!</div><div class=\"ezel-text\">Met st<span class=\"hl\">R</span>oom mee zit <span class=\"hl\">R</span>ood altijd stuu<span class=\"hl\">R</span>boord!</div></div>\n      <p>Andersom: tegen de stroom in → Rood aan bakboord.</p>"
         },
         {
           "titel": "Splitsingen",
@@ -289,7 +289,7 @@
     {
       "id": "borden",
       "sectie": "exam",
-      "icoon": "ð«",
+      "icoon": "🚫",
       "titel": "Borden",
       "beschrijving": "Verbods-, gebods- en informatieborden",
       "lessen": [
@@ -303,7 +303,7 @@
         },
         {
           "titel": "Toestemmingsborden",
-          "inhoud": "<p>Blauw + wit maar <em>positief</em> â toestemming of aanwijzing.</p>\n      <div class=\"borden-grid\">\n        {{svg:bordcard:info-doorvaart-1:Doorvaart beide richtingen}}{{svg:bordcard:info-doorvaart-2:Doorvaart 1 richting}}\n        {{svg:bordcard:info-meer:Toestemming meren}}{{svg:bordcard:info-anker:Toestemming ankeren}}\n        {{svg:bordcard:info-keren:Keerplaats}}{{svg:bordcard:info-pont:Niet vrij-varende pont}}\n      </div>\n      <div class=\"callout\"><strong>Tip:</strong> 1 ruit = tegenliggers mogelijk. 2 ruiten = gÃ©Ã©n tegenliggers.</div>"
+          "inhoud": "<p>Blauw + wit maar <em>positief</em> — toestemming of aanwijzing.</p>\n      <div class=\"borden-grid\">\n        {{svg:bordcard:info-doorvaart-1:Doorvaart beide richtingen}}{{svg:bordcard:info-doorvaart-2:Doorvaart 1 richting}}\n        {{svg:bordcard:info-meer:Toestemming meren}}{{svg:bordcard:info-anker:Toestemming ankeren}}\n        {{svg:bordcard:info-keren:Keerplaats}}{{svg:bordcard:info-pont:Niet vrij-varende pont}}\n      </div>\n      <div class=\"callout\"><strong>Tip:</strong> 1 ruit = tegenliggers mogelijk. 2 ruiten = géén tegenliggers.</div>"
         },
         {
           "titel": "Gevaren- & aanbevelingsborden",
@@ -311,7 +311,7 @@
         },
         {
           "titel": "Welk bord mag je WEL onder?",
-          "inhoud": "<div class=\"borden-grid\">\n        {{svg:bordcard:verbod-zeil:Verboden zeilschepen â}}\n        {{svg:bordcard:verbod-spier:Verboden spierkracht â}}\n        {{svg:bordcard:verbod-motor:Verboden motorschepen â}}\n      </div>\n      <div class=\"callout\"><strong>Antwoord:</strong> \"Verboden voor motorschepen\" â een roeiboot is spierkracht, geen motor.</div>"
+          "inhoud": "<div class=\"borden-grid\">\n        {{svg:bordcard:verbod-zeil:Verboden zeilschepen ❌}}\n        {{svg:bordcard:verbod-spier:Verboden spierkracht ❌}}\n        {{svg:bordcard:verbod-motor:Verboden motorschepen ✓}}\n      </div>\n      <div class=\"callout\"><strong>Antwoord:</strong> \"Verboden voor motorschepen\" — een roeiboot is spierkracht, geen motor.</div>"
         },
         {
           "titel": "Voorbeelden",
@@ -319,62 +319,62 @@
         },
         {
           "titel": "Meer borden",
-          "inhoud": "<ul>\n      <li>Verboden op te lopen â bij smalle vaarwegen</li>\n      <li>Hoogteschaal â doorvaarthoogte brug in meters</li>\n      <li>Duikersvlag â duikers onder water!</li>\n      <li>Z bord = zinker (pijpleiding), K = kabel</li>\n      <li>Blauw-wit diagonaal = einde verbod/gebod</li></ul>\n      <div class=\"callout-tip callout\">Rood = verbod. Blauw = gebod/aanwijzing. Geel = aanbeveling.</div>"
+          "inhoud": "<ul>\n      <li>Verboden op te lopen — bij smalle vaarwegen</li>\n      <li>Hoogteschaal — doorvaarthoogte brug in meters</li>\n      <li>Duikersvlag — duikers onder water!</li>\n      <li>Z bord = zinker (pijpleiding), K = kabel</li>\n      <li>Blauw-wit diagonaal = einde verbod/gebod</li></ul>\n      <div class=\"callout-tip callout\">Rood = verbod. Blauw = gebod/aanwijzing. Geel = aanbeveling.</div>"
         }
       ]
     },
     {
       "id": "bruggen",
       "sectie": "exam",
-      "icoon": "ð",
+      "icoon": "🌉",
       "titel": "Bruggen & Sluizen",
       "beschrijving": "Lichten en tegenliggers",
       "lessen": [
         {
           "titel": "Tegenliggers ja of nee?",
-          "inhoud": "<div class=\"compare\">\n      <div class=\"compare-col\"><h4>1 ruit / 1 E</h4><p>Doorvaart beide richtingen â tegenliggers verwachten.</p></div>\n      <div class=\"compare-col\"><h4>2 ruiten / 2 E's</h4><p>Doorvaart Ã©Ã©n richting â gÃ©Ã©n tegenliggers.</p></div></div>\n      <div class=\"callout-warn callout\">2 gele ruiten boven brug = doorvaart toegestaan, gÃ©Ã©n tegenliggers.</div>"
+          "inhoud": "<div class=\"compare\">\n      <div class=\"compare-col\"><h4>1 ruit / 1 E</h4><p>Doorvaart beide richtingen → tegenliggers verwachten.</p></div>\n      <div class=\"compare-col\"><h4>2 ruiten / 2 E's</h4><p>Doorvaart één richting → géén tegenliggers.</p></div></div>\n      <div class=\"callout-warn callout\">2 gele ruiten boven brug = doorvaart toegestaan, géén tegenliggers.</div>"
         },
         {
-          "titel": "Brug in bedrijf â lichten",
+          "titel": "Brug in bedrijf — lichten",
           "inhoud": "<ul>\n      <li><strong>Rood licht</strong> = verboden</li>\n      <li><strong>Rood + groen samen</strong> = klaarmaken, gaat zo open</li>\n      <li><strong>Groen licht</strong> = doorvaart toegestaan</li>\n      <li><strong>Rood-rood</strong> = verboden tenzij stoppen niet meer kan</li></ul>"
         },
         {
           "titel": "Brug buiten bedrijf",
-          "inhoud": "<ul>\n      <li>Tekens onder brug geven aan of doorvaart mag</li>\n      <li>1 ruit/E â tegenliggers mogelijk</li>\n      <li>2 ruiten/E's â gÃ©Ã©n tegenliggers</li></ul>"
+          "inhoud": "<ul>\n      <li>Tekens onder brug geven aan of doorvaart mag</li>\n      <li>1 ruit/E → tegenliggers mogelijk</li>\n      <li>2 ruiten/E's → géén tegenliggers</li></ul>"
         }
       ]
     },
     {
       "id": "tekens",
       "sectie": "exam",
-      "icoon": "ðº",
+      "icoon": "🔺",
       "titel": "Tekens van schepen",
       "beschrijving": "Kegels, bollen en sleeptekens",
       "lessen": [
         {
-          "titel": "Blauwe kegels â afstand",
-          "inhoud": "<p>Blauw = gevaarlijke stoffen. Afstand!</p>\n      {{svg:kegelsvg}}\n      <div class=\"compare\">\n        <div class=\"compare-col\"><h4>1 blauwe kegel</h4><p>Min. <strong>10 m</strong></p><p style=\"font-size:.78rem\">Brandbare stoffen</p></div>\n        <div class=\"compare-col\"><h4>2 blauwe kegels</h4><p>Min. <strong>50 m</strong></p><p style=\"font-size:.78rem\">Gezondheidsschadelijk</p></div>\n      </div>\n      <div style=\"text-align:center;margin:10px 0;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px\"><strong>3 blauwe kegels</strong><br>Min. <strong>100 m</strong> â ontplofbaar</div>"
+          "titel": "Blauwe kegels — afstand",
+          "inhoud": "<p>Blauw = gevaarlijke stoffen. Afstand!</p>\n      {{svg:kegelsvg}}\n      <div class=\"compare\">\n        <div class=\"compare-col\"><h4>1 blauwe kegel</h4><p>Min. <strong>10 m</strong></p><p style=\"font-size:.78rem\">Brandbare stoffen</p></div>\n        <div class=\"compare-col\"><h4>2 blauwe kegels</h4><p>Min. <strong>50 m</strong></p><p style=\"font-size:.78rem\">Gezondheidsschadelijk</p></div>\n      </div>\n      <div style=\"text-align:center;margin:10px 0;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px\"><strong>3 blauwe kegels</strong><br>Min. <strong>100 m</strong> — ontplofbaar</div>"
         },
         {
           "titel": "Andere tekens",
-          "inhoud": "<ul>\n      <li><strong>Sleepkegel</strong> (geel, punt omlaag) â voorste schip van een sleep</li>\n      <li><strong>Zwarte bol</strong> â voor anker</li>\n      <li><strong>Gele kegel</strong> â passagiersschip</li>\n      <li><strong>Groene ruit</strong> â doorvaart vrij aan die kant</li></ul>"
+          "inhoud": "<ul>\n      <li><strong>Sleepkegel</strong> (geel, punt omlaag) — voorste schip van een sleep</li>\n      <li><strong>Zwarte bol</strong> — voor anker</li>\n      <li><strong>Gele kegel</strong> — passagiersschip</li>\n      <li><strong>Groene ruit</strong> — doorvaart vrij aan die kant</li></ul>"
         },
         {
           "titel": "Meer dagtekens",
-          "inhoud": "<ul>\n      <li>Gele bol â sleepschip</li>\n      <li>Rood-wit bord â doorvaart vrij, maar geen hinderlijke vaarbeweging</li>\n      <li>Rood bord â doorvaart verboden aan die kant</li></ul>\n      <div class=\"callout-warn callout\">Sleep-tekens (cilinder + gele bol) gelden alleen voor grote schepen.</div>"
+          "inhoud": "<ul>\n      <li>Gele bol — sleepschip</li>\n      <li>Rood-wit bord — doorvaart vrij, maar geen hinderlijke vaarbeweging</li>\n      <li>Rood bord — doorvaart verboden aan die kant</li></ul>\n      <div class=\"callout-warn callout\">Sleep-tekens (cilinder + gele bol) gelden alleen voor grote schepen.</div>"
         }
       ]
     },
     {
       "id": "kleurcodes",
       "sectie": "exam",
-      "icoon": "ð¨",
+      "icoon": "🎨",
       "titel": "Vletten & kleurcodes",
       "beschrijving": "7 vletten, koppel nummers aan kleuren",
       "lessen": [
         {
           "titel": "Onze 7 vletten",
-          "inhoud": "<p>Op het examen: welke nummers en kleuren hebben de vletten gezien vanaf de Zeun?</p>\n      <ul><li><strong>294</strong> â geel</li><li><strong>419</strong> â rood</li><li><strong>495</strong> â paars / roze</li>\n      <li><strong>522</strong> â zwart (zelf inbeelden ð)</li><li><strong>687</strong> â groen</li>\n      <li><strong>688</strong> â bruin</li><li><strong>925</strong> â blauw</li></ul>\n      <p class=\"hint\">Oefen dit met het memory-spel op de volgende slide!</p>"
+          "inhoud": "<p>Op het examen: welke nummers en kleuren hebben de vletten gezien vanaf de Zeun?</p>\n      <ul><li><strong>294</strong> — geel</li><li><strong>419</strong> — rood</li><li><strong>495</strong> — paars / roze</li>\n      <li><strong>522</strong> — zwart (zelf inbeelden 😄)</li><li><strong>687</strong> — groen</li>\n      <li><strong>688</strong> — bruin</li><li><strong>925</strong> — blauw</li></ul>\n      <p class=\"hint\">Oefen dit met het memory-spel op de volgende slide!</p>"
         },
         {
           "titel": "Memoryspel",
@@ -387,21 +387,21 @@
     {
       "id": "manoeuvres",
       "sectie": "verdieping",
-      "icoon": "ð¯",
+      "icoon": "🎯",
       "titel": "Manoeuvres",
       "beschrijving": "Achtje, aanleggen, man overboord, ankeren",
       "lessen": [
         {
           "titel": "Het roeien van een achtje",
-          "inhoud": "<p>Oefen commando's met scherpe bochten:</p>\n      <ol><li>Punt X: \"op riemen, bakboord stopt af, stuurboord haalt op, gelijk\" â bocht naar BB</li>\n      <li>Rondje + terug: rechtdoor</li><li>Verder: \"bakboord haalt op, stuurboord stopt af\" â bocht SB</li></ol>\n      <div class=\"callout\">Bij scherpe bocht: het boord dat afstopt = de kant waar je heen draait.</div>"
+          "inhoud": "<p>Oefen commando's met scherpe bochten:</p>\n      <ol><li>Punt X: \"op riemen, bakboord stopt af, stuurboord haalt op, gelijk\" → bocht naar BB</li>\n      <li>Rondje + terug: rechtdoor</li><li>Verder: \"bakboord haalt op, stuurboord stopt af\" → bocht SB</li></ol>\n      <div class=\"callout\">Bij scherpe bocht: het boord dat afstopt = de kant waar je heen draait.</div>"
         },
         {
-          "titel": "Afvaren â alle commando's",
+          "titel": "Afvaren — alle commando's",
           "inhoud": "<ol>\n      <li>\"Riemen op\"</li><li>\"Dollen in\"</li><li>\"Los voor\" + \"Los achter\"</li>\n      <li>\"Zet af\"</li><li>\"Boeitjes binnen\"</li><li>\"Riemen toe\"</li>\n      <li>\"Op riemen, bakboord stuurboord haalt op, gelijk\"</li></ol>"
         },
         {
           "titel": "Aanleggen met de punt",
-          "inhoud": "<ol>\n      <li>\"Haakvoor, klaar staan om te springen\"</li>\n      <li>Op afstand: \"Op riemen\" â boot remt</li>\n      <li>Vlak voor de kant: \"Bakboord, stuurboord, stopt af\"</li>\n      <li>\"Haakvoor, spring!\"</li></ol>"
+          "inhoud": "<ol>\n      <li>\"Haakvoor, klaar staan om te springen\"</li>\n      <li>Op afstand: \"Op riemen\" — boot remt</li>\n      <li>Vlak voor de kant: \"Bakboord, stuurboord, stopt af\"</li>\n      <li>\"Haakvoor, spring!\"</li></ol>"
         },
         {
           "titel": "Aanleggen met de zijkant",
@@ -409,28 +409,28 @@
         },
         {
           "titel": "Man overboord",
-          "inhoud": "<ol>\n      <li>\"Man overboord! Zwem! [Naam] wijs!\" â iemand wijst de drenkeling</li>\n      <li>Boot vaart eerst weg â bepaal windrichting</li>\n      <li>Grote boog â terugkomen <em>tegen de wind in</em></li>\n      <li>Drenkeling aan de <strong>hoge kant</strong> (windzijde) binnenhalen</li>\n      <li>Vlakbij: \"Riemen geroeid\" â drenkeling hijsen</li></ol>\n      <div class=\"callout\">Tegen de wind: boot drijft naar de drenkeling toe.</div>"
+          "inhoud": "<ol>\n      <li>\"Man overboord! Zwem! [Naam] wijs!\" — iemand wijst de drenkeling</li>\n      <li>Boot vaart eerst weg — bepaal windrichting</li>\n      <li>Grote boog → terugkomen <em>tegen de wind in</em></li>\n      <li>Drenkeling aan de <strong>hoge kant</strong> (windzijde) binnenhalen</li>\n      <li>Vlakbij: \"Riemen geroeid\" — drenkeling hijsen</li></ol>\n      <div class=\"callout\">Tegen de wind: boot drijft naar de drenkeling toe.</div>"
         },
         {
           "titel": "Ankeren",
-          "inhoud": "<ol>\n      <li>Controleer of anker geborgd is</li><li>Vaar tegen de wind in</li>\n      <li>\"Klaarstaan om anker overboord te zetten\"</li>\n      <li>\"Bakboord, stuurboord stopt af\" â stilleggen</li>\n      <li>Boot deinst achteruit: \"Zet anker overboord\"</li>\n      <li>\"Anker houdt\" â \"Zwaard op\" + lijn vastmaken (2â3Ã waterdiepte)</li></ol>"
+          "inhoud": "<ol>\n      <li>Controleer of anker geborgd is</li><li>Vaar tegen de wind in</li>\n      <li>\"Klaarstaan om anker overboord te zetten\"</li>\n      <li>\"Bakboord, stuurboord stopt af\" — stilleggen</li>\n      <li>Boot deinst achteruit: \"Zet anker overboord\"</li>\n      <li>\"Anker houdt\" → \"Zwaard op\" + lijn vastmaken (2–3× waterdiepte)</li></ol>"
         }
       ]
     },
     {
       "id": "vaartechnieken",
       "sectie": "verdieping",
-      "icoon": "ð£",
+      "icoon": "🚣",
       "titel": "Wrikken, jagen, slepen",
       "beschrijving": "Andere manieren van voortbewegen",
       "lessen": [
         {
           "titel": "Wrikken",
-          "inhoud": "<p><strong>Wrikken</strong> = voortbewegen op Ã©Ã©n riem via het wrikgat (spiegel, stuurboordzijde).</p>\n      <ol><li>Riem in het wrikgat, blad aan bakboordzijde</li>\n      <li>Handen naar rechts â blad gaat naar links (polsen NIET draaien)</li>\n      <li>Aan einde slag: polsen 90Â° draaien</li>\n      <li>Handen terug naar links â blad naar rechts</li></ol>\n      <p>Je blad tekent een <strong>achtje</strong> in het water.</p>\n      <div class=\"callout-warn callout\">Wrikgat zit aan stuurboord â dus altijd licht corrigeren.</div>"
+          "inhoud": "<p><strong>Wrikken</strong> = voortbewegen op één riem via het wrikgat (spiegel, stuurboordzijde).</p>\n      <ol><li>Riem in het wrikgat, blad aan bakboordzijde</li>\n      <li>Handen naar rechts → blad gaat naar links (polsen NIET draaien)</li>\n      <li>Aan einde slag: polsen 90° draaien</li>\n      <li>Handen terug naar links → blad naar rechts</li></ol>\n      <p>Je blad tekent een <strong>achtje</strong> in het water.</p>\n      <div class=\"callout-warn callout\">Wrikgat zit aan stuurboord — dus altijd licht corrigeren.</div>"
         },
         {
           "titel": "Jagen",
-          "inhoud": "<p><strong>Jagen</strong> = boot voorttrekken met een lijn vanaf de wal.</p>\n      <ul><li>Lijn aan de val in de mast (voorkomt vasthaken aan oever)</li>\n      <li>Niet ineens veel kracht â mast is breekbaar</li>\n      <li>Twee mensen blijven aan boord</li></ul>"
+          "inhoud": "<p><strong>Jagen</strong> = boot voorttrekken met een lijn vanaf de wal.</p>\n      <ul><li>Lijn aan de val in de mast (voorkomt vasthaken aan oever)</li>\n      <li>Niet ineens veel kracht — mast is breekbaar</li>\n      <li>Twee mensen blijven aan boord</li></ul>"
         },
         {
           "titel": "Slepen",
@@ -441,7 +441,7 @@
     {
       "id": "commando-bouwer",
       "sectie": "verdieping",
-      "icoon": "ð§©",
+      "icoon": "🧩",
       "titel": "Commando-bouwer",
       "beschrijving": "Bouw zelf de juiste commando's",
       "lessen": [
@@ -456,20 +456,20 @@
     {
       "id": "verlichting",
       "sectie": "verdieping",
-      "icoon": "ð¡",
+      "icoon": "💡",
       "titel": "Scheepsverlichting",
       "beschrijving": "Welk schip is dit 's nachts?",
       "lessen": [
         {
           "titel": "De lichten-sectoren",
-          "inhoud": "<p>Aan de lichten kun je zien hoe een schip vaart.</p>\n      {{svg:lichtcirkelsvg}}\n      <ul><li><strong>Toplicht (wit, 225Â°)</strong> â voor en zijwaarts</li>\n      <li><strong>Bakboordlicht (rood, 112,5Â°)</strong> â alleen BB-zijde</li>\n      <li><strong>Stuurboordlicht (groen, 112,5Â°)</strong> â alleen SB-zijde</li>\n      <li><strong>Heklicht (wit, 135Â°)</strong> â achterkant</li></ul>\n      <div class=\"callout-tip callout\">1 boordlicht â kruisend. Heklicht â jij loopt op. Groen+rood naast elkaar â tegengesteld.</div>"
+          "inhoud": "<p>Aan de lichten kun je zien hoe een schip vaart.</p>\n      {{svg:lichtcirkelsvg}}\n      <ul><li><strong>Toplicht (wit, 225°)</strong> — voor en zijwaarts</li>\n      <li><strong>Bakboordlicht (rood, 112,5°)</strong> — alleen BB-zijde</li>\n      <li><strong>Stuurboordlicht (groen, 112,5°)</strong> — alleen SB-zijde</li>\n      <li><strong>Heklicht (wit, 135°)</strong> — achterkant</li></ul>\n      <div class=\"callout-tip callout\">1 boordlicht → kruisend. Heklicht → jij loopt op. Groen+rood naast elkaar → tegengesteld.</div>"
         },
         {
           "titel": "Schepen kleiner dan 7 meter",
-          "inhoud": "<p>Geen boordlichten â alleen 1 wit rondom schijnend licht.</p>\n      <ul><li>Roeiboot, kano, klein motorbootje (&lt;13 km/u)</li></ul>"
+          "inhoud": "<p>Geen boordlichten — alleen 1 wit rondom schijnend licht.</p>\n      <ul><li>Roeiboot, kano, klein motorbootje (&lt;13 km/u)</li></ul>"
         },
         {
-          "titel": "Schepen 7â20 meter",
+          "titel": "Schepen 7–20 meter",
           "inhoud": "<p><strong>Klein zeilschip</strong>: boordlichten + wit heklicht (geen toplicht)</p>\n      <p><strong>Klein motorschip</strong>: boordlichten + wit toplicht + wit heklicht</p>"
         },
         {
@@ -482,41 +482,41 @@
         },
         {
           "titel": "Stilliggende schepen",
-          "inhoud": "<ul>\n      <li>Klein schip voor anker: 1 wit rondom licht</li>\n      <li>Groot schip voor anker: 2 witte rondom lichten â voorste hoger</li></ul>"
+          "inhoud": "<ul>\n      <li>Klein schip voor anker: 1 wit rondom licht</li>\n      <li>Groot schip voor anker: 2 witte rondom lichten — voorste hoger</li></ul>"
         }
       ]
     },
     {
       "id": "geluidsseinen",
       "sectie": "verdieping",
-      "icoon": "ð¢",
+      "icoon": "📢",
       "titel": "Geluidsseinen",
       "beschrijving": "Korte en lange stoten",
       "lessen": [
         {
-          "titel": "Geluidsseinen â basis",
-          "inhoud": "<ul><li>â <strong>Korte stoot</strong> = 1 seconde</li><li>â <strong>Lange stoot</strong> = 4 seconden</li></ul>"
+          "titel": "Geluidsseinen — basis",
+          "inhoud": "<ul><li>● <strong>Korte stoot</strong> = 1 seconde</li><li>━ <strong>Lange stoot</strong> = 4 seconden</li></ul>"
         },
         {
           "titel": "Te kunnen GEVEN (klein schip)",
-          "inhoud": "<div style=\"background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin:10px 0\">\n      <p><strong>â</strong> &nbsp;= Attentie</p>\n      <p><strong>â â â â</strong> &nbsp;= Ik kan niet manoeuvreren</p>\n      <p><strong>â â â â â</strong> &nbsp;= Noodsein (5 lange stoten)</p></div>"
+          "inhoud": "<div style=\"background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin:10px 0\">\n      <p><strong>━</strong> &nbsp;= Attentie</p>\n      <p><strong>━ ● ● ●</strong> &nbsp;= Ik kan niet manoeuvreren</p>\n      <p><strong>━ ━ ━ ━ ━</strong> &nbsp;= Noodsein (5 lange stoten)</p></div>"
         },
         {
           "titel": "Te kunnen HERKENNEN",
-          "inhoud": "<div style=\"background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin:10px 0\">\n      <p><strong>â</strong> &nbsp;= Ik ga naar stuurboord</p>\n      <p><strong>â â</strong> &nbsp;= Ik ga naar bakboord</p>\n      <p><strong>â â â</strong> &nbsp;= Ik ga achteruit</p>\n      <p><strong>â â</strong> &nbsp;= Verzoek bediening sluis/brug</p>\n      <p><strong>â â â â â â â</strong> &nbsp;= Blijf weg!</p></div>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Ezelsbruggetje</div><div class=\"ezel-text\">\"Ik ga naar S<span class=\"hl\">B</span>\" = 1 punt<br>\"Ik ga naar <span class=\"hl\">B B</span>\" = 2 punten<br>\"<span class=\"hl\">A</span>chter<span class=\"hl\">u</span>it\" = 3 lettergrepen = 3 punten</div></div>"
+          "inhoud": "<div style=\"background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin:10px 0\">\n      <p><strong>●</strong> &nbsp;= Ik ga naar stuurboord</p>\n      <p><strong>● ●</strong> &nbsp;= Ik ga naar bakboord</p>\n      <p><strong>● ● ●</strong> &nbsp;= Ik ga achteruit</p>\n      <p><strong>━ ●</strong> &nbsp;= Verzoek bediening sluis/brug</p>\n      <p><strong>● ━ ● ━ ● ━ ●</strong> &nbsp;= Blijf weg!</p></div>\n      <div class=\"ezel\"><div class=\"ezel-lbl\">Ezelsbruggetje</div><div class=\"ezel-text\">\"Ik ga naar S<span class=\"hl\">B</span>\" = 1 punt<br>\"Ik ga naar <span class=\"hl\">B B</span>\" = 2 punten<br>\"<span class=\"hl\">A</span>chter<span class=\"hl\">u</span>it\" = 3 lettergrepen = 3 punten</div></div>"
         }
       ]
     },
     {
       "id": "weer",
       "sectie": "verdieping",
-      "icoon": "ð¤ï¸",
+      "icoon": "🌤️",
       "titel": "Het weer",
       "beschrijving": "Beaufort, wind, onweer",
       "lessen": [
         {
           "titel": "De Beaufort-schaal",
-          "inhoud": "<p>Windkracht 0â12. Schuif de slider:</p>\n      <div id=\"beaufort\"></div>\n      <div class=\"callout-warn callout\">KNMI-waarschuwing vanaf <strong>6 Beaufort</strong>.</div>",
+          "inhoud": "<p>Windkracht 0–12. Schuif de slider:</p>\n      <div id=\"beaufort\"></div>\n      <div class=\"callout-warn callout\">KNMI-waarschuwing vanaf <strong>6 Beaufort</strong>.</div>",
           "custom": "beaufort"
         },
         {
@@ -525,7 +525,7 @@
         },
         {
           "titel": "Luchtdruk",
-          "inhoud": "<ul>\n      <li>Hoge luchtdruk (&gt;1020) â mooi, stabiel weer</li>\n      <li>Dalende luchtdruk â slechter weer aankomst</li>\n      <li>Onder 990 bar â heel laag, vaak storm</li></ul>"
+          "inhoud": "<ul>\n      <li>Hoge luchtdruk (&gt;1020) → mooi, stabiel weer</li>\n      <li>Dalende luchtdruk → slechter weer aankomst</li>\n      <li>Onder 990 bar → heel laag, vaak storm</li></ul>"
         },
         {
           "titel": "Onweer herkennen",
@@ -541,21 +541,21 @@
     {
       "id": "onderhoud",
       "sectie": "verdieping",
-      "icoon": "ð ï¸",
+      "icoon": "🛠️",
       "titel": "Boot onderhouden",
       "beschrijving": "Dagelijks en winteronderhoud",
       "lessen": [
         {
           "titel": "Dagelijks onderhoud",
-          "inhoud": "<ul>\n      <li>Riemen recht of overeind opbergen</li>\n      <li>Boot uithozen en droog houden</li>\n      <li>Beschadigingen bijwerken: schuren, meniÃ«n, lakken</li>\n      <li>Nat touw aan houten pin (niet ijzeren spijker â roest!)</li></ul>"
+          "inhoud": "<ul>\n      <li>Riemen recht of overeind opbergen</li>\n      <li>Boot uithozen en droog houden</li>\n      <li>Beschadigingen bijwerken: schuren, meniën, lakken</li>\n      <li>Nat touw aan houten pin (niet ijzeren spijker — roest!)</li></ul>"
         },
         {
-          "titel": "Winteronderhoud â 6 stappen",
-          "inhoud": "<ol>\n      <li>Algen en vuil verwijderen</li>\n      <li>Krabben + staalborstel â roestplekken kaal</li>\n      <li>Bodem teren met een <em>bokkenpoot</em></li>\n      <li>Roestplekken in primer</li>\n      <li>Grondverf</li>\n      <li>Laklaag</li></ol>"
+          "titel": "Winteronderhoud — 6 stappen",
+          "inhoud": "<ol>\n      <li>Algen en vuil verwijderen</li>\n      <li>Krabben + staalborstel — roestplekken kaal</li>\n      <li>Bodem teren met een <em>bokkenpoot</em></li>\n      <li>Roestplekken in primer</li>\n      <li>Grondverf</li>\n      <li>Laklaag</li></ol>"
         },
         {
           "titel": "Verftips",
-          "inhoud": "<ul>\n      <li>Oude laag licht opschuren</li>\n      <li>Afnemen met vochtige doek met <strong>ammonia</strong></li>\n      <li>Kwast schoon met <strong>terpentine</strong> of <strong>peut</strong>, daarna in water</li></ul>\n      <div class=\"callout\">Volgorde: krabben â primer â grondverf â laklaag.</div>"
+          "inhoud": "<ul>\n      <li>Oude laag licht opschuren</li>\n      <li>Afnemen met vochtige doek met <strong>ammonia</strong></li>\n      <li>Kwast schoon met <strong>terpentine</strong> of <strong>peut</strong>, daarna in water</li></ul>\n      <div class=\"callout\">Volgorde: krabben → primer → grondverf → laklaag.</div>"
         },
         {
           "titel": "Soorten ankers",
@@ -566,7 +566,7 @@
     {
       "id": "touwen-ankers",
       "sectie": "verdieping",
-      "icoon": "ðª¢",
+      "icoon": "🪢",
       "titel": "Touwen & ankers",
       "beschrijving": "Welk touw, welk anker?",
       "lessen": [
@@ -576,11 +576,11 @@
         },
         {
           "titel": "Begrippen",
-          "inhoud": "<ul>\n      <li><strong>Tamp</strong> â uiteinde van een lijn</li>\n      <li><strong>Kardelen</strong> â de strengen (meestal 3 of 4)</li>\n      <li><strong>Tieren</strong> â groeven tussen de kardelen</li></ul>"
+          "inhoud": "<ul>\n      <li><strong>Tamp</strong> — uiteinde van een lijn</li>\n      <li><strong>Kardelen</strong> — de strengen (meestal 3 of 4)</li>\n      <li><strong>Tieren</strong> — groeven tussen de kardelen</li></ul>"
         },
         {
-          "titel": "Soorten touw â interactief",
-          "inhoud": "<p>Druk op een filter om te vergelijken:</p>\n      <div id=\"touwTabel\"></div>\n      <div class=\"callout\">In de praktijk: bijna alleen kunstvezel â natuurvezels rotten te snel.</div>",
+          "titel": "Soorten touw — interactief",
+          "inhoud": "<p>Druk op een filter om te vergelijken:</p>\n      <div id=\"touwTabel\"></div>\n      <div class=\"callout\">In de praktijk: bijna alleen kunstvezel — natuurvezels rotten te snel.</div>",
           "custom": "touwtabel"
         },
         {
@@ -593,7 +593,7 @@
     {
       "id": "etiquette",
       "sectie": "verdieping",
-      "icoon": "ð",
+      "icoon": "🎌",
       "titel": "Etiquette aan boord",
       "beschrijving": "Goed zeemanschap & vlagvoering",
       "lessen": [
@@ -603,11 +603,11 @@
         },
         {
           "titel": "Vlagvoering",
-          "inhoud": "<ul>\n      <li>Hijsen <em>na</em> zonsopgang</li>\n      <li>Strijken <em>vÃ³Ã³r</em> zonsondergang</li>\n      <li>Uitzondering: vlag goed belicht door schijnwerper</li></ul>\n      <div class=\"callout-warn callout\">Geen reclamevlaggen! Scouting is geen commerciÃ«le organisatie.</div>"
+          "inhoud": "<ul>\n      <li>Hijsen <em>na</em> zonsopgang</li>\n      <li>Strijken <em>vóór</em> zonsondergang</li>\n      <li>Uitzondering: vlag goed belicht door schijnwerper</li></ul>\n      <div class=\"callout-warn callout\">Geen reclamevlaggen! Scouting is geen commerciële organisatie.</div>"
         },
         {
           "titel": "Bij omslaan: koppen tellen",
-          "inhoud": "<ol>\n      <li><strong>Eerst koppen tellen</strong> â is iedereen er nog?</li>\n      <li><strong>Blijf bij het schip</strong> â niet wegzwemmen!</li></ol>\n      <p>Zwemmen kost energie â afkoelen en kramp. Omgeslagen schip drijft en is makkelijker te vinden.</p>\n      <div class=\"callout\">Reddingsvest: kraag, drijfvermogen, CE-keurmerk. Draait hoofd omhoog â ook bewusteloos.</div>"
+          "inhoud": "<ol>\n      <li><strong>Eerst koppen tellen</strong> — is iedereen er nog?</li>\n      <li><strong>Blijf bij het schip</strong> — niet wegzwemmen!</li></ol>\n      <p>Zwemmen kost energie → afkoelen en kramp. Omgeslagen schip drijft en is makkelijker te vinden.</p>\n      <div class=\"callout\">Reddingsvest: kraag, drijfvermogen, CE-keurmerk. Draait hoofd omhoog — ook bewusteloos.</div>"
         }
       ]
     }
@@ -615,13 +615,13 @@
   "zeilen": {
     "lichtmatroos": {
       "naam": "Lichtmatroos",
-      "icoon": "âµ",
+      "icoon": "⛵",
       "kleur": "#2D6A4F",
       "modules": [
         {
           "id": "zm-onderdelen",
           "sectie": "zeilen",
-          "icoon": "ð©",
+          "icoon": "🔩",
           "titel": "Onderdelen zeilboot",
           "beschrijving": "Gaffel, lummelbeslag, leuver",
           "lessen": [
@@ -646,30 +646,30 @@
         {
           "id": "zm-koersen",
           "sectie": "zeilen",
-          "icoon": "ð§­",
+          "icoon": "🧭",
           "titel": "Koersen & Wind",
           "beschrijving": "Aan de wind, halve wind, voor de wind",
           "lessen": [
             {
               "titel": "Koersen t.o.v. de wind",
-              "inhoud": "<div style=\"text-align:center\">{{svg:koersensvg}}</div><ul><li><strong>Aan de wind</strong>: zo scherp mogelijk tegen de wind in (~45Â°)</li><li><strong>Halve wind</strong>: wind dwars (~90Â°)</li><li><strong>Ruime wind</strong>: wind van achter-schuin (~135Â°)</li><li><strong>Voor de wind</strong>: wind recht van achteren (180Â°)</li></ul>"
+              "inhoud": "<div style=\"text-align:center\">{{svg:koersensvg}}</div><ul><li><strong>Aan de wind</strong>: zo scherp mogelijk tegen de wind in (~45°)</li><li><strong>Halve wind</strong>: wind dwars (~90°)</li><li><strong>Ruime wind</strong>: wind van achter-schuin (~135°)</li><li><strong>Voor de wind</strong>: wind recht van achteren (180°)</li></ul>"
             },
             {
               "titel": "Dode hoek & halsverandering",
-              "inhoud": "<p>De <strong>dode hoek</strong> is het gebied recht de wind in â je kunt er niet zeilen (zeil bolt niet meer).</p><p style=\"margin-top:8px\"><strong>Bakboord aan de wind</strong>: wind van bakboord, zeil over stuurboord.<br><strong>Stuurboord aan de wind</strong>: wind van stuurboord, zeil over bakboord.</p>"
+              "inhoud": "<p>De <strong>dode hoek</strong> is het gebied recht de wind in — je kunt er niet zeilen (zeil bolt niet meer).</p><p style=\"margin-top:8px\"><strong>Bakboord aan de wind</strong>: wind van bakboord, zeil over stuurboord.<br><strong>Stuurboord aan de wind</strong>: wind van stuurboord, zeil over bakboord.</p>"
             }
           ]
         },
         {
           "id": "zm-knopen",
           "sectie": "zeilen",
-          "icoon": "ðª¢",
+          "icoon": "🪢",
           "titel": "Knopen (zeilen)",
           "beschrijving": "Paalsteek, mastworp, achtknoop",
           "lessen": [
             {
               "titel": "Basisknopen",
-              "inhoud": "<p>Dezelfde knopen als bij roeien zijn ook bij zeilen essentieel:</p><ul><li><strong>Paalsteek</strong>: vaste lus, nooit vasttrekt â voor aanleggen</li><li><strong>Mastworp</strong>: snel aan paal of ring</li><li><strong>Achtknoop</strong>: stopknoop, voorkomt doorschieten door blok</li><li><strong>Platte knoop</strong>: twee touwen even dik</li><li><strong>Schootsteek</strong>: twee touwen verschillende dikte</li></ul>"
+              "inhoud": "<p>Dezelfde knopen als bij roeien zijn ook bij zeilen essentieel:</p><ul><li><strong>Paalsteek</strong>: vaste lus, nooit vasttrekt — voor aanleggen</li><li><strong>Mastworp</strong>: snel aan paal of ring</li><li><strong>Achtknoop</strong>: stopknoop, voorkomt doorschieten door blok</li><li><strong>Platte knoop</strong>: twee touwen even dik</li><li><strong>Schootsteek</strong>: twee touwen verschillende dikte</li></ul>"
             },
             {
               "titel": "Kikker & schoot beleggen",
@@ -680,7 +680,7 @@
         {
           "id": "zm-veiligheid",
           "sectie": "zeilen",
-          "icoon": "ð¦º",
+          "icoon": "🦺",
           "titel": "Veiligheid zeilen",
           "beschrijving": "Reddingsvest, kapseizen, noodseinen",
           "lessen": [
@@ -690,14 +690,14 @@
             },
             {
               "titel": "Noodseinen",
-              "inhoud": "<ul><li>Armen omhoog en omlaag zwaaien</li><li>Oranje rooksignaal</li><li>SOS met fluit: <strong>Â· Â· Â· â â â Â· Â· Â·</strong></li><li>Mayday via marifoon (VHF kanaal 16)</li></ul><p style=\"margin-top:8px\"><strong>Veiligheidsregels:</strong> nooit onder giek zonder te kijken, gewicht laag houden, boot niet overladen.</p>"
+              "inhoud": "<ul><li>Armen omhoog en omlaag zwaaien</li><li>Oranje rooksignaal</li><li>SOS met fluit: <strong>· · · — — — · · ·</strong></li><li>Mayday via marifoon (VHF kanaal 16)</li></ul><p style=\"margin-top:8px\"><strong>Veiligheidsregels:</strong> nooit onder giek zonder te kijken, gewicht laag houden, boot niet overladen.</p>"
             }
           ]
         },
         {
           "id": "zm-betonning",
           "sectie": "zeilen",
-          "icoon": "ð´",
+          "icoon": "🔴",
           "titel": "Betonning basis",
           "beschrijving": "Rood en groen, lateraal stelsel",
           "lessen": [
@@ -715,13 +715,13 @@
     },
     "rood": {
       "naam": "Zeilen Rood (KB I)",
-      "icoon": "ð´",
+      "icoon": "🔴",
       "kleur": "#C44536",
       "modules": [
         {
           "id": "zr-koersen",
           "sectie": "zeilen",
-          "icoon": "ð§­",
+          "icoon": "🧭",
           "titel": "Koersen zeilen",
           "beschrijving": "Aan de wind, halve wind, ruime wind",
           "lessen": [
@@ -738,7 +738,7 @@
         {
           "id": "zr-manoeuvres",
           "sectie": "zeilen",
-          "icoon": "â©ï¸",
+          "icoon": "↩️",
           "titel": "Overstag & Gijpen",
           "beschrijving": "Boeg of achterschip door de wind",
           "lessen": [
@@ -748,14 +748,14 @@
             },
             {
               "titel": "Gijpen",
-              "inhoud": "<p>Het <strong>achterschip</strong> gaat door de wind. De giek slaat over â gevaarlijker dan overstag.</p><ol style=\"padding-left:18px;margin-top:8px\"><li>\"Klaar voor gijpen?\"</li><li>\"Ja, klaar!\"</li><li>\"Gijp!\"</li><li>Actief gijpen: giek controlled laten overgaan</li></ol><div class=\"callout-warn callout\"><strong>Gevaar:</strong> ongecontroleerde gijp â giek slaat met kracht = hoofdletsel!</div>"
+              "inhoud": "<p>Het <strong>achterschip</strong> gaat door de wind. De giek slaat over — gevaarlijker dan overstag.</p><ol style=\"padding-left:18px;margin-top:8px\"><li>\"Klaar voor gijpen?\"</li><li>\"Ja, klaar!\"</li><li>\"Gijp!\"</li><li>Actief gijpen: giek controlled laten overgaan</li></ol><div class=\"callout-warn callout\"><strong>Gevaar:</strong> ongecontroleerde gijp → giek slaat met kracht = hoofdletsel!</div>"
             }
           ]
         },
         {
           "id": "zr-betonning",
           "sectie": "zeilen",
-          "icoon": "ð¢",
+          "icoon": "🟢",
           "titel": "Betonning lateraal",
           "beschrijving": "Volledig lateraal stelsel",
           "lessen": [
@@ -772,13 +772,13 @@
         {
           "id": "zr-bpr",
           "sectie": "zeilen",
-          "icoon": "âï¸",
+          "icoon": "⚖️",
           "titel": "BPR voor zeilers",
           "beschrijving": "Bakboord-stuurboord, loef-lij",
           "lessen": [
             {
               "titel": "Voorrangsregels",
-              "inhoud": "<ul><li><strong>Klein voor Groot</strong></li><li><strong>Spier voor Zeil</strong> (motor wijkt)</li><li><strong>Bakboord hals wijkt</strong> voor stuurboord hals</li><li><strong>Loef voor Lij</strong> (zelfde hals)</li></ul><div class=\"callout\">Ezelsbruggetje bakboord hals: <em>B</em>akboord = <em>B</em>lame â jij bent schuldig, jij wijkt.</div>"
+              "inhoud": "<ul><li><strong>Klein voor Groot</strong></li><li><strong>Spier voor Zeil</strong> (motor wijkt)</li><li><strong>Bakboord hals wijkt</strong> voor stuurboord hals</li><li><strong>Loef voor Lij</strong> (zelfde hals)</li></ul><div class=\"callout\">Ezelsbruggetje bakboord hals: <em>B</em>akboord = <em>B</em>lame — jij bent schuldig, jij wijkt.</div>"
             },
             {
               "titel": "Situaties",
@@ -789,17 +789,17 @@
         {
           "id": "zr-verlichting",
           "sectie": "zeilen",
-          "icoon": "ð¡",
+          "icoon": "💡",
           "titel": "Navigatieverlichting",
           "beschrijving": "Rood, groen, heklicht",
           "lessen": [
             {
               "titel": "Lichten zeilboot",
-              "inhoud": "{{svg:schiplichtsvg}}<ul style=\"margin-top:10px\"><li><strong>Rood</strong>: bakboord, 112.5Â°</li><li><strong>Groen</strong>: stuurboord, 112.5Â°</li><li><strong>Wit heklicht</strong>: achter, 135Â°</li></ul><p style=\"margin-top:8px\">Kleine zeilboot: combinatielantaarn (treilicht) = rood+groen+wit in Ã©Ã©n.</p>"
+              "inhoud": "{{svg:schiplichtsvg}}<ul style=\"margin-top:10px\"><li><strong>Rood</strong>: bakboord, 112.5°</li><li><strong>Groen</strong>: stuurboord, 112.5°</li><li><strong>Wit heklicht</strong>: achter, 135°</li></ul><p style=\"margin-top:8px\">Kleine zeilboot: combinatielantaarn (treilicht) = rood+groen+wit in één.</p>"
             },
             {
               "titel": "Motorboot verlichting",
-              "inhoud": "<ul><li>Mastlicht (wit, 225Â°, voor)</li><li>Rood BB + groen SB zijlichten</li><li>Wit heklicht (135Â°)</li></ul><p style=\"margin-top:8px\"><em>Kleine motorboot &lt;7m, max 7kn</em>: mag volstaan met Ã©Ã©n wit rondomlicht.</p>"
+              "inhoud": "<ul><li>Mastlicht (wit, 225°, voor)</li><li>Rood BB + groen SB zijlichten</li><li>Wit heklicht (135°)</li></ul><p style=\"margin-top:8px\"><em>Kleine motorboot &lt;7m, max 7kn</em>: mag volstaan met één wit rondomlicht.</p>"
             }
           ]
         }
@@ -807,13 +807,13 @@
     },
     "groen": {
       "naam": "Zeilen Groen (KB II)",
-      "icoon": "ð¢",
+      "icoon": "🟢",
       "kleur": "#3A7D44",
       "modules": [
         {
           "id": "zg-kardinaal",
           "sectie": "zeilen",
-          "icoon": "ð§­",
+          "icoon": "🧭",
           "titel": "Kardinale betonning",
           "beschrijving": "Noord, Zuid, Oost, West",
           "lessen": [
@@ -823,27 +823,27 @@
             },
             {
               "titel": "Schema",
-              "inhoud": "<table style=\"width:100%;font-size:.82rem;border-collapse:collapse\"><tr style=\"background:var(--gold-soft)\"><th style=\"padding:6px;text-align:left\">Richting</th><th>Kleur</th><th>Topmark</th><th>Licht</th></tr><tr><td style=\"padding:5px\">Noord</td><td>Zwart boven Geel</td><td>â²â²</td><td>Snel flits</td></tr><tr style=\"background:#f5f5f5\"><td>Zuid</td><td>Geel boven Zwart</td><td>â¼â¼</td><td>6+langflits</td></tr><tr><td>Oost</td><td>Zwart-Geel-Zwart</td><td>â²â¼</td><td>3 flitsen</td></tr><tr style=\"background:#f5f5f5\"><td>West</td><td>Geel-Zwart-Geel</td><td>â¼â²</td><td>9 flitsen</td></tr></table>"
+              "inhoud": "<table style=\"width:100%;font-size:.82rem;border-collapse:collapse\"><tr style=\"background:var(--gold-soft)\"><th style=\"padding:6px;text-align:left\">Richting</th><th>Kleur</th><th>Topmark</th><th>Licht</th></tr><tr><td style=\"padding:5px\">Noord</td><td>Zwart boven Geel</td><td>▲▲</td><td>Snel flits</td></tr><tr style=\"background:#f5f5f5\"><td>Zuid</td><td>Geel boven Zwart</td><td>▼▼</td><td>6+langflits</td></tr><tr><td>Oost</td><td>Zwart-Geel-Zwart</td><td>▲▼</td><td>3 flitsen</td></tr><tr style=\"background:#f5f5f5\"><td>West</td><td>Geel-Zwart-Geel</td><td>▼▲</td><td>9 flitsen</td></tr></table>"
             }
           ]
         },
         {
           "id": "zg-geluid",
           "sectie": "zeilen",
-          "icoon": "ð¯",
+          "icoon": "📯",
           "titel": "Geluidsseinen",
           "beschrijving": "Korte en lange stoten",
           "lessen": [
             {
               "titel": "Manoeuvreerseinen",
-              "inhoud": "<table style=\"width:100%;font-size:.83rem;border-collapse:collapse\"><tr style=\"background:var(--gold-soft)\"><th style=\"padding:6px\">Sein</th><th>Betekenis</th></tr><tr><td style=\"padding:5px\">â¢ (1 kort)</td><td>Ik ga naar stuurboord</td></tr><tr style=\"background:#f5f5f5\"><td>â¢â¢ (2 kort)</td><td>Ik ga naar bakboord</td></tr><tr><td>â¢â¢â¢ (3 kort)</td><td>Ik sla achteruit</td></tr><tr style=\"background:#f5f5f5\"><td>â¢â¢â¢â¢â¢ (5 kort)</td><td>Gevaarsein / attentie</td></tr><tr><td>â (1 lang)</td><td>Aandachtssein (nadering sluis/brug)</td></tr><tr style=\"background:#f5f5f5\"><td>â â¢ (lang+kort)</td><td>Wil langs stuurboord passeren</td></tr><tr><td>â â¢â¢ (lang+2 kort)</td><td>Wil langs bakboord passeren</td></tr></table>"
+              "inhoud": "<table style=\"width:100%;font-size:.83rem;border-collapse:collapse\"><tr style=\"background:var(--gold-soft)\"><th style=\"padding:6px\">Sein</th><th>Betekenis</th></tr><tr><td style=\"padding:5px\">• (1 kort)</td><td>Ik ga naar stuurboord</td></tr><tr style=\"background:#f5f5f5\"><td>•• (2 kort)</td><td>Ik ga naar bakboord</td></tr><tr><td>••• (3 kort)</td><td>Ik sla achteruit</td></tr><tr style=\"background:#f5f5f5\"><td>••••• (5 kort)</td><td>Gevaarsein / attentie</td></tr><tr><td>— (1 lang)</td><td>Aandachtssein (nadering sluis/brug)</td></tr><tr style=\"background:#f5f5f5\"><td>— • (lang+kort)</td><td>Wil langs stuurboord passeren</td></tr><tr><td>— •• (lang+2 kort)</td><td>Wil langs bakboord passeren</td></tr></table>"
             }
           ]
         },
         {
           "id": "zg-weer",
           "sectie": "zeilen",
-          "icoon": "âï¸",
+          "icoon": "⛈️",
           "titel": "Weerkunde",
           "beschrijving": "Beaufort, zeebries, onweer",
           "lessen": [
@@ -855,37 +855,37 @@
             },
             {
               "titel": "Weersverschijnselen",
-              "inhoud": "<ul><li><strong>Zeebries</strong>: overdag zee â land (land warmt op)</li><li><strong>Landbries</strong>: 's nachts land â zee</li><li><strong>Thermiekwind</strong>: door opwarming land, overdag</li><li><strong>Bui/squall</strong>: donkere wolken, plotselinge windtoename</li></ul><div class=\"callout-warn callout\">Onweer: naar de kant, mast strijken, op hout blijven!</div>"
+              "inhoud": "<ul><li><strong>Zeebries</strong>: overdag zee → land (land warmt op)</li><li><strong>Landbries</strong>: 's nachts land → zee</li><li><strong>Thermiekwind</strong>: door opwarming land, overdag</li><li><strong>Bui/squall</strong>: donkere wolken, plotselinge windtoename</li></ul><div class=\"callout-warn callout\">Onweer: naar de kant, mast strijken, op hout blijven!</div>"
             }
           ]
         },
         {
           "id": "zg-mob",
           "sectie": "zeilen",
-          "icoon": "ð",
+          "icoon": "🆘",
           "titel": "Man Over Boord",
           "beschrijving": "MOB procedure",
           "lessen": [
             {
               "titel": "MOB procedure",
-              "inhoud": "<p><strong>Direct:</strong></p><ol style=\"padding-left:18px;margin-top:6px\"><li>Schreeuw \"Man over boord!\"</li><li>Gooi reddingsboei</li><li>Wijs persoon aan â oogcontact niet verliezen</li><li>Breng boot tot stilstand</li></ol><p style=\"margin-top:10px\"><strong>Opnemen:</strong> altijd aan de <em>lijzijde</em> â boot drijft naar de persoon toe, windstil voor opnemen.</p>"
+              "inhoud": "<p><strong>Direct:</strong></p><ol style=\"padding-left:18px;margin-top:6px\"><li>Schreeuw \"Man over boord!\"</li><li>Gooi reddingsboei</li><li>Wijs persoon aan — oogcontact niet verliezen</li><li>Breng boot tot stilstand</li></ol><p style=\"margin-top:10px\"><strong>Opnemen:</strong> altijd aan de <em>lijzijde</em> — boot drijft naar de persoon toe, windstil voor opnemen.</p>"
             }
           ]
         },
         {
           "id": "zg-navigatie",
           "sectie": "zeilen",
-          "icoon": "ðºï¸",
+          "icoon": "🗺️",
           "titel": "Navigatie basis",
           "beschrijving": "Kompas, koers, afstand",
           "lessen": [
             {
               "titel": "Kompas",
-              "inhoud": "{{svg:gradenboogsvg}}<p style=\"margin-top:8px\"><strong>Kompasroos</strong>: N=0Â°, O=90Â°, Z=180Â°, W=270Â°.<br><strong>Windrichting</strong>: van waar de wind <em>komt</em>. Noorderwind = van het noorden.</p>"
+              "inhoud": "{{svg:gradenboogsvg}}<p style=\"margin-top:8px\"><strong>Kompasroos</strong>: N=0°, O=90°, Z=180°, W=270°.<br><strong>Windrichting</strong>: van waar de wind <em>komt</em>. Noorderwind = van het noorden.</p>"
             },
             {
               "titel": "Koers & afstand",
-              "inhoud": "<p><strong>Koers</strong>: richting in graden die je vaart.<br><strong>Afstand</strong>: in zeemijlen (nm) â 1 nm = 1852 m.<br><strong>Peil</strong>: richting naar een object (met peilcompas).</p><div class=\"callout-tip callout\">Gegist bestek: positie schatten via koers + snelheid + tijd.</div>"
+              "inhoud": "<p><strong>Koers</strong>: richting in graden die je vaart.<br><strong>Afstand</strong>: in zeemijlen (nm) — 1 nm = 1852 m.<br><strong>Peil</strong>: richting naar een object (met peilcompas).</p><div class=\"callout-tip callout\">Gegist bestek: positie schatten via koers + snelheid + tijd.</div>"
             }
           ]
         }
@@ -893,13 +893,13 @@
     },
     "kb3": {
       "naam": "Kielboot III",
-      "icoon": "âµ",
+      "icoon": "⛵",
       "kleur": "#0B2545",
       "modules": [
         {
           "id": "kb-loefgierig",
           "sectie": "zeilen",
-          "icoon": "âï¸",
+          "icoon": "↔️",
           "titel": "Loef- & lijgierig",
           "beschrijving": "Stuurgedrag van het schip",
           "lessen": [
@@ -912,7 +912,7 @@
         {
           "id": "kb-reven",
           "sectie": "zeilen",
-          "icoon": "â¬ï¸",
+          "icoon": "⬇️",
           "titel": "Reven",
           "beschrijving": "Zeil kleiner maken bij harde wind",
           "lessen": [
@@ -925,7 +925,7 @@
         {
           "id": "kb-stabiliteit",
           "sectie": "zeilen",
-          "icoon": "âï¸",
+          "icoon": "⚖️",
           "titel": "Stabiliteit",
           "beschrijving": "Metacentrum, slingerperiode",
           "lessen": [
@@ -942,24 +942,24 @@
         {
           "id": "kb-navigatie",
           "sectie": "zeilen",
-          "icoon": "ðºï¸",
+          "icoon": "🗺️",
           "titel": "Navigatie gevorderd",
           "beschrijving": "Gegist bestek, getijden, stroming",
           "lessen": [
             {
               "titel": "Gegist bestek & getijden",
-              "inhoud": "<p><strong>Gegist bestek</strong> (DR): positie bepalen via koers + snelheid + tijd. Formule: <em>afstand = snelheid Ã tijd</em>.</p><p style=\"margin-top:8px\"><strong>Eb</strong>: waterpeil daalt. <strong>Vloed</strong>: waterpeil stijgt. Invloed op vaardiepte en stroming.</p>"
+              "inhoud": "<p><strong>Gegist bestek</strong> (DR): positie bepalen via koers + snelheid + tijd. Formule: <em>afstand = snelheid × tijd</em>.</p><p style=\"margin-top:8px\"><strong>Eb</strong>: waterpeil daalt. <strong>Vloed</strong>: waterpeil stijgt. Invloed op vaardiepte en stroming.</p>"
             },
             {
               "titel": "Stroming compenseren",
-              "inhoud": "<p>Stroom duwt de boot van de koers. Compenseer door <em>schuin in de stroom te sturen</em>.</p><p style=\"margin-top:8px\">Voorbeeld: stroom van bakboord â stuur naar bakboord om rechte koers te houden.</p>"
+              "inhoud": "<p>Stroom duwt de boot van de koers. Compenseer door <em>schuin in de stroom te sturen</em>.</p><p style=\"margin-top:8px\">Voorbeeld: stroom van bakboord → stuur naar bakboord om rechte koers te houden.</p>"
             }
           ]
         },
         {
           "id": "kb-zeeweer",
           "sectie": "zeilen",
-          "icoon": "ð",
+          "icoon": "🌊",
           "titel": "Zeeweer",
           "beschrijving": "Navtex, golven, deining",
           "lessen": [
@@ -971,14 +971,14 @@
             },
             {
               "titel": "Golven & deining",
-              "inhoud": "<p><strong>Windgolven</strong>: plaatselijk, kort en steil.<br><strong>Deining</strong>: van ver, lang en regelmatig.</p><p style=\"margin-top:8px\">Extra gevaar bij: ondiep water, stroom tegen wind, plotselinge buien.</p><div class=\"callout-warn callout\">Kracht 7 = stormachtig â kielboot in de haven!</div>"
+              "inhoud": "<p><strong>Windgolven</strong>: plaatselijk, kort en steil.<br><strong>Deining</strong>: van ver, lang en regelmatig.</p><p style=\"margin-top:8px\">Extra gevaar bij: ondiep water, stroom tegen wind, plotselinge buien.</p><div class=\"callout-warn callout\">Kracht 7 = stormachtig → kielboot in de haven!</div>"
             }
           ]
         },
         {
           "id": "kb-samenvatting",
           "sectie": "zeilen",
-          "icoon": "ð",
+          "icoon": "📋",
           "titel": "Samenvatting KB III",
           "beschrijving": "Kernpunten kielboot",
           "lessen": [
@@ -988,7 +988,7 @@
             },
             {
               "titel": "Veiligheidscheck",
-              "inhoud": "<ul><li>â Reddingsvesten voor alle opvarenden</li><li>â Marifoon VHF kanaal 16 bereikbaar</li><li>â Noodseinkist</li><li>â Anker + voldoende lijn</li><li>â Navigatieverlichting werkend</li><li>â Kaart + kompas</li></ul>"
+              "inhoud": "<ul><li>✓ Reddingsvesten voor alle opvarenden</li><li>✓ Marifoon VHF kanaal 16 bereikbaar</li><li>✓ Noodseinkist</li><li>✓ Anker + voldoende lijn</li><li>✓ Navigatieverlichting werkend</li><li>✓ Kaart + kompas</li></ul>"
             }
           ]
         }
