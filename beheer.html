@@ -385,10 +385,10 @@ function renderModView(mod, quiz, type){
   for(let i=0;i<lessen.length;i++){
     const les=lessen[i];
     const isSpecial=les.type||les.spel||les.custom;
-    const preview=stripHtml(les.inhoud||'').substring(0,90);
+    const preview=stripHtml(les.inhoud||'').replace(/\{\{svg:[^}]*\}\}/g,'').trim().substring(0,90);
     h+=`<div class="les-card">
       <div class="les-body">
-        <div class="les-title">${esc(les.titel||'(naamloos)')}${isSpecial?` <span style="font-size:.72rem;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:10px">${esc(les.custom||les.type||les.spel)}</span>`:''}}</div>
+        <div class="les-title">${esc(les.titel||'(naamloos)')}${isSpecial?` <span style="font-size:.72rem;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:10px">${esc(les.custom||les.type||les.spel)}</span>`:''}</div>
         ${preview?`<div class="les-sub">${esc(preview)}…</div>`:''}
       </div>
       <div class="les-act">
