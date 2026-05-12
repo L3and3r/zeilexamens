@@ -105,17 +105,6 @@
             ],
             "correct": 1,
             "uitleg": "Hogerwal = de kant waar de wind vandaan komt."
-          },
-          {
-            "vraag": "test",
-            "opties": [
-              "antwoord 1",
-              "antwoord 2",
-              "antwoord 3",
-              "antwoord 4"
-            ],
-            "correct": 2,
-            "uitleg": "Dit is een test"
           }
         ]
       },
